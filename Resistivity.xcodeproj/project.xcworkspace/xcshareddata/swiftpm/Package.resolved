@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "bluesocket",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/IBM-Swift/BlueSocket.git",
+      "state" : {
+        "revision" : "c9894fd117457f1d006575fbfb2fdfd6f79eac03",
+        "version" : "1.0.200"
+      }
+    },
+    {
+      "identity" : "coreswiftvisa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftVISA/CoreSwiftVISA.git",
+      "state" : {
+        "branch" : "actor",
+        "revision" : "229f53ba130653b4945188a94a0bbeea5d21ea6f"
+      }
+    },
+    {
+      "identity" : "swiftvisaswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftVISA/SwiftVISASwift.git",
+      "state" : {
+        "branch" : "actor",
+        "revision" : "1ccb532a7967fb0c37a503d2aa15f999991bae2d"
+      }
+    }
+  ],
+  "version" : 2
+}

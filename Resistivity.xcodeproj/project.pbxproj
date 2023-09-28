@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C094C1852AC5F91B00E655CA /* ResistivityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C1842AC5F91B00E655CA /* ResistivityApp.swift */; };
+		C094C1872AC5F91B00E655CA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C1862AC5F91B00E655CA /* ContentView.swift */; };
+		C094C1892AC5F91C00E655CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C094C1882AC5F91C00E655CA /* Assets.xcassets */; };
+		C094C18C2AC5F91C00E655CA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C094C18B2AC5F91C00E655CA /* Preview Assets.xcassets */; };
+		C094C1952AC5F97C00E655CA /* SwiftVISASwift in Frameworks */ = {isa = PBXBuildFile; productRef = C094C1942AC5F97C00E655CA /* SwiftVISASwift */; };
+		C094C19D2AC5F9EE00E655CA /* NanoVoltMeterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C19C2AC5F9EE00E655CA /* NanoVoltMeterController.swift */; };
+		C094C19F2AC5FA4900E655CA /* ReturnMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C19E2AC5FA4900E655CA /* ReturnMode.swift */; };
+		C094C1A12AC5FA6E00E655CA /* DefaultNanoVoltMeterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C1A02AC5FA6E00E655CA /* DefaultNanoVoltMeterController.swift */; };
+		C0B608982AC610E0008B0A39 /* Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B608972AC610E0008B0A39 /* Decoders.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C094C1812AC5F91B00E655CA /* Resistivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resistivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C094C1842AC5F91B00E655CA /* ResistivityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistivityApp.swift; sourceTree = "<group>"; };
+		C094C1862AC5F91B00E655CA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C094C1882AC5F91C00E655CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C094C18B2AC5F91C00E655CA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C094C18D2AC5F91C00E655CA /* Resistivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Resistivity.entitlements; sourceTree = "<group>"; };
+		C094C19C2AC5F9EE00E655CA /* NanoVoltMeterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanoVoltMeterController.swift; sourceTree = "<group>"; };
+		C094C19E2AC5FA4900E655CA /* ReturnMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnMode.swift; sourceTree = "<group>"; };
+		C094C1A02AC5FA6E00E655CA /* DefaultNanoVoltMeterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNanoVoltMeterController.swift; sourceTree = "<group>"; };
+		C0B608972AC610E0008B0A39 /* Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoders.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C094C17E2AC5F91B00E655CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C094C1952AC5F97C00E655CA /* SwiftVISASwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C094C1782AC5F91B00E655CA = {
+			isa = PBXGroup;
+			children = (
+				C094C1832AC5F91B00E655CA /* Resistivity */,
+				C094C1822AC5F91B00E655CA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C094C1822AC5F91B00E655CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C094C1812AC5F91B00E655CA /* Resistivity.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C094C1832AC5F91B00E655CA /* Resistivity */ = {
+			isa = PBXGroup;
+			children = (
+				C094C1842AC5F91B00E655CA /* ResistivityApp.swift */,
+				C094C1862AC5F91B00E655CA /* ContentView.swift */,
+				C094C19A2AC5F9B100E655CA /* Controllers */,
+				C094C1992AC5F9A800E655CA /* Data Models */,
+				C094C1982AC5F99E00E655CA /* View Models */,
+				C094C1972AC5F99400E655CA /* Views */,
+				C094C1882AC5F91C00E655CA /* Assets.xcassets */,
+				C094C18D2AC5F91C00E655CA /* Resistivity.entitlements */,
+				C094C18A2AC5F91C00E655CA /* Preview Content */,
+			);
+			path = Resistivity;
+			sourceTree = "<group>";
+		};
+		C094C18A2AC5F91C00E655CA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C094C18B2AC5F91C00E655CA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C094C1972AC5F99400E655CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C094C1982AC5F99E00E655CA /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		C094C1992AC5F9A800E655CA /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		C094C19A2AC5F9B100E655CA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C094C19B2AC5F9D600E655CA /* Instrument Controllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C094C19B2AC5F9D600E655CA /* Instrument Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C094C19C2AC5F9EE00E655CA /* NanoVoltMeterController.swift */,
+				C094C19E2AC5FA4900E655CA /* ReturnMode.swift */,
+				C094C1A02AC5FA6E00E655CA /* DefaultNanoVoltMeterController.swift */,
+				C0B608972AC610E0008B0A39 /* Decoders.swift */,
+			);
+			path = "Instrument Controllers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C094C1802AC5F91B00E655CA /* Resistivity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C094C1902AC5F91C00E655CA /* Build configuration list for PBXNativeTarget "Resistivity" */;
+			buildPhases = (
+				C094C17D2AC5F91B00E655CA /* Sources */,
+				C094C17E2AC5F91B00E655CA /* Frameworks */,
+				C094C17F2AC5F91B00E655CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Resistivity;
+			packageProductDependencies = (
+				C094C1942AC5F97C00E655CA /* SwiftVISASwift */,
+			);
+			productName = Resistivity;
+			productReference = C094C1812AC5F91B00E655CA /* Resistivity.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C094C1792AC5F91B00E655CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					C094C1802AC5F91B00E655CA = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = C094C17C2AC5F91B00E655CA /* Build configuration list for PBXProject "Resistivity" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C094C1782AC5F91B00E655CA;
+			packageReferences = (
+				C094C1932AC5F97C00E655CA /* XCRemoteSwiftPackageReference "SwiftVISASwift" */,
+			);
+			productRefGroup = C094C1822AC5F91B00E655CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C094C1802AC5F91B00E655CA /* Resistivity */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C094C17F2AC5F91B00E655CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C094C18C2AC5F91C00E655CA /* Preview Assets.xcassets in Resources */,
+				C094C1892AC5F91C00E655CA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C094C17D2AC5F91B00E655CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0B608982AC610E0008B0A39 /* Decoders.swift in Sources */,
+				C094C19F2AC5FA4900E655CA /* ReturnMode.swift in Sources */,
+				C094C1872AC5F91B00E655CA /* ContentView.swift in Sources */,
+				C094C1852AC5F91B00E655CA /* ResistivityApp.swift in Sources */,
+				C094C1A12AC5FA6E00E655CA /* DefaultNanoVoltMeterController.swift in Sources */,
+				C094C19D2AC5F9EE00E655CA /* NanoVoltMeterController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C094C18E2AC5F91C00E655CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C094C18F2AC5F91C00E655CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		C094C1912AC5F91C00E655CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Resistivity/Resistivity.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Resistivity/Preview Content\"";
+				DEVELOPMENT_TEAM = Z553N3QGMH;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HRG.Resistivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C094C1922AC5F91C00E655CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Resistivity/Resistivity.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Resistivity/Preview Content\"";
+				DEVELOPMENT_TEAM = Z553N3QGMH;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HRG.Resistivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C094C17C2AC5F91B00E655CA /* Build configuration list for PBXProject "Resistivity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C094C18E2AC5F91C00E655CA /* Debug */,
+				C094C18F2AC5F91C00E655CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C094C1902AC5F91C00E655CA /* Build configuration list for PBXNativeTarget "Resistivity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C094C1912AC5F91C00E655CA /* Debug */,
+				C094C1922AC5F91C00E655CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C094C1932AC5F97C00E655CA /* XCRemoteSwiftPackageReference "SwiftVISASwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftVISA/SwiftVISASwift.git";
+			requirement = {
+				branch = actor;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C094C1942AC5F97C00E655CA /* SwiftVISASwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C094C1932AC5F97C00E655CA /* XCRemoteSwiftPackageReference "SwiftVISASwift" */;
+			productName = SwiftVISASwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C094C1792AC5F91B00E655CA /* Project object */;
+}
