@@ -9,11 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        HSplitView {
+            VStack {
+                MeasurementConfiguratorView()
+                Divider()
+                SummaryStatisticsView()
+                Divider()
+                SampleInformationView()
+                Divider()
+            }
+            .frame(minWidth: 300, maxWidth: 500)
+            VStack {
+                ResultsView()
+            }.frame(minWidth: 400, maxWidth: .infinity)
         }
         .padding()
     }
