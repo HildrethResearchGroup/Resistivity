@@ -25,22 +25,25 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
         }
     }
     
+    
     init?(ipAddress: String, port: Int) async {
         
         let manager = InstrumentManager.shared
         
         
         guard let instrument = try? await manager.instrumentAt(address: ipAddress, port: port) else {
+            print("Could not create an instrument at: \(ipAddress) and port: \(port)")
             return nil
         }
-        
-        
         
         self.instrument = instrument
         
         self.returnMode = .identifier
         
         await flushOldData(for: returnMode)
+        
+        let info = try? await getIdentifier()
+        print(info ?? "Info not available")
     }
     
     
@@ -56,7 +59,7 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
     func getResistance() async throws -> Double {
         returnMode = .resistivity
         
-        let resistance = try await instrument.query("MEAS:FRES?\n", as: Double.self, using: DoubleDecoder())
+        let resistance = try await instrument.query("MEAS:FRES?\n", as: Double.self, using: ExponentDecoder())
         
         return resistance
     }
@@ -102,21 +105,6 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
     }
     
     
-    private struct StringDecoder: MessageDecoder {
-        func decode(_ string: String) throws -> String {
-            var fixedString = string
-            
-            if string.hasPrefix("1`") {
-                fixedString = String(string.dropFirst(2))
-            }
-            
-            while fixedString.hasSuffix("\n") {
-                fixedString = String(fixedString.dropLast())
-            }
-            
-            return fixedString
-        }
-    }
     
     enum DecoderError: Error {
         case doubleCouldNotBeDecoded

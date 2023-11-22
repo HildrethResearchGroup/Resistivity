@@ -7,16 +7,21 @@
 
 import Foundation
 
+
 class MeasurementGroup {
-    
     var measurements: [Measurement] = [] {
         didSet {
             updateStatistics()
         }
     }
     
-    var sampleName = ""
-    var location = ""
+    let sampleInfo: SampleInfo
+    let location: LocationInfo
+    
+    init(sampleInfo: SampleInfo, location: LocationInfo) {
+        self.sampleInfo = sampleInfo
+        self.location = location
+    }
     
     var resistanceStatistics = Statistics<Measurement>(keyPath: \.resistance, name: "Resistance", units: "Ω")
     var resistivityStatistics = Statistics<Measurement>(keyPath: \.resistivity, name: "Resistivity", units: "Ω-m")

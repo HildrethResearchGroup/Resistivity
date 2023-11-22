@@ -8,9 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appController: AppController
+    
     var body: some View {
         HSplitView {
             VStack {
+                VStack {
+                    HStack {
+                        Text("Instrument Info: \(appController.information)")
+                        Button("􀅈") {
+                            appController.getInformation()
+                        }
+                    }
+                    HStack {
+                        Text("Last Measurement: \(appController.lastMeasurement)")
+                        Button("􀅈") {
+                            appController.measureResistance()
+                        }
+                    }
+                }
+               
+                
+                Divider()
                 MeasurementConfiguratorView()
                 Divider()
                 SummaryStatisticsView()
