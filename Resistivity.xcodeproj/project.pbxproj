@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C013247E2B1030DC00DCAC6D /* EquipmentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */; };
+		C01324802B106AA100DCAC6D /* ResultsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013247F2B106AA100DCAC6D /* ResultsTableView.swift */; };
 		C036EAD12B0DBE8300CB02D6 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036EAD02B0DBE8200CB02D6 /* AppController.swift */; };
 		C078BB002AD0A509002AF86B /* VISAInstrumentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078BAFF2AD0A509002AF86B /* VISAInstrumentProtocol.swift */; };
 		C078BB032AD2612E002AF86B /* IPAddressValidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078BB022AD2612E002AF86B /* IPAddressValidity.swift */; };
@@ -42,11 +44,13 @@
 		C0DB47192ACB4AAA00FBAC23 /* DataCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB47182ACB4AAA00FBAC23 /* DataCollectionController.swift */; };
 		C0DB471B2ACB4F6A00FBAC23 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB471A2ACB4F6A00FBAC23 /* Measurement.swift */; };
 		C0DB471D2ACB4FFA00FBAC23 /* DelayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */; };
-		C0DB47212ACB509B00FBAC23 /* MeasurementGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB47202ACB509B00FBAC23 /* MeasurementGroup.swift */; };
+		C0DB47212ACB509B00FBAC23 /* MeasurementSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB47202ACB509B00FBAC23 /* MeasurementSample.swift */; };
 		C0FFEF412AF7510C00CCBD97 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FFEF402AF7510C00CCBD97 /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentStatus.swift; sourceTree = "<group>"; };
+		C013247F2B106AA100DCAC6D /* ResultsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableView.swift; sourceTree = "<group>"; };
 		C036EAD02B0DBE8200CB02D6 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		C078BAFF2AD0A509002AF86B /* VISAInstrumentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VISAInstrumentProtocol.swift; sourceTree = "<group>"; };
 		C078BB022AD2612E002AF86B /* IPAddressValidity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressValidity.swift; sourceTree = "<group>"; };
@@ -83,7 +87,7 @@
 		C0DB47182ACB4AAA00FBAC23 /* DataCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionController.swift; sourceTree = "<group>"; };
 		C0DB471A2ACB4F6A00FBAC23 /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayType.swift; sourceTree = "<group>"; };
-		C0DB47202ACB509B00FBAC23 /* MeasurementGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementGroup.swift; sourceTree = "<group>"; };
+		C0DB47202ACB509B00FBAC23 /* MeasurementSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementSample.swift; sourceTree = "<group>"; };
 		C0FFEF402AF7510C00CCBD97 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +162,7 @@
 				C0DB470D2ACB367B00FBAC23 /* SummaryStatisticsView.swift */,
 				C0DB470F2ACB38AF00FBAC23 /* SampleInformationView.swift */,
 				C0DB47112ACB404500FBAC23 /* ResultsView.swift */,
+				C013247F2B106AA100DCAC6D /* ResultsTableView.swift */,
 				C0DB47162ACB44C800FBAC23 /* PreferencesView.swift */,
 			);
 			path = Views;
@@ -187,6 +192,7 @@
 			children = (
 				C036EAD02B0DBE8200CB02D6 /* AppController.swift */,
 				C0DB47182ACB4AAA00FBAC23 /* DataCollectionController.swift */,
+				C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */,
 				C094C19B2AC5F9D600E655CA /* Instrument Controllers */,
 			);
 			path = Controllers;
@@ -246,7 +252,7 @@
 		C0FFEF3C2AF750B200CCBD97 /* Measurements */ = {
 			isa = PBXGroup;
 			children = (
-				C0DB47202ACB509B00FBAC23 /* MeasurementGroup.swift */,
+				C0DB47202ACB509B00FBAC23 /* MeasurementSample.swift */,
 				C0DB471A2ACB4F6A00FBAC23 /* Measurement.swift */,
 				C0C2C02F2AD8A48000E2385E /* LocationInfo.swift */,
 				C0C2C02D2AD8A41A00E2385E /* SampleInfo.swift */,
@@ -359,12 +365,13 @@
 				C0DB47082ACB313600FBAC23 /* Notifications.swift in Sources */,
 				C0A3659E2AC7D25A00EA2EB6 /* ResistanceUnits.swift in Sources */,
 				C036EAD12B0DBE8300CB02D6 /* AppController.swift in Sources */,
-				C0DB47212ACB509B00FBAC23 /* MeasurementGroup.swift in Sources */,
+				C0DB47212ACB509B00FBAC23 /* MeasurementSample.swift in Sources */,
 				C0C2C03B2AD8F8DF00E2385E /* ResistivityMeasurementSettings.swift in Sources */,
 				C0A3659A2AC7CC0700EA2EB6 /* SimulatedNanoVoltMeterController.swift in Sources */,
 				C094C1872AC5F91B00E655CA /* ContentView.swift in Sources */,
 				C0DB471D2ACB4FFA00FBAC23 /* DelayType.swift in Sources */,
 				C0A3659C2AC7CCC400EA2EB6 /* TimeUnits.swift in Sources */,
+				C013247E2B1030DC00DCAC6D /* EquipmentStatus.swift in Sources */,
 				C0DB47152ACB40F500FBAC23 /* TabLabel.swift in Sources */,
 				C0DB47102ACB38AF00FBAC23 /* SampleInformationView.swift in Sources */,
 				C0DB470A2ACB315500FBAC23 /* Style.swift in Sources */,
@@ -374,6 +381,7 @@
 				C094C1852AC5F91B00E655CA /* ResistivityApp.swift in Sources */,
 				C078BB072AD26CDF002AF86B /* Statistics.swift in Sources */,
 				C078BB052AD26368002AF86B /* Array_Statistics.swift in Sources */,
+				C01324802B106AA100DCAC6D /* ResultsTableView.swift in Sources */,
 				C0DB47172ACB44C800FBAC23 /* PreferencesView.swift in Sources */,
 				C0DB470C2ACB32FE00FBAC23 /* MeasurementConfiguratorView.swift in Sources */,
 				C0A365A12AC7D4EF00EA2EB6 /* ConvertableUnits_Protocol.swift in Sources */,

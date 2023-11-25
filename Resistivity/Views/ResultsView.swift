@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct ResultsView: View {
+    
+    @ObservedObject var dataModel: DataModel
+    
     var body: some View {
         TabView {
             VStack {
-                Text("Raw Results Table")
+                ResultsTableView(measurements: $dataModel.flattendMeasurements)
             }.tabItem { Text("􀏣") }
             VStack {
                 Text("Graphs")
@@ -23,6 +26,10 @@ struct ResultsView: View {
     }
 }
 
-#Preview {
-    ResultsView()
-}
+/*
+ #Preview {
+
+     ResultsView(dataModel: DataModel())
+ }
+ */
+

@@ -12,4 +12,10 @@ struct LocationInfo {
     var name = ""
 }
 
-extension LocationInfo: Codable, Identifiable {}
+extension LocationInfo: Codable, Identifiable, Equatable {}
+
+extension LocationInfo {
+    init(_ nameIn: String) {
+        name = nameIn
+    }
+}

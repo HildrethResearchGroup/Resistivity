@@ -18,11 +18,12 @@ class MeasurementSample {
     
     let sampleInfo: SampleInfo
     let location: LocationInfo
-    let groupNumber: Int
+    let sampleNumber: Int
+    var locationNumber = 1
     var localMeasurementNumber: Int = 0
     
-    init(groupNumber: Int, sampleInfo: SampleInfo, location: LocationInfo) {
-        self.groupNumber = groupNumber
+    init(sampleNumber: Int, sampleInfo: SampleInfo, location: LocationInfo) {
+        self.sampleNumber = sampleNumber
         self.sampleInfo = sampleInfo
         self.location = location
     }
@@ -35,10 +36,15 @@ class MeasurementSample {
         resistivityStatistics.update(with: measurements)
     }
     
+    func newLocation() {
+        locationNumber += 1
+        localMeasurementNumber = 0
+    }
+    
     func addMeasurement(_ resistanceIn: Double, withMeasurementNumber measurementNumberIn: Int) {
         localMeasurementNumber += 1
         
-        let newMeasurement = Measurement(resistanceIn, withGlobal: measurementNumberIn, andGroupNumber: groupNumber, andLocalMeasurementNumber: localMeasurementNumber, atLocation: location, withSampleInfo: sampleInfo)
+        let newMeasurement = Measurement(resistanceIn, withGlobal: measurementNumberIn, andSampleNumber: sampleNumber, andLocationMeasurementNumber: locationNumber, localMeasurementNumber: localMeasurementNumber, atLocation: location, withSampleInfo: sampleInfo)
         
         measurements.append(newMeasurement)
     }

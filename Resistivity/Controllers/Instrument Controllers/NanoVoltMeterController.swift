@@ -84,6 +84,7 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
         }
     }
     
+    
     func flushData() async {
         await flushOldData(for: .resistivity)
     }
@@ -112,3 +113,6 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
     }
     
 }
+
+
+

@@ -12,4 +12,10 @@ struct SampleInfo {
     var name = ""
 }
 
-extension SampleInfo: Codable, Identifiable {}
+extension SampleInfo {
+    init(_ nameIn: String) {
+        name = nameIn
+    }
+}
+
+extension SampleInfo: Codable, Identifiable, Equatable {}

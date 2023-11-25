@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-class DataCollectionController {
+
+class DataCollectionController: Observable {
     var ipAddress: String? {
         get {
             return UserDefaults.standard.string(forKey: UD_ipAddressKey)
@@ -39,11 +40,18 @@ class DataCollectionController {
     }
     
     
-    @Published var equipmentStatus: EquipmentStatus = .disconnected
+    @Published var equipmentStatus: EquipmentStatus = .disconnected {
+        didSet {
+            NotificationCenter.default.post(name: .nanovoltmeterStatusDidChange, object: equipmentStatus)
+        }
+    }
     
     func createOhmMeter() throws {
         guard let localIPAddress = ipAddress else { throw DataCollectionError.noIPAddress }
         guard let localPort = port else { throw DataCollectionError.noPort }
+        
+        equipmentStatus = .connecting
+        
         
         Task {
             guard let meter = await NanoVoltMeterController(ipAddress: localIPAddress, port: localPort) else {
@@ -52,7 +60,7 @@ class DataCollectionController {
             }
             
             ohmMeter = meter
-            equipmentStatus = .connected
+            //equipmentStatus = .connected
         }
     }
     
@@ -63,13 +71,6 @@ class DataCollectionController {
         case noPort
         case couldNotMeasureResistance
         case couldNotGetInstrumentInformation
-    }
-    
-    
-    enum EquipmentStatus {
-        case disconnected
-        case connected
-        case measuring
     }
     
     
@@ -99,11 +100,11 @@ class DataCollectionController {
 extension DataCollectionController {
     func measureResistance() async throws -> Double {
         
-        /*
-         if connectionStatus == .disconnected {
+        
+         if equipmentStatus == .disconnected {
              throw DataCollectionError.ohmMeterNotConnected
          }
-         */
+         
         
         
         guard let resistance = try await ohmMeter?.getResistance() else {
@@ -115,11 +116,11 @@ extension DataCollectionController {
     
     func getInformation() async throws -> String {
         
-        /*
-         if connectionStatus == .disconnected {
+        
+         if equipmentStatus == .disconnected {
              throw DataCollectionError.ohmMeterNotConnected
          }
-         */
+         
         
         
         guard let info = try await ohmMeter?.getIdentifier() else {
@@ -154,6 +155,8 @@ extension DataCollectionController {
 }
 
 
-
-
+// MARK: - Notification.Name Keys
+extension Notification.Name {
+    static let nanovoltmeterStatusDidChange = Notification.Name("nanovoltmeterStatusDidChange")
+}
 

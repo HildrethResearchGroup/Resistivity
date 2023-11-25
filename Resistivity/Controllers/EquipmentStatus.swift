@@ -6,3 +6,9 @@
 //
 
 import Foundation
+enum EquipmentStatus {
+    case disconnected
+    case connecting
+    case connected
+    case measuring
+}

@@ -8,22 +8,38 @@
 import SwiftUI
 
 struct SampleInformationView: View {
+    
+    @ObservedObject var dataModel: DataModel
+    
     var body: some View {
-        VStack {
+        VStack(alignment: .textFieldAlignmentGuide) {
             Text("Sample Information")
                 .font(.title)
                 .padding(.bottom)
-            HStack {
-                Text("Name:")
-                Text("TextField: Name for sample")
+            HStack () {
+                Text("Sample Name:")
+                TextField("Sample Name:", text: $dataModel.currentSampleInfoName)
+                    .alignmentGuide(.textFieldAlignmentGuide) {context in
+                        context[.leading]
+                    }
+                    .frame(minWidth: 200, idealWidth: 300, maxWidth: 350)
             }
             HStack {
                 Text("Location:")
-                Text("TextField: Measurement Location")
+                TextField("Location:", text: $dataModel.currentLocationInfoName)
+                    .alignmentGuide(.textFieldAlignmentGuide) {context in
+                        context[.leading]
+                    }
+                    .frame(minWidth: 200, idealWidth: 300, maxWidth: 350)
+                //Text("TextField: Measurement Location")
             }
             HStack {
                 Text("Measurement Number:")
-                Text("Label: Measurement Number")
+                Text("\(dataModel.measurementNumber)")
+                    .alignmentGuide(.textFieldAlignmentGuide) {context in
+                    context[.leading]
+                }
+                
             }
             
         }.padding()
@@ -32,5 +48,15 @@ struct SampleInformationView: View {
 }
 
 #Preview {
-    SampleInformationView()
+    SampleInformationView(dataModel: DataModel())
+}
+
+extension HorizontalAlignment {
+    private struct TextFieldAlignment: AlignmentID {
+        static func defaultValue(in context: ViewDimensions) -> CGFloat {
+            context[HorizontalAlignment.leading]
+        }
+    }
+    
+    static let textFieldAlignmentGuide = HorizontalAlignment(TextFieldAlignment.self)
 }

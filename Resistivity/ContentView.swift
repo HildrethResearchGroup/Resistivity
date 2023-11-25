@@ -13,33 +13,16 @@ struct ContentView: View {
     var body: some View {
         HSplitView {
             VStack {
-                VStack {
-                    HStack {
-                        Text("Instrument Info: \(appController.information)")
-                        Button("􀅈") {
-                            appController.getInformation()
-                        }
-                    }
-                    HStack {
-                        Text("Last Measurement: \(appController.lastMeasurement)")
-                        Button("􀅈") {
-                            appController.measureResistance()
-                        }
-                    }
-                }
-               
-                
-                Divider()
                 MeasurementConfiguratorView()
                 Divider()
                 SummaryStatisticsView()
                 Divider()
-                SampleInformationView()
+                SampleInformationView(dataModel: appController.dataModel)
                 Divider()
             }
             .frame(minWidth: 300, maxWidth: 500)
             VStack {
-                ResultsView()
+                ResultsView(dataModel: appController.dataModel)
             }.frame(minWidth: 400, maxWidth: .infinity)
         }
         .padding()
