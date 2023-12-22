@@ -21,7 +21,7 @@ extension Measurement: Exportable {
     
     func data() -> [String] {
         return [sampleInfo.name,
-                location.name,
+                locationInfo.name,
                 date.formatted(date: .complete, time: .omitted),
                 date.formatted(date: .omitted, time: .complete),
                 measurementDuration.formatted(),

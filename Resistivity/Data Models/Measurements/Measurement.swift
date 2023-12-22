@@ -10,45 +10,31 @@ import Foundation
 
 struct Measurement {
     var id = UUID()
-    var sampleInfo: Sample
-    var locationInfo: Location
+    let resistance: Double
+    
+    var sampleInfo: SampleInfo
+    var locationInfo: LocationInfo
     var globalMeasurementNumber: Int
-    var sampleMeasurementNumber: Int
+    // var sampleMeasurementNumber: Int
+    //var locationMeasurementNumber: Int
     var locationMeasurementNumber: Int
-    var localMeasurementNumber: Int
+    
     
     let date: Date = .now
     let measurementDuration: Duration = .zero
     
-    let resistance: Double
-    
-    
-    let resistivity: Double = 0.0
-    
-    
-    
-    
-    
+    let resistivity = 0.0
+
 }
 
-// MARK - Intializers
-extension Measurement {
-    init(_ resistanceIn: Double, globalMeasurementName globalNumberIn: Int, sampleNumber: Int, locationNumber: Int, localMeasurementNumber: Int, withSampleName sampleNameIn: String, andLocationName locationNameIn: String) {
-        resistance = resistanceIn
-        globalMeasurementNumber = globalNumberIn
-        
-        
-        sampleMeasurementNumber = sampleNumber
-        locationMeasurementNumber = locationNumber
-        self.localMeasurementNumber = localMeasurementNumber
-        sampleName = sampleNameIn
-        locationName = locationNameIn
-    }
-}
 
 
 // MARK: - Common Conformances
 extension Measurement: Identifiable, Hashable {
+    static func == (lhs: Measurement, rhs: Measurement) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

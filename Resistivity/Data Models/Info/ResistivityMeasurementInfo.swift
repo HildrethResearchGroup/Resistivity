@@ -29,5 +29,7 @@ struct ResistivityMeasurementInfo: Identifiable {
         if self.thicknessCorrectionFactor != infoIn.thicknessCorrectionFactor { return false }
         
         if self.finiteWidthCorrectionFactor != infoIn.finiteWidthCorrectionFactor { return false }
+        
+        return true
     }
 }

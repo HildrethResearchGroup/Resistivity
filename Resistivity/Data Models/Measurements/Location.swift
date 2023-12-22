@@ -11,7 +11,6 @@ class Location {
     var id = UUID()
     var name = ""
     
-    
     var locationNumber: Int = 0
     
     var measurements: [Measurement] = []
@@ -26,20 +25,18 @@ extension Location: Identifiable, Equatable {
 }
 
 
+
 // MARK: - Initializers
 extension Location {
     convenience init(withName nameIn: String, withLocationNumber locationNumberIn: Int) {
         self.init()
         name = nameIn
-        
         locationNumber = locationNumberIn
     }
     
-    convenience init(withSettings settings: LocationSettings) {
-        self.init()
-        
-        name = settings.name
-        locationNumber = settings.locationNumber
+    
+    convenience init(_ locationInfo: LocationInfo) {
+        self.init(withName: locationInfo.name, withLocationNumber: locationInfo.locationNumber)
     }
 
 }
@@ -47,18 +44,28 @@ extension Location {
 
 // MARK: - Handling Measurements
 extension Location {
-    func addMeasurement(withResistance resistanceIn: Double, andGlobalNumber globalMeasurementIn: Int, sampleNumber: Int, withSampleName sampleName: String) {
+    func addMeasurement(withResistance resistanceIn: Double, sampleInfo: SampleInfo, locationInfo: LocationInfo, globalMeasurementNumber: Int) {
         
         let localMeasurementNumber = self.measurements.count + 1
         
-        let newMeasurement = Measurement(resistanceIn,
-                                         globalMeasurementName: globalMeasurementIn,
-                                         sampleNumber: sampleNumber,
-                                         locationNumber: self.locationNumber,
-                                         localMeasurementNumber: localMeasurementNumber,
-                                         withSampleName: sampleName,
-                                         andLocationName: self.name)
+        let newMeasurement = Measurement(resistance: resistanceIn,
+                                         sampleInfo: sampleInfo,
+                                         locationInfo: locationInfo,
+                                         globalMeasurementNumber: globalMeasurementNumber,
+                                         locationMeasurementNumber: localMeasurementNumber)
         
         measurements.append(newMeasurement)
     }
 }
+
+
+extension Location: Info {
+    typealias Output = LocationInfo
+    
+    func info() -> LocationInfo {
+        return LocationInfo(name: self.name, locationNumber: self.locationNumber)
+    }
+}
+
+
+

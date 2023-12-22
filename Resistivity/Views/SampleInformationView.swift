@@ -9,7 +9,9 @@ import SwiftUI
 
 struct SampleInformationView: View {
     
-    @ObservedObject var dataModel: DataModel
+    @ObservedObject var sampleSettings: SampleSettings
+    
+    @ObservedObject var locationSettings: LocationSettings
     
     var body: some View {
         VStack(alignment: .textFieldAlignmentGuide) {
@@ -18,7 +20,7 @@ struct SampleInformationView: View {
                 .padding(.bottom)
             HStack () {
                 Text("Sample Name:")
-                TextField("Sample Name:", text: $dataModel.currentSampleInfoName)
+                TextField("Sample Name:", text: $sampleSettings.name)
                     .alignmentGuide(.textFieldAlignmentGuide) {context in
                         context[.leading]
                     }
@@ -26,20 +28,12 @@ struct SampleInformationView: View {
             }
             HStack {
                 Text("Location:")
-                TextField("Location:", text: $dataModel.currentLocationInfoName)
+                TextField("Location:", text: $locationSettings.name)
                     .alignmentGuide(.textFieldAlignmentGuide) {context in
                         context[.leading]
                     }
                     .frame(minWidth: 200, idealWidth: 300, maxWidth: 350)
                 //Text("TextField: Measurement Location")
-            }
-            HStack {
-                Text("Measurement Number:")
-                Text("\(dataModel.measurementNumber)")
-                    .alignmentGuide(.textFieldAlignmentGuide) {context in
-                    context[.leading]
-                }
-                
             }
             
         }.padding()
@@ -48,7 +42,9 @@ struct SampleInformationView: View {
 }
 
 #Preview {
-    SampleInformationView(dataModel: DataModel())
+    SampleInformationView(sampleSettings: SampleSettings(), 
+                          locationSettings: LocationSettings())
+    
 }
 
 extension HorizontalAlignment {

@@ -11,17 +11,16 @@ import Foundation
 class DataModel: ObservableObject {
     @Published var samples: [Sample] = []
     
-   
-    @Published var currentSampleInfoName: String = ""
-    @Published var currentLocationInfoName: String = ""
     @Published var measurementNumber: Int = 1
-    @Published var groupNumber: Int = 0
+    
+    //@Published var groupNumber: Int = 0
     
     
-    
-    var currentMeasurementGroup: Sample? {
+    var currentSample: Sample? {
         return samples.last
     }
+    
+
     
     @Published var flattendMeasurements: [Measurement] = [] {
         didSet {
@@ -34,38 +33,22 @@ class DataModel: ObservableObject {
     }
     
     
-    func addNewMeasurement(withValue measurement: Double) {
-        if newMeasurementGroupNeeded() {
-            self.createNewMeasurementGroup()
+
+    
+    func addNewMeasurement(withValue measurement: Double, withSampleInfo sampleInfo: SampleInfo, locationInfo: LocationInfo, globalMeasurementNumber: Int) {
+        if newSampleNeeded(sampleInfo) {
+            self.createnewSample(withInfo: sampleInfo)
         }
         
-        if newMeasurementLocationNeeded() {
-            self.currentMeasurementGroup?.newLocation()
-        }
-        
-        self.currentMeasurementGroup?.addMeasurement(measurement, withMeasurementNumber: measurementNumber)
+        self.currentSample?.addMeasurement(measurement, globalMeasurementNumber: globalMeasurementNumber, locationInfo: locationInfo)
+
         measurementNumber += 1
     }
     
     
-    private func newMeasurementGroupNeeded() -> Bool {
-        guard let lastGroup = currentMeasurementGroup else {
-            return true
-        }
+    private func newSampleNeeded(_ sampleInfo: SampleInfo) -> Bool {
         
-        if lastGroup.sampleInfo.name != currentSampleInfoName {
-            return true
-        }
-        
-        return false
-    }
-    
-    private func newMeasurementLocationNeeded() -> Bool {
-        guard let lastGroup = currentMeasurementGroup else {
-            return false
-        }
-        
-        if lastGroup.location.name != currentLocationInfoName {
+        if currentSample?.name != sampleInfo.name {
             return true
         }
         
@@ -73,23 +56,23 @@ class DataModel: ObservableObject {
     }
     
     
-    private func createNewMeasurementGroup() {
+    
+    private func createnewSample(withInfo sampleInfo: SampleInfo) {
         
-        if newMeasurementGroupNeeded() {
+        if newSampleNeeded(sampleInfo) {
+            let sampleNumber = samples.count + 1
             
-            // TODO: Fix
-            let newMeasurementGroup = Sample(sampleNumber: <#T##Int#>, sampleInfo: <#T##SampleInfo#>, location: <#T##Location#>)
+            var sampleInfo = sampleInfo
             
-            let newSampleInfo = Sample(currentSampleInfoName, withLocationName: currentLocationInfoName)
+            sampleInfo.sampleNumber = sampleNumber
+
+            let newSample = Sample(sampleInfo)
             
-            
-            
-            
-            samples.append(newMeasurementGroup)
+            samples.append(newSample)
         }
-        
-        
     }
+    
+    
     
 }
 
@@ -114,8 +97,8 @@ extension DataModel {
             await MainActor.run {
                 var measurements: [Measurement] = []
                 
-                for nextGroup in samples {
-                    measurements.append(contentsOf: nextGroup.measurements)
+                for nextSample in samples {
+                    measurements.append(contentsOf: nextSample.flattendMeasurements)
                 }
                 
                 flattendMeasurements =  measurements

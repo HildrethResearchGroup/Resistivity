@@ -17,7 +17,7 @@ struct ContentView: View {
                 Divider()
                 SummaryStatisticsView()
                 Divider()
-                SampleInformationView(dataModel: appController.dataModel)
+                SampleInformationView(sampleSettings: appController.sampleSettings, locationSettings: appController.locationSettings)
                 Divider()
             }
             .frame(minWidth: 300, maxWidth: 500)

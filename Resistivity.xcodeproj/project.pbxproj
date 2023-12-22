@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C00D82502B27A85F004024E9 /* LineResistanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00D824F2B27A85F004024E9 /* LineResistanceInfo.swift */; };
+		C011FCFF2B360088008F8066 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C011FCFE2B360088008F8066 /* LocationInfo.swift */; };
 		C013247E2B1030DC00DCAC6D /* EquipmentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */; };
 		C01324802B106AA100DCAC6D /* ResultsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013247F2B106AA100DCAC6D /* ResultsTableView.swift */; };
 		C036EAD12B0DBE8300CB02D6 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036EAD02B0DBE8200CB02D6 /* AppController.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		C00D824F2B27A85F004024E9 /* LineResistanceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineResistanceInfo.swift; sourceTree = "<group>"; };
+		C011FCFE2B360088008F8066 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentStatus.swift; sourceTree = "<group>"; };
 		C013247F2B106AA100DCAC6D /* ResultsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableView.swift; sourceTree = "<group>"; };
 		C036EAD02B0DBE8200CB02D6 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			children = (
 				C0ED06AF2B34FF300050D626 /* Protocol_Info.swift */,
 				C00D824F2B27A85F004024E9 /* LineResistanceInfo.swift */,
+				C011FCFE2B360088008F8066 /* LocationInfo.swift */,
 				C0ED06AA2B34FA750050D626 /* ResistivityMeasurementInfo.swift */,
 				C0C2C02D2AD8A41A00E2385E /* SampleInfo.swift */,
 			);
@@ -421,6 +424,7 @@
 				C094C19D2AC5F9EE00E655CA /* OmhMeterControllerProtocol.swift in Sources */,
 				C0DB47192ACB4AAA00FBAC23 /* DataCollectionController.swift in Sources */,
 				C0C2C0332AD8A55E00E2385E /* Exportable.swift in Sources */,
+				C011FCFF2B360088008F8066 /* LocationInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

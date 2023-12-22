@@ -18,7 +18,7 @@ class SampleSettings: ObservableObject, Identifiable {
 extension SampleSettings: Info {
     typealias Output = SampleInfo
     
-    func info() -> Output {
+    func info() -> SampleInfo {
         let info = SampleInfo(name: self.name)
         
         return info

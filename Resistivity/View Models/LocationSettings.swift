@@ -10,8 +10,16 @@ import Foundation
 
 class LocationSettings: ObservableObject, Identifiable {
     var id = UUID()
-    var name = ""
+    @Published var name = ""
+    
+}
+
+
+extension LocationSettings: Info {
+    typealias Output = LocationInfo
     
     
-    var locationNumber: Int = 0
+    func info() -> LocationInfo {
+        return LocationInfo(name: self.name)
+    }
 }

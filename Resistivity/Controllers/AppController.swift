@@ -19,6 +19,8 @@ class AppController: ObservableObject {
     @Published var sampleSettings = SampleSettings()
     @Published var locationSettings = LocationSettings()
     
+    var globalMeasurementNumber = 1
+    
     init() {
         collectionController = DataCollectionController()
         dataModel = DataModel()
@@ -36,7 +38,11 @@ class AppController: ObservableObject {
             do {
                 let resistance = try await collectionController.measureResistance()
                 lastMeasurement = resistance
-                dataModel.addNewMeasurement(withValue: lastMeasurement)
+                
+                
+                dataModel.addNewMeasurement(withValue: lastMeasurement, withSampleInfo: sampleSettings.info(), locationInfo: locationSettings.info(), globalMeasurementNumber: globalMeasurementNumber)
+                
+                globalMeasurementNumber += 1
             } catch {
                 print(error)
             }

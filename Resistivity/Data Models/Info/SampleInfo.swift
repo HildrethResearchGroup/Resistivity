@@ -10,6 +10,9 @@ import Foundation
 struct SampleInfo {
     var id = UUID()
     var name: String
+    //var measurementNumber = 0
+    
+    var sampleNumber = 0
 }
 
 /*

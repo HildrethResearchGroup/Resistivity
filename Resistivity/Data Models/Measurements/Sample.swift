@@ -36,63 +36,18 @@ class Sample {
         return flattendMeasurements.count
     }
     
+    
+    
     // MARK: - Initializers
-    init(sampleName: String, sampleNumber sampleNumberIn: Int, locationName: String) {
+    init(sampleName: String, sampleNumber sampleNumberIn: Int) {
         name = sampleName
         sampleNumber = sampleNumberIn
-        
-        createNewLocation(withName: locationName)
     }
     
-    
-    // MARK: - Location Management
-    private func isANewLocationNeeded(forName locationNameIn: String) -> Bool {
-        guard let location = currentLocation else {
-            return true
-        }
-        
-        if location.name != locationNameIn {
-            return true
-        } else {
-            return false
-        }
+    convenience init(_ sampleInfo: SampleInfo) {
+        self.init(sampleName: sampleInfo.name,
+                  sampleNumber: sampleInfo.sampleNumber)
     }
-    
-    private func createNewLocation(withName locationNameIn: String) {
-        let newLocationNumber = locations.count + 1
-        
-        let newLocation = Location(withName: locationNameIn, withLocationNumber: newLocationNumber)
-        
-        locations.append(newLocation)
-    }
-    
-    
-    // TODO: Remove and move to locations
-    /*
-     var measurements: [Measurement] = [] {
-         didSet {
-             updateStatistics()
-             NotificationCenter.default.post(name: .newMeasurementAdded, object: nil)
-         }
-     }
-     */
-    
-    
-    
-    // let sampleInfo: SampleInfo
-    // let location: Location
-    
-    //var locationNumber = 1
-    //var localMeasurementNumber: Int = 0
-    
-    /*
-     init(sampleNumber: Int, sampleInfo: SampleInfo, location: Location) {
-         self.sampleNumber = sampleNumber
-         self.sampleInfo = sampleInfo
-         self.location = location
-     }
-     */
-    
     
     
     
@@ -102,21 +57,67 @@ class Sample {
         resistivityStatistics.update(with: localMeasurements)
     }
     
-    func addMeasurement(_ resistanceIn: Double, withGlobalMeasurementNumber: Int, locationName: String) {
-        if self.isANewLocationNeeded(forName: locationName) {
-            createNewLocation(withName: locationName)
+}
+
+
+extension Sample: Info {
+    typealias Output = SampleInfo
+    
+    func info() -> Output {
+        let info = SampleInfo(name: self.name, sampleNumber: self.sampleNumber)
+        
+        return info
+    }
+}
+
+// MARK: - Add New Measurements
+extension Sample {
+    
+    
+    func addMeasurement(_ resistanceIn: Double, globalMeasurementNumber: Int, locationInfo: LocationInfo) {
+        
+        
+        if self.isANewLocationNeeded(withInfo: locationInfo) {
+            
+            createNewLocation(withInfo: locationInfo)
         }
         
-        let locationNumber = locations.count
+        guard let location = currentLocation else {
+            print("Error, there should be location available by now")
+            return
+        }
         
         
-        
-        
+        location.addMeasurement(withResistance: resistanceIn,
+                                sampleInfo: self.info(),
+                                locationInfo: location.info(),
+                                globalMeasurementNumber: globalMeasurementNumber)
         
     }
     
+    // MARK: - Location Management
+    private func isANewLocationNeeded(withInfo locationInfo: LocationInfo) -> Bool {
+        guard let location = currentLocation else {
+            return true
+        }
+        
+        if location.name != locationInfo.name {
+            return true
+        } else {
+            return false
+        }
+    }
     
-    
+    private func createNewLocation(withInfo locationInfo: LocationInfo) {
+        let newLocationNumber = locations.count + 1
+        
+        var locationInfo = locationInfo
+        locationInfo.locationNumber = newLocationNumber
+        
+        let newLocation = Location(locationInfo)
+        
+        locations.append(newLocation)
+    }
 }
 
 extension Sample {
