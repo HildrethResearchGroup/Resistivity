@@ -9,16 +9,18 @@ import Foundation
 
 @MainActor
 class DataModel: ObservableObject {
-    @Published var measurementSamples: [MeasurementSample] = []
+    @Published var samples: [Sample] = []
     
-    
+   
     @Published var currentSampleInfoName: String = ""
     @Published var currentLocationInfoName: String = ""
     @Published var measurementNumber: Int = 1
     @Published var groupNumber: Int = 0
     
-    var currentMeasurementGroup: MeasurementSample? {
-        return measurementSamples.last
+    
+    
+    var currentMeasurementGroup: Sample? {
+        return samples.last
     }
     
     @Published var flattendMeasurements: [Measurement] = [] {
@@ -74,12 +76,16 @@ class DataModel: ObservableObject {
     private func createNewMeasurementGroup() {
         
         if newMeasurementGroupNeeded() {
-            let newSampleInfo = SampleInfo(currentSampleInfoName)
-            let newLocationInfo = LocationInfo(currentLocationInfoName)
-            groupNumber += 1
             
-            let newMeasurementGroup = MeasurementSample(sampleNumber: groupNumber, sampleInfo: newSampleInfo, location: newLocationInfo)
-            measurementSamples.append(newMeasurementGroup)
+            // TODO: Fix
+            let newMeasurementGroup = Sample(sampleNumber: <#T##Int#>, sampleInfo: <#T##SampleInfo#>, location: <#T##Location#>)
+            
+            let newSampleInfo = Sample(currentSampleInfoName, withLocationName: currentLocationInfoName)
+            
+            
+            
+            
+            samples.append(newMeasurementGroup)
         }
         
         
@@ -89,17 +95,31 @@ class DataModel: ObservableObject {
 
 // MARK: - Register for Notifications
 extension DataModel {
-    func registerForNotifications() {
+    private func registerForNotifications() {
         NotificationCenter.default.addObserver(forName: .newMeasurementAdded, object: nil, queue: nil, using: updateFlattenedMeasurement(_:))
     }
     
-    func updateFlattenedMeasurement(_ notification: Notification) {
-        var measurements: [Measurement] = []
+    
+    
+    /// Updates the array of Flattened Measurements whenever a new measurement is created.  This function is triggered when the `newMeasurementAdded` notification is received.
+    ///
+    /// This function is marked as nonisolated becuase NotificationCenter's `addObserver` function requires an `@Sendable` clsoure.  Without making this function as `nonisolated`, the addObserver function results in a warning: "Converting function value of type '@MainActor (Notification) -> ()' to '@Sendable (Notification) -> Void' loses global actor 'MainActor'"
+    ///
+    /// - Parameter notification: newMeasurementAdded notification
+    nonisolated private func updateFlattenedMeasurement(_ notification: Notification) {
         
-        for nextGroup in measurementSamples {
-            measurements.append(contentsOf: nextGroup.measurements)
+        // Thie status must be updated within the updateFlattenedMeasurement closure.  However, updating the DataModel's flattendMeasurements must be done on the MainActor's thread since DataModel is marked as @MainActor
+        
+        Task {
+            await MainActor.run {
+                var measurements: [Measurement] = []
+                
+                for nextGroup in samples {
+                    measurements.append(contentsOf: nextGroup.measurements)
+                }
+                
+                flattendMeasurements =  measurements
+            }
         }
-        
-        flattendMeasurements =  measurements
     }
 }

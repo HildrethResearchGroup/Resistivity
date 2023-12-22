@@ -96,21 +96,24 @@ class DataCollectionController: Observable {
     
 }
 
-// MARK:
+// MARK: - Data Collection
 extension DataCollectionController {
     func measureResistance() async throws -> Double {
         
+        let storedEquipmentStatus = equipmentStatus
         
          if equipmentStatus == .disconnected {
              throw DataCollectionError.ohmMeterNotConnected
          }
          
-        
+        equipmentStatus = .measuring
         
         guard let resistance = try await ohmMeter?.getResistance() else {
+            equipmentStatus = storedEquipmentStatus
             throw DataCollectionError.couldNotMeasureResistance
         }
         
+        equipmentStatus = storedEquipmentStatus
         return resistance
     }
     
