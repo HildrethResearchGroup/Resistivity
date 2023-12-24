@@ -40,7 +40,12 @@ class AppController: ObservableObject {
                 lastMeasurement = resistance
                 
                 
-                dataModel.addNewMeasurement(withValue: lastMeasurement, withSampleInfo: sampleSettings.info(), locationInfo: locationSettings.info(), globalMeasurementNumber: globalMeasurementNumber)
+                dataModel.addNewMeasurement(withValue: lastMeasurement, 
+                                            withSampleInfo: sampleSettings.info(),
+                                            locationInfo: locationSettings.info(),
+                                            resistivityInfo: resistivitySettings.info(),
+                                            lineResistanceInfo: lineResistanceSettings.info(),
+                                            globalMeasurementNumber: globalMeasurementNumber)
                 
                 globalMeasurementNumber += 1
             } catch {

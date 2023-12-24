@@ -14,13 +14,12 @@ struct ResultsTableView: View {
     
     var body: some View {
         Table(measurements) {
-            TableColumn("Global #") {Text("\($0.globalMeasurementNumber)")}
+            TableColumn("Measurement #") {Text("\($0.globalMeasurementNumber)")}
+            TableColumn("Resistance") {Text("\($0.resistance)")}
             TableColumn("Sample Name", value: \.sampleInfo.name)
             TableColumn("Sample #") {Text("\($0.sampleInfo.sampleNumber)")}
             TableColumn("Location", value: \.locationInfo.name)
             TableColumn("Location #") {Text("\($0.locationMeasurementNumber)")}
-            TableColumn("Measurement #") {Text("\($0.globalMeasurementNumber)")}
-            TableColumn("Resistance") {Text("\($0.resistance)")}
         }
 
     }

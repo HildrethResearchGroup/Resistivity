@@ -8,6 +8,8 @@
 import Foundation
 
 struct LineResistanceInfo {
+    var shouldCalculateLineResistance: Bool
+    
     var voltageSensingGap: Double?
     
     

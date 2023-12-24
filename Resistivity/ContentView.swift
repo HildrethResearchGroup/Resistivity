@@ -13,11 +13,17 @@ struct ContentView: View {
     var body: some View {
         HSplitView {
             VStack {
-                MeasurementConfiguratorView()
-                Divider()
-                SummaryStatisticsView()
-                Divider()
+                
                 SampleInformationView(sampleSettings: appController.sampleSettings, locationSettings: appController.locationSettings)
+                
+                Divider()
+                
+                MeasurementConfiguratorView()
+                
+                Divider()
+                
+                SummaryStatisticsView()
+                
                 Divider()
             }
             .frame(minWidth: 300, maxWidth: 500)

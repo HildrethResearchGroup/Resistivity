@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C00D82502B27A85F004024E9 /* LineResistanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00D824F2B27A85F004024E9 /* LineResistanceInfo.swift */; };
 		C011FCFF2B360088008F8066 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C011FCFE2B360088008F8066 /* LocationInfo.swift */; };
+		C011FD032B37D223008F8066 /* ResistivitySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C011FD022B37D223008F8066 /* ResistivitySettingsView.swift */; };
+		C011FD052B37D37A008F8066 /* LineResistanceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C011FD042B37D37A008F8066 /* LineResistanceSettingsView.swift */; };
 		C013247E2B1030DC00DCAC6D /* EquipmentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */; };
 		C01324802B106AA100DCAC6D /* ResultsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013247F2B106AA100DCAC6D /* ResultsTableView.swift */; };
 		C036EAD12B0DBE8300CB02D6 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036EAD02B0DBE8200CB02D6 /* AppController.swift */; };
@@ -58,6 +60,8 @@
 /* Begin PBXFileReference section */
 		C00D824F2B27A85F004024E9 /* LineResistanceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineResistanceInfo.swift; sourceTree = "<group>"; };
 		C011FCFE2B360088008F8066 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
+		C011FD022B37D223008F8066 /* ResistivitySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistivitySettingsView.swift; sourceTree = "<group>"; };
+		C011FD042B37D37A008F8066 /* LineResistanceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineResistanceSettingsView.swift; sourceTree = "<group>"; };
 		C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentStatus.swift; sourceTree = "<group>"; };
 		C013247F2B106AA100DCAC6D /* ResultsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableView.swift; sourceTree = "<group>"; };
 		C036EAD02B0DBE8200CB02D6 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C011FD062B37D9A8008F8066 /* Measurement Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C011FD042B37D37A008F8066 /* LineResistanceSettingsView.swift */,
+				C0DB470B2ACB32FE00FBAC23 /* MeasurementConfiguratorView.swift */,
+				C011FD022B37D223008F8066 /* ResistivitySettingsView.swift */,
+			);
+			path = "Measurement Configuration";
+			sourceTree = "<group>";
+		};
+		C011FD072B38A179008F8066 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				C0DB47112ACB404500FBAC23 /* ResultsView.swift */,
+				C013247F2B106AA100DCAC6D /* ResultsTableView.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
 		C078BB012AD0A52D002AF86B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,12 +194,11 @@
 		C094C1972AC5F99400E655CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C011FD072B38A179008F8066 /* Results */,
+				C011FD062B37D9A8008F8066 /* Measurement Configuration */,
 				C0DB47132ACB40DE00FBAC23 /* Reusable Views */,
-				C0DB470B2ACB32FE00FBAC23 /* MeasurementConfiguratorView.swift */,
 				C0DB470D2ACB367B00FBAC23 /* SummaryStatisticsView.swift */,
 				C0DB470F2ACB38AF00FBAC23 /* SampleInformationView.swift */,
-				C0DB47112ACB404500FBAC23 /* ResultsView.swift */,
-				C013247F2B106AA100DCAC6D /* ResultsTableView.swift */,
 				C0DB47162ACB44C800FBAC23 /* PreferencesView.swift */,
 			);
 			path = Views;
@@ -418,6 +440,7 @@
 				C0DB47172ACB44C800FBAC23 /* PreferencesView.swift in Sources */,
 				C0DB470C2ACB32FE00FBAC23 /* MeasurementConfiguratorView.swift in Sources */,
 				C0ED06B42B3544090050D626 /* LocationSettings.swift in Sources */,
+				C011FD052B37D37A008F8066 /* LineResistanceSettingsView.swift in Sources */,
 				C0A365A12AC7D4EF00EA2EB6 /* ConvertableUnits_Protocol.swift in Sources */,
 				C0ED06AD2B34FA970050D626 /* LineResistanceSettings.swift in Sources */,
 				C094C1A12AC5FA6E00E655CA /* NanoVoltMeterController.swift in Sources */,
@@ -425,6 +448,7 @@
 				C0DB47192ACB4AAA00FBAC23 /* DataCollectionController.swift in Sources */,
 				C0C2C0332AD8A55E00E2385E /* Exportable.swift in Sources */,
 				C011FCFF2B360088008F8066 /* LocationInfo.swift in Sources */,
+				C011FD032B37D223008F8066 /* ResistivitySettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

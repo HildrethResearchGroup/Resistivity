@@ -10,10 +10,10 @@ import Foundation
 
 class Sample {
     var id = UUID()
-    var name: String
-    let sampleNumber: Int
     
-    var locations: [Location] = []
+    var info: SampleInfo
+    
+    @Published var locations: [Location] = []
     
     var resistanceStatistics = Statistics<Measurement>(keyPath: \.resistance, name: "Resistance", units: "Ω")
     var resistivityStatistics = Statistics<Measurement>(keyPath: \.resistivity, name: "Resistivity", units: "Ω-m")
@@ -39,14 +39,8 @@ class Sample {
     
     
     // MARK: - Initializers
-    init(sampleName: String, sampleNumber sampleNumberIn: Int) {
-        name = sampleName
-        sampleNumber = sampleNumberIn
-    }
-    
-    convenience init(_ sampleInfo: SampleInfo) {
-        self.init(sampleName: sampleInfo.name,
-                  sampleNumber: sampleInfo.sampleNumber)
+    init(_ sampleInfo: SampleInfo) {
+        self.info = sampleInfo
     }
     
     
@@ -59,22 +53,19 @@ class Sample {
     
 }
 
-
-extension Sample: Info {
-    typealias Output = SampleInfo
-    
-    func info() -> Output {
-        let info = SampleInfo(name: self.name, sampleNumber: self.sampleNumber)
-        
-        return info
+// MARK: - Common Conformances
+extension Sample: Identifiable, Equatable {
+    static func == (lhs: Sample, rhs: Sample) -> Bool {
+        return lhs.id == rhs.id
     }
 }
+
 
 // MARK: - Add New Measurements
 extension Sample {
     
     
-    func addMeasurement(_ resistanceIn: Double, globalMeasurementNumber: Int, locationInfo: LocationInfo) {
+    func addMeasurement(_ resistanceIn: Double, globalMeasurementNumber: Int, locationInfo: LocationInfo, resistivityInfo: ResistivityMeasurementInfo, lineResistanceInfo: LineResistanceInfo) {
         
         
         if self.isANewLocationNeeded(withInfo: locationInfo) {
@@ -89,8 +80,9 @@ extension Sample {
         
         
         location.addMeasurement(withResistance: resistanceIn,
-                                sampleInfo: self.info(),
-                                locationInfo: location.info(),
+                                sampleInfo: self.info,
+                                resistivityInfo: resistivityInfo,
+                                lineResistanceInfo: lineResistanceInfo,
                                 globalMeasurementNumber: globalMeasurementNumber)
         
     }
@@ -101,14 +93,16 @@ extension Sample {
             return true
         }
         
-        if location.name != locationInfo.name {
+        if location.info.name != locationInfo.name {
             return true
         } else {
             return false
         }
     }
     
+    
     private func createNewLocation(withInfo locationInfo: LocationInfo) {
+        
         let newLocationNumber = locations.count + 1
         
         var locationInfo = locationInfo
@@ -120,19 +114,15 @@ extension Sample {
     }
 }
 
+// MARK: - Saving
 extension Sample {
     func save() {
         print("Save")
     }
 }
 
-extension Sample: Equatable {
-    static func == (lhs: Sample, rhs: Sample) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
 
-
+// MARK: - Notifcations
 extension Notification.Name {
     static let newMeasurementAdded = Notification.Name("newMeasurementAdded")
 }

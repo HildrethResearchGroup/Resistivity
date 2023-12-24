@@ -8,12 +8,18 @@
 import Foundation
 
 class Location {
+    // MARK: - Properties
     var id = UUID()
-    var name = ""
     
-    var locationNumber: Int = 0
+    var info: LocationInfo
+
     
     var measurements: [Measurement] = []
+    
+    // MARK: - Initializers
+    init(_ locationInfo: LocationInfo) {
+        self.info = locationInfo
+    }
 }
 
 
@@ -26,31 +32,18 @@ extension Location: Identifiable, Equatable {
 
 
 
-// MARK: - Initializers
-extension Location {
-    convenience init(withName nameIn: String, withLocationNumber locationNumberIn: Int) {
-        self.init()
-        name = nameIn
-        locationNumber = locationNumberIn
-    }
-    
-    
-    convenience init(_ locationInfo: LocationInfo) {
-        self.init(withName: locationInfo.name, withLocationNumber: locationInfo.locationNumber)
-    }
-
-}
-
 
 // MARK: - Handling Measurements
 extension Location {
-    func addMeasurement(withResistance resistanceIn: Double, sampleInfo: SampleInfo, locationInfo: LocationInfo, globalMeasurementNumber: Int) {
+    func addMeasurement(withResistance resistanceIn: Double, sampleInfo: SampleInfo, resistivityInfo: ResistivityMeasurementInfo, lineResistanceInfo: LineResistanceInfo, globalMeasurementNumber: Int) {
         
         let localMeasurementNumber = self.measurements.count + 1
         
         let newMeasurement = Measurement(resistance: resistanceIn,
                                          sampleInfo: sampleInfo,
-                                         locationInfo: locationInfo,
+                                         locationInfo: info,
+                                         resistivityInfo: resistivityInfo,
+                                         lineResistanceInfo: lineResistanceInfo,
                                          globalMeasurementNumber: globalMeasurementNumber,
                                          locationMeasurementNumber: localMeasurementNumber)
         
@@ -58,14 +51,6 @@ extension Location {
     }
 }
 
-
-extension Location: Info {
-    typealias Output = LocationInfo
-    
-    func info() -> LocationInfo {
-        return LocationInfo(name: self.name, locationNumber: self.locationNumber)
-    }
-}
 
 
 

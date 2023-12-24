@@ -35,12 +35,22 @@ class DataModel: ObservableObject {
     
 
     
-    func addNewMeasurement(withValue measurement: Double, withSampleInfo sampleInfo: SampleInfo, locationInfo: LocationInfo, globalMeasurementNumber: Int) {
+    func addNewMeasurement(withValue measurement: Double, 
+                           withSampleInfo sampleInfo: SampleInfo,
+                           locationInfo: LocationInfo,
+                           resistivityInfo: ResistivityMeasurementInfo,
+                           lineResistanceInfo: LineResistanceInfo,
+                           globalMeasurementNumber: Int) {
+        
         if newSampleNeeded(sampleInfo) {
             self.createnewSample(withInfo: sampleInfo)
         }
         
-        self.currentSample?.addMeasurement(measurement, globalMeasurementNumber: globalMeasurementNumber, locationInfo: locationInfo)
+        self.currentSample?.addMeasurement(measurement, 
+                                           globalMeasurementNumber: globalMeasurementNumber,
+                                           locationInfo: locationInfo, 
+                                           resistivityInfo: resistivityInfo,
+                                           lineResistanceInfo: lineResistanceInfo)
 
         measurementNumber += 1
     }
@@ -48,7 +58,7 @@ class DataModel: ObservableObject {
     
     private func newSampleNeeded(_ sampleInfo: SampleInfo) -> Bool {
         
-        if currentSample?.name != sampleInfo.name {
+        if currentSample?.info.name != sampleInfo.name {
             return true
         }
         

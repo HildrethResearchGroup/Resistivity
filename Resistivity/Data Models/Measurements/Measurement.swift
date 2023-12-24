@@ -14,6 +14,10 @@ struct Measurement {
     
     var sampleInfo: SampleInfo
     var locationInfo: LocationInfo
+    
+    var resistivityInfo: ResistivityMeasurementInfo
+    var lineResistanceInfo: LineResistanceInfo
+    
     var globalMeasurementNumber: Int
     // var sampleMeasurementNumber: Int
     //var locationMeasurementNumber: Int

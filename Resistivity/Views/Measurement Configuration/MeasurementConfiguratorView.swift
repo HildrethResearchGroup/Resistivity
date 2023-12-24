@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MeasurementConfiguratorView: View {
+    @EnvironmentObject var appController: AppController
+    
     var body: some View {
         VStack {
             Text("Measurement Settings").font(.title)
@@ -20,9 +22,10 @@ struct MeasurementConfiguratorView: View {
                 Text("Number of measurements:")
                 Text("TextField: # of measurements")
             }.padding()
-            HStack {
-                Text("Toggle: Calculate Resistivity")
-                Text("Button: Configure Resistivity")
+            HStack(alignment: .top) {
+                ResistivitySettingsView(settings: appController.resistivitySettings)
+                Divider()
+                LineResistanceSettingsView(settings: appController.lineResistanceSettings)
             }.padding()
         }
         
