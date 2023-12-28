@@ -32,6 +32,18 @@ struct SummaryStatisticsView: View {
     }
 }
 
-#Preview {
-    SummaryStatisticsView()
+
+/*
+ #Preview {
+     SummaryStatisticsView()
+ }
+ */
+
+
+
+struct SummaryStatisticsView_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        SummaryStatisticsView()
+    }
 }

@@ -61,6 +61,17 @@ class DataCollectionController: Observable {
             
             ohmMeter = meter
             //equipmentStatus = .connected
+            
+            if ohmMeter != nil {
+                equipmentStatus = .connected
+            }
+            
+            if let info =  try? await self.getInformation() {
+                print(info)
+            } else {
+                print("Could not get info at end of createOhmMeter")
+            }
+
         }
     }
     
@@ -115,6 +126,30 @@ extension DataCollectionController {
         
         equipmentStatus = storedEquipmentStatus
         return resistance
+    }
+    
+    func measureResistance(times numberOfMeasurements: Int, withPeriod seconds: Double) async throws -> [Double] {
+        
+        // Create an array to store the measurements
+        var measurements: [Double] = []
+        
+        // Check to make sure inputs are valid
+        if numberOfMeasurements < 1 {
+            return measurements
+        }
+        
+        if seconds.sign == .minus {
+            return measurements
+        }
+        
+        for _ in 1...numberOfMeasurements {
+            let nextResistance = try await self.measureResistance()
+            
+            measurements.append(nextResistance)
+        }
+        
+        
+        return measurements
     }
     
     func getInformation() async throws -> String {

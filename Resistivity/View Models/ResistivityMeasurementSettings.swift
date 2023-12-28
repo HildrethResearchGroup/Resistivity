@@ -10,30 +10,33 @@ import Foundation
 class ResistivityMeasurementSettings: ObservableObject {
     var id = UUID()
     
-    var shouldCalculateResistivity: Bool {
-        get {  UserDefaults.standard.object(forKey: "shouldCalculateResistivity") as? Bool ?? false   }
-        
-        set {  UserDefaults.standard.set(newValue, forKey: "shouldCalculateResistivity")  }
+    @Published var shouldCalculateResistivity: Bool {
+        didSet {  UserDefaults.standard.set(shouldCalculateResistivity, forKey: "shouldCalculateResistivity")   }
     }
     
-    var thickness: Double {
-        get {  UserDefaults.standard.object(forKey: "thickness") as? Double ?? 0.001   }
-        
-        set {  UserDefaults.standard.set(newValue, forKey: "thickness")  }
+    @Published var thickness: Double {
+        didSet {  UserDefaults.standard.set(thickness, forKey: "thickness")  }
     }
     
-    var thicknessCorrectionFactor: Double {
-        get {  UserDefaults.standard.object(forKey: "thicknessCorrectionFactor") as? Double ?? 1.0   }
-        
-        set {  UserDefaults.standard.set(newValue, forKey: "thicknessCorrectionFactor")  }
+    @Published var thicknessCorrectionFactor: Double {
+        didSet {  UserDefaults.standard.set(thicknessCorrectionFactor, forKey: "thicknessCorrectionFactor")  }
     }
     
-    var finiteWidthCorrectionFactor: Double {
+    @Published var finiteWidthCorrectionFactor: Double {
         
-        get {  UserDefaults.standard.object(forKey: "finiteWidthCorrectionFactor") as? Double ?? 1.0   }
+        didSet {  UserDefaults.standard.set(finiteWidthCorrectionFactor, forKey: "finiteWidthCorrectionFactor")  }
         
-        set {  UserDefaults.standard.set(newValue, forKey: "finiteWidthCorrectionFactor")  }
+    }
+    
+    
+    init() {
+        shouldCalculateResistivity = UserDefaults.standard.object(forKey: "shouldCalculateResistivity") as? Bool ?? false
         
+        thickness = UserDefaults.standard.object(forKey: "thickness") as? Double ?? 0.001
+        
+        thicknessCorrectionFactor = UserDefaults.standard.object(forKey: "thicknessCorrectionFactor") as? Double ?? 1.0
+        
+        finiteWidthCorrectionFactor = UserDefaults.standard.object(forKey: "finiteWidthCorrectionFactor") as? Double ?? 1.0
     }
     
 

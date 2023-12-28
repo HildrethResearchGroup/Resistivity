@@ -11,15 +11,16 @@ import Foundation
 class LineResistanceSettings: ObservableObject {
     
     var shouldCalculateLineResistance: Bool {
-        get {  UserDefaults.standard.object(forKey: "shouldCalculateLineResistance") as? Bool ?? false   }
-        
-        set {  UserDefaults.standard.set(newValue, forKey: "shouldCalculateLineResistance")  }
+        didSet {  UserDefaults.standard.set(shouldCalculateLineResistance, forKey: "shouldCalculateLineResistance")  }
     }
     
-    var voltageSensingGap: Double? {
-        get {  UserDefaults.standard.object(forKey: "voltageSensingGap") as? Double    }
-        
-        set {  UserDefaults.standard.set(newValue, forKey: "voltageSensingGap")  }
+    var voltageSensingGap: Double {
+        didSet {  UserDefaults.standard.set(voltageSensingGap, forKey: "voltageSensingGap")  }
+    }
+    
+    init() {
+        voltageSensingGap = UserDefaults.standard.object(forKey: "voltageSensingGap") as? Double ?? 20.0
+        shouldCalculateLineResistance = UserDefaults.standard.object(forKey: "shouldCalculateLineResistance") as? Bool ?? false
     }
 }
 

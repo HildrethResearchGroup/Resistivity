@@ -11,28 +11,31 @@ struct MeasurementConfiguratorView: View {
     @EnvironmentObject var appController: AppController
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             Text("Measurement Settings").font(.title)
             HStack {
-                Text("Picker: Delay Type")
-                Text("TextField: Delay Time")
-                Text("Picker: Time Units")
-            }.padding()
-            HStack {
-                Text("Number of measurements:")
-                Text("TextField: # of measurements")
-            }.padding()
+                Text("# of Measurements:")
+                TextField("# of Measurements", value: $appController.measurementSettings.numberOfMeasurements, format: .number)
+                    .frame(width: 100)
+            }
+            Divider()
+                .frame(width: 400)
             HStack(alignment: .top) {
                 ResistivitySettingsView(settings: appController.resistivitySettings)
                 Divider()
                 LineResistanceSettingsView(settings: appController.lineResistanceSettings)
             }.padding()
+
         }
         
+                
         
     }
 }
 
-#Preview {
-    MeasurementConfiguratorView()
+struct MeasurementConfiguratorView_Previews: PreviewProvider {
+    static var previews: some View {
+        MeasurementConfiguratorView()
+            .environmentObject(AppController())
+    }
 }

@@ -12,12 +12,16 @@ class AppController: ObservableObject {
     @Published var collectionController: DataCollectionController
     @Published var dataModel: DataModel
     
-    
+    @Published var measurementSettings = MeasurementSettings()
     @Published var resistivitySettings = ResistivityMeasurementSettings()
     @Published var lineResistanceSettings = LineResistanceSettings()
     
     @Published var sampleSettings = SampleSettings()
     @Published var locationSettings = LocationSettings()
+    
+    @Published var nanoVoltMeterStatus: EquipmentStatus = .disconnected
+    
+    
     
     var globalMeasurementNumber = 1
     
@@ -27,32 +31,56 @@ class AppController: ObservableObject {
         registerForNotifications()
     }
     
+    
+    
+    
     @Published var lastMeasurement: Double = 0.0
     
     @Published var information: String = "Nothing Yet"
     
-    @Published var nanoVoltMeterStatus: EquipmentStatus = .disconnected
+    
     
     func measureResistance() {
         Task {
             do {
-                let resistance = try await collectionController.measureResistance()
-                lastMeasurement = resistance
+                
+                let numberOfMeasurements = measurementSettings.numberOfMeasurements
+                let timeBetweenMeasurements = measurementSettings.timeBetweenMeasurements
+                
+                // Update the nanovoltmeter status to measuring
+                // First, record the current status
+                let lastNanoVoltMeterStatus = nanoVoltMeterStatus
+                
+                nanoVoltMeterStatus = .measuring
+                
+                // Measure the resinstance
+                let resistances = try await collectionController.measureResistance(times: numberOfMeasurements, withPeriod: timeBetweenMeasurements)
+                
+                // Update the value of the last resistnace measured
+                lastMeasurement = resistances.last ?? 0.0
                 
                 
-                dataModel.addNewMeasurement(withValue: lastMeasurement, 
-                                            withSampleInfo: sampleSettings.info(),
-                                            locationInfo: locationSettings.info(),
-                                            resistivityInfo: resistivitySettings.info(),
-                                            lineResistanceInfo: lineResistanceSettings.info(),
-                                            globalMeasurementNumber: globalMeasurementNumber)
+                // Update the data model with the new resistances
+                for nextMeasurement in resistances {
+                    dataModel.addNewMeasurement(withValue: nextMeasurement,
+                                                withSampleInfo: sampleSettings.info(),
+                                                locationInfo: locationSettings.info(),
+                                                resistivityInfo: resistivitySettings.info(),
+                                                lineResistanceInfo: lineResistanceSettings.info(),
+                                                globalMeasurementNumber: globalMeasurementNumber)
+                    
+                    globalMeasurementNumber += 1
+                }
                 
-                globalMeasurementNumber += 1
+                // Reset the nanovoltmeter status
+                nanoVoltMeterStatus = lastNanoVoltMeterStatus
+               
             } catch {
                 print(error)
             }
         }
     }
+    
     
     func getInformation() {
         Task {

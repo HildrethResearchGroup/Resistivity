@@ -20,7 +20,6 @@ class DataModel: ObservableObject {
         return samples.last
     }
     
-
     
     @Published var flattendMeasurements: [Measurement] = [] {
         didSet {
