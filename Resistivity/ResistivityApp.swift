@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct ResistivityApp: App {
+    @NSApplicationDelegateAdaptor(ResistivityAppDelegate.self) var appDelegate
     @StateObject var appController = AppController()
     
     var body: some Scene {
