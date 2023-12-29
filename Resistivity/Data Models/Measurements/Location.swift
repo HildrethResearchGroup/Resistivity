@@ -13,14 +13,18 @@ class Location {
     
     var info: LocationInfo
 
-    
-    var measurements: [Measurement] = []
+    var measurements: [Measurement] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .newMeasurementAdded, object: nil)
+        }
+    }
     
     // MARK: - Initializers
     init(_ locationInfo: LocationInfo) {
         self.info = locationInfo
     }
 }
+
 
 
 // MARK: - Common Conformances
@@ -37,15 +41,14 @@ extension Location: Identifiable, Equatable {
 extension Location {
     func addMeasurement(withResistance resistanceIn: Double, sampleInfo: SampleInfo, resistivityInfo: ResistivityMeasurementInfo, lineResistanceInfo: LineResistanceInfo, globalMeasurementNumber: Int) {
         
-        let localMeasurementNumber = self.measurements.count + 1
+        info.measurementNumber += 1
         
         let newMeasurement = Measurement(resistance: resistanceIn,
                                          sampleInfo: sampleInfo,
                                          locationInfo: info,
                                          resistivityInfo: resistivityInfo,
                                          lineResistanceInfo: lineResistanceInfo,
-                                         globalMeasurementNumber: globalMeasurementNumber,
-                                         locationMeasurementNumber: localMeasurementNumber)
+                                         globalMeasurementNumber: globalMeasurementNumber)
         
         measurements.append(newMeasurement)
     }

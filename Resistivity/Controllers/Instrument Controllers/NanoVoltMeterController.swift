@@ -13,7 +13,7 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
 
     static var minimumDelay: UInt32 = 2_000_000
     
-    private var instrument: MessageBasedInstrument
+    var instrument: MessageBasedInstrument
     
     var returnMode: ReturnMode {
         willSet {

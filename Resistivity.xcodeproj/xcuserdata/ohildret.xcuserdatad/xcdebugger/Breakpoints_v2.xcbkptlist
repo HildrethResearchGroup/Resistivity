@@ -3,4 +3,163 @@
    uuid = "0298022C-7C81-4D3D-B07C-D270FA6EA7E7"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "63471D58-F36E-4702-B6D3-0673761D2554"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Resistivity/Controllers/DataCollectionController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "createOhmMeter()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7EEAFE9B-0973-4BA4-95AD-A63D90AA63B7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Resistivity/Controllers/DataCollectionController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "flushOldData(for:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7EEAFE9B-0973-4BA4-95AD-A63D90AA63B7 - 311c458ceba06eaa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Resistivity.DataCollectionController.flushOldData(for: Resistivity.ReturnMode) async -&gt; ()"
+                  moduleName = "Resistivity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Controllers/DataCollectionController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  uuid = "7EEAFE9B-0973-4BA4-95AD-A63D90AA63B7 - f7b1a411e33f7aa0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for Resistivity.DataCollectionController.flushOldData(for: Resistivity.ReturnMode) async -&gt; ()"
+                  moduleName = "Resistivity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Controllers/DataCollectionController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "7EEAFE9B-0973-4BA4-95AD-A63D90AA63B7 - ce6976ddd6de3290"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Resistivity.DataCollectionController.flushOldData(for: Resistivity.ReturnMode) async -&gt; ()"
+                  moduleName = "Resistivity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Controllers/DataCollectionController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "7EEAFE9B-0973-4BA4-95AD-A63D90AA63B7 - 398d95caf2bbb083"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for Resistivity.DataCollectionController.flushOldData(for: Resistivity.ReturnMode) async -&gt; ()"
+                  moduleName = "Resistivity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Controllers/DataCollectionController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3377D10B-0E8E-4845-9ED1-7131C57DE76C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Resistivity/Controllers/DataCollectionController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "flushOldData(for:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3377D10B-0E8E-4845-9ED1-7131C57DE76C - 311c458ceba06f36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Resistivity.DataCollectionController.flushOldData(for: Resistivity.ReturnMode) async -&gt; ()"
+                  moduleName = "Resistivity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Controllers/DataCollectionController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "612">
+               </Location>
+               <Location
+                  uuid = "3377D10B-0E8E-4845-9ED1-7131C57DE76C - 84f66b12141cc71a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for Resistivity.DataCollectionController.flushOldData(for: Resistivity.ReturnMode) async -&gt; ()"
+                  moduleName = "Resistivity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Controllers/DataCollectionController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "3377D10B-0E8E-4845-9ED1-7131C57DE76C - 5d431c63535b6b10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for Resistivity.DataCollectionController.flushOldData(for: Resistivity.ReturnMode) async -&gt; ()"
+                  moduleName = "Resistivity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Controllers/DataCollectionController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "172">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

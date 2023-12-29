@@ -20,8 +20,8 @@ struct Measurement {
     
     var globalMeasurementNumber: Int
     // var sampleMeasurementNumber: Int
-    //var locationMeasurementNumber: Int
-    var locationMeasurementNumber: Int
+    // var locationMeasurementNumber: Int
+    // var locationMeasurementNumber: Int
     
     
     let date: Date = .now

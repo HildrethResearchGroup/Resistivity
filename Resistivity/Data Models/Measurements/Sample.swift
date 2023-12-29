@@ -67,7 +67,11 @@ extension Sample {
     
     func addMeasurement(_ resistanceIn: Double, globalMeasurementNumber: Int, locationInfo: LocationInfo, resistivityInfo: ResistivityMeasurementInfo, lineResistanceInfo: LineResistanceInfo) {
         
+        // Update the number of measurements in the sample
+        info.measurementNumber = self.numberOfMeasurementsInSample + 1
         
+        
+        //
         if self.isANewLocationNeeded(withInfo: locationInfo) {
             
             createNewLocation(withInfo: locationInfo)
@@ -80,7 +84,7 @@ extension Sample {
         
         
         location.addMeasurement(withResistance: resistanceIn,
-                                sampleInfo: self.info,
+                                sampleInfo: info,
                                 resistivityInfo: resistivityInfo,
                                 lineResistanceInfo: lineResistanceInfo,
                                 globalMeasurementNumber: globalMeasurementNumber)

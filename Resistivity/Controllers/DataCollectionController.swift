@@ -28,6 +28,7 @@ class DataCollectionController: Observable {
         }
     }
     
+    static var minimumDelay: UInt32 = 2_000_000
     
     private var ohmMeter: NanoVoltMeterController? = nil {
         didSet {
@@ -38,6 +39,8 @@ class DataCollectionController: Observable {
             }
         }
     }
+    
+    var returnMode: ReturnMode = .identifier
     
     
     @Published var equipmentStatus: EquipmentStatus = .disconnected {
@@ -60,7 +63,7 @@ class DataCollectionController: Observable {
             }
             
             ohmMeter = meter
-            //equipmentStatus = .connected
+            // equipmentStatus = .connected
             
             if ohmMeter != nil {
                 equipmentStatus = .connected
@@ -111,6 +114,12 @@ class DataCollectionController: Observable {
 extension DataCollectionController {
     func measureResistance() async throws -> Double {
         
+        if self.returnMode != .resistivity {
+            self.returnMode = .resistivity
+            
+            await self.flushOldData(for: .resistivity)
+        }
+        
         let storedEquipmentStatus = equipmentStatus
         
          if equipmentStatus == .disconnected {
@@ -145,6 +154,8 @@ extension DataCollectionController {
         for _ in 1...numberOfMeasurements {
             let nextResistance = try await self.measureResistance()
             
+            usleep(NanoVoltMeterController.minimumDelay)
+            
             measurements.append(nextResistance)
         }
         
@@ -154,13 +165,15 @@ extension DataCollectionController {
     
     func getInformation() async throws -> String {
         
+        if self.returnMode != .identifier {
+            self.returnMode = .identifier
+            await self.flushOldData(for: .identifier)
+        }
         
          if equipmentStatus == .disconnected {
              throw DataCollectionError.ohmMeterNotConnected
          }
          
-        
-        
         guard let info = try await ohmMeter?.getIdentifier() else {
             //throw DataCollectionError.couldNotGetInstrumentInformation
             return "Could Not Get Identifier"
@@ -168,6 +181,24 @@ extension DataCollectionController {
         
         return info
     }
+    
+    
+    // The instrument often sends back old data − to make sure that the old data is at least compatible with the new data, query some new data until new data will be returned
+    func flushOldData(for returnMode: ReturnMode) async {
+        switch returnMode {
+        case .identifier:
+            for _ in 0..<3 {
+                _ = try? await self.getInformation()
+                usleep(NanoVoltMeterController.minimumDelay)
+            }
+        case .resistivity:
+            for _ in 0..<3 {
+                _ = try? await self.measureResistance()
+                usleep(NanoVoltMeterController.minimumDelay)
+            }
+        }
+    }
+    
 }
 
 

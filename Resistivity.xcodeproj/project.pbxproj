@@ -133,13 +133,13 @@
 			path = "Measurement Configuration";
 			sourceTree = "<group>";
 		};
-		C011FD072B38A179008F8066 /* Results */ = {
+		C011FD072B38A179008F8066 /* Results Views */ = {
 			isa = PBXGroup;
 			children = (
 				C0DB47112ACB404500FBAC23 /* ResultsView.swift */,
 				C013247F2B106AA100DCAC6D /* ResultsTableView.swift */,
 			);
-			path = Results;
+			path = "Results Views";
 			sourceTree = "<group>";
 		};
 		C078BB012AD0A52D002AF86B /* Protocols */ = {
@@ -196,7 +196,7 @@
 		C094C1972AC5F99400E655CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C011FD072B38A179008F8066 /* Results */,
+				C011FD072B38A179008F8066 /* Results Views */,
 				C011FD062B37D9A8008F8066 /* Measurement Configuration */,
 				C0DB47132ACB40DE00FBAC23 /* Reusable Views */,
 				C0DB470D2ACB367B00FBAC23 /* SummaryStatisticsView.swift */,
@@ -362,7 +362,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					C094C1802AC5F91B00E655CA = {
 						CreatedOnToolsVersion = 15.0;
@@ -493,6 +493,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -556,6 +557,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -587,6 +589,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Resistivity/Preview Content\"";
 				DEVELOPMENT_TEAM = Z553N3QGMH;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -615,6 +618,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Resistivity/Preview Content\"";
 				DEVELOPMENT_TEAM = Z553N3QGMH;
 				ENABLE_HARDENED_RUNTIME = YES;

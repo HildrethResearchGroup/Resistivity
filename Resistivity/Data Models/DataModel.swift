@@ -45,6 +45,8 @@ class DataModel: ObservableObject {
             self.createnewSample(withInfo: sampleInfo)
         }
         
+        
+        
         self.currentSample?.addMeasurement(measurement, 
                                            globalMeasurementNumber: globalMeasurementNumber,
                                            locationInfo: locationInfo, 

@@ -11,4 +11,5 @@ struct LocationInfo {
     var id = UUID()
     var name: String
     var locationNumber = 0
+    var measurementNumber = 0
 }
