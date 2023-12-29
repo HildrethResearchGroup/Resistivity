@@ -27,7 +27,7 @@ class AppController: ObservableObject {
     
     init() {
         collectionController = DataCollectionController()
-        dataModel = DataModel()
+        dataModel = DataModel(withInitialData: true)
         registerForNotifications()
     }
     

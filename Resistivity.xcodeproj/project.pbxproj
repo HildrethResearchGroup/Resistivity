@@ -19,6 +19,8 @@
 		C078BB032AD2612E002AF86B /* IPAddressValidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078BB022AD2612E002AF86B /* IPAddressValidity.swift */; };
 		C078BB052AD26368002AF86B /* Array_Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078BB042AD26368002AF86B /* Array_Statistics.swift */; };
 		C078BB072AD26CDF002AF86B /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078BB062AD26CDF002AF86B /* Statistics.swift */; };
+		C08CA0B12B3F3D1C0082E4CB /* ResultsGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08CA0B02B3F3D1C0082E4CB /* ResultsGraphView.swift */; };
+		C08CA0B32B3F3D350082E4CB /* ResultsGraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08CA0B22B3F3D350082E4CB /* ResultsGraphViewModel.swift */; };
 		C094C1852AC5F91B00E655CA /* ResistivityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C1842AC5F91B00E655CA /* ResistivityApp.swift */; };
 		C094C1872AC5F91B00E655CA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C1862AC5F91B00E655CA /* ContentView.swift */; };
 		C094C1892AC5F91C00E655CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C094C1882AC5F91C00E655CA /* Assets.xcassets */; };
@@ -71,6 +73,8 @@
 		C078BB022AD2612E002AF86B /* IPAddressValidity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressValidity.swift; sourceTree = "<group>"; };
 		C078BB042AD26368002AF86B /* Array_Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array_Statistics.swift; sourceTree = "<group>"; };
 		C078BB062AD26CDF002AF86B /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		C08CA0B02B3F3D1C0082E4CB /* ResultsGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsGraphView.swift; sourceTree = "<group>"; };
+		C08CA0B22B3F3D350082E4CB /* ResultsGraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsGraphViewModel.swift; sourceTree = "<group>"; };
 		C094C1812AC5F91B00E655CA /* Resistivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resistivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C094C1842AC5F91B00E655CA /* ResistivityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistivityApp.swift; sourceTree = "<group>"; };
 		C094C1862AC5F91B00E655CA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 			children = (
 				C0DB47112ACB404500FBAC23 /* ResultsView.swift */,
 				C013247F2B106AA100DCAC6D /* ResultsTableView.swift */,
+				C08CA0B02B3F3D1C0082E4CB /* ResultsGraphView.swift */,
 			);
 			path = "Results Views";
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				C0ED06B32B3544090050D626 /* LocationSettings.swift */,
 				C0ED06B62B3545470050D626 /* SampleSettings.swift */,
 				C04F9DCA2B390C4F00CC368C /* MeasurementSettings.swift */,
+				C08CA0B22B3F3D350082E4CB /* ResultsGraphViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 				C0FFEF412AF7510C00CCBD97 /* DataModel.swift in Sources */,
 				C0ED06B72B3545470050D626 /* SampleSettings.swift in Sources */,
 				C078BB002AD0A509002AF86B /* VISAInstrumentProtocol.swift in Sources */,
+				C08CA0B32B3F3D350082E4CB /* ResultsGraphViewModel.swift in Sources */,
 				C094C19F2AC5FA4900E655CA /* ReturnMode.swift in Sources */,
 				C0C2C0302AD8A48000E2385E /* Location.swift in Sources */,
 				C0DB471B2ACB4F6A00FBAC23 /* Measurement.swift in Sources */,
@@ -429,6 +436,7 @@
 				C0DB471D2ACB4FFA00FBAC23 /* DelayType.swift in Sources */,
 				C0ED06B02B34FF300050D626 /* Protocol_Info.swift in Sources */,
 				C0A3659C2AC7CCC400EA2EB6 /* TimeUnits.swift in Sources */,
+				C08CA0B12B3F3D1C0082E4CB /* ResultsGraphView.swift in Sources */,
 				C013247E2B1030DC00DCAC6D /* EquipmentStatus.swift in Sources */,
 				C0DB47152ACB40F500FBAC23 /* TabLabel.swift in Sources */,
 				C0DB47102ACB38AF00FBAC23 /* SampleInformationView.swift in Sources */,

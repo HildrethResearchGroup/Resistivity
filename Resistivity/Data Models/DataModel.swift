@@ -54,7 +54,11 @@ class DataModel: ObservableObject {
         self.registerForNotifications()
     }
     
-    
+    convenience init(withInitialData shouldGenerateInitialData: Bool = true) {
+        self.init()
+        
+        self.generateInitialData()
+    }
 
     
     func addNewMeasurement(withValue measurement: Double, 
@@ -110,6 +114,8 @@ class DataModel: ObservableObject {
     
 }
 
+
+
 // MARK: - Register for Notifications
 extension DataModel {
     private func registerForNotifications() {
@@ -147,5 +153,57 @@ extension DataModel {
     
     func filterMeasurements(_ measurementsIn: [Measurement], withString filterString: String) -> [Measurement] {
         return measurementsIn.filter({$0.contains(information: filterString)})
+    }
+}
+
+
+
+// MARK: - Provide Initial Data
+
+extension DataModel {
+    private func generateInitialData() {
+        let resistivityInfo = ResistivityMeasurementInfo(shouldCalculateResistivity: false, thickness: 1.0, thicknessCorrectionFactor: 1.0, finiteWidthCorrectionFactor: 1.0)
+        let lineResistanceInfo = LineResistanceInfo(shouldCalculateLineResistance: false)
+        
+        for nextSample in self.generateInitialSampleInfo() {
+            for nextLocation in self.generateInitalLocationInfo() {
+                let data = generateRandomResistance()
+                
+                self.addNewMeasurement(withValue: data, 
+                                       withSampleInfo: nextSample,
+                                       locationInfo: nextLocation,
+                                       resistivityInfo: resistivityInfo,
+                                       lineResistanceInfo: lineResistanceInfo,
+                                       globalMeasurementNumber: self.measurementNumber)
+            }
+        }
+    }
+    
+    private func generateInitialSampleInfo() -> [SampleInfo] {
+        var localSamples:[SampleInfo] = []
+        
+        let sample1 = SampleInfo(name: "Sample 1", sampleNumber: 1)
+        let sample2 = SampleInfo(name: "Sample 2", sampleNumber: 2)
+        let sample3 = SampleInfo(name: "Sample 3", sampleNumber: 3)
+        
+        localSamples.append(contentsOf: [sample1, sample2, sample3])
+        
+        return localSamples
+    }
+    
+    private func generateInitalLocationInfo() -> [LocationInfo] {
+        var localLocations: [LocationInfo] = []
+        
+        let location1 = LocationInfo(name: "Location 1", locationNumber: 1)
+        let location2 = LocationInfo(name: "Location 2", locationNumber: 2)
+        let location3 = LocationInfo(name: "Location 3", locationNumber: 3)
+        
+        localLocations.append(contentsOf: [location1, location2, location3])
+        
+        return localLocations
+    }
+    
+    private func generateRandomResistance() -> Double {
+        return Double.random(in: 10.0...100.0)
     }
 }

@@ -17,7 +17,7 @@ struct ResultsView: View {
                 ResultsTableView(measurements: dataModel.sortedMeasurements, order: $dataModel.order, searchString: $dataModel.search)
             }.tabItem { Text("􀏣") }
             VStack {
-                Text("Graphs")
+                ResultsGraphView(measurements: dataModel.sortedMeasurements)
             }.tabItem { Text("􁂥") }
             VStack {
                 Text("Mean")

@@ -30,7 +30,7 @@ struct ResultsTableView: View {
 
 struct ResultsTableView_Previews: PreviewProvider {
     static var previews: some View {
-        let dataModel = DataModel()
+        let dataModel = DataModel(withInitialData: true)
         ResultsTableView(measurements: dataModel.flattendMeasurements, order: .constant(dataModel.order), searchString: .constant(dataModel.search))
     }
 }
