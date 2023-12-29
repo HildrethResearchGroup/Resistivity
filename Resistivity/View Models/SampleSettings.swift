@@ -10,7 +10,13 @@ import Foundation
 class SampleSettings: ObservableObject, Identifiable {
     var id = UUID()
     
-    @Published var name = ""
+    @Published var name = "" {
+        didSet {  UserDefaults.standard.set(name, forKey: "sampleSettings.name")  }
+    }
+    
+    init() {
+        name = UserDefaults.standard.object(forKey: "sampleSettings.name") as? String ?? ""
+    }
     
 }
 

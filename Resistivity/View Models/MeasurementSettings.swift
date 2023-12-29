@@ -19,6 +19,8 @@ class MeasurementSettings: ObservableObject {
             } else {
                 _numberOfMeasurements = newValue
             }
+            
+            UserDefaults.standard.set(_numberOfMeasurements, forKey: "numberOfMeasurements")
         }
     }
     
@@ -34,7 +36,7 @@ class MeasurementSettings: ObservableObject {
                 _timeBetweenMeasurements = newValue
             }
             
-            
+            UserDefaults.standard.set(_timeBetweenMeasurements, forKey: "timeBetweenMeasurements")
         }
     }
     

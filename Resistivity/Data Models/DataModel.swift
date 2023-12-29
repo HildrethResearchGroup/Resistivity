@@ -13,7 +13,21 @@ class DataModel: ObservableObject {
     
     @Published var measurementNumber: Int = 1
     
-    //@Published var groupNumber: Int = 0
+    @Published var order: [KeyPathComparator<Measurement>] = [
+               .init(\.globalMeasurementNumber, order: SortOrder.forward),
+               .init(\.resistance, order: SortOrder.forward),
+               .init(\.sampleInfo.name, order: SortOrder.forward),
+               .init(\.locationInfo.name, order: SortOrder.forward),
+               .init(\.sampleID, order: SortOrder.forward),
+    ] {
+        didSet {
+            flattendMeasurements = flattendMeasurements.sorted(using: order)
+        }
+    }
+    
+    @Published var search: String = ""
+    
+    
     
     
     var currentSample: Sample? {
@@ -21,11 +35,20 @@ class DataModel: ObservableObject {
     }
     
     
-    @Published var flattendMeasurements: [Measurement] = [] {
-        didSet {
-            print(flattendMeasurements.count)
-        }
+    @Published var flattendMeasurements: [Measurement] = []
+    
+    var filteredMeasurements: [Measurement] {
+        return self.filterMeasurements(flattendMeasurements, withString: search)
     }
+    
+    var sortedMeasurements: [Measurement] {
+        var localMeasurements = filteredMeasurements
+        
+        localMeasurements.sort(using: self.order)
+        
+        return localMeasurements
+    }
+    
     
     init() {
         self.registerForNotifications()
@@ -112,8 +135,17 @@ extension DataModel {
                     measurements.append(contentsOf: nextSample.flattendMeasurements)
                 }
                 
+                // measurements = filterMeasurements(measurements, withString: self.search)
+                
+                // measurements.sort(using: self.order)
+                
                 flattendMeasurements =  measurements
             }
         }
+    }
+    
+    
+    func filterMeasurements(_ measurementsIn: [Measurement], withString filterString: String) -> [Measurement] {
+        return measurementsIn.filter({$0.contains(information: filterString)})
     }
 }

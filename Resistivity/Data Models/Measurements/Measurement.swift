@@ -19,9 +19,16 @@ struct Measurement {
     var lineResistanceInfo: LineResistanceInfo
     
     var globalMeasurementNumber: Int
-    // var sampleMeasurementNumber: Int
-    // var locationMeasurementNumber: Int
-    // var locationMeasurementNumber: Int
+    var sampleMeasurementNumber: Int {
+        return sampleInfo.sampleNumber + sampleInfo.measurementNumber
+    }
+    var locationMeasurementNumber: Int {
+        return locationInfo.locationNumber + locationInfo.measurementNumber
+    }
+    
+    var sampleID: String {
+        return "\(sampleInfo.sampleNumber)-\(locationInfo.locationNumber)-\(locationInfo.measurementNumber)"
+    }
     
     
     let date: Date = .now
@@ -50,5 +57,23 @@ extension Measurement {
     func calculateResistivity() -> Double {
         // TODO: Setup Resistivity Calculation
         return 0.0
+    }
+}
+
+
+// MARK: - Filtering
+
+extension Measurement {
+    func contains(information infoString: String) -> Bool {
+        
+        if infoString == "" { return true }
+        
+        if self.sampleInfo.name.contains(infoString) { return true }
+        
+        if self.locationInfo.name.contains(infoString) { return true }
+        
+        if self.sampleID.contains(infoString) { return true }
+        
+        return false
     }
 }

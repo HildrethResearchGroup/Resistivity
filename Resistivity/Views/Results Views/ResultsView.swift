@@ -14,7 +14,7 @@ struct ResultsView: View {
     var body: some View {
         TabView {
             VStack {
-                ResultsTableView(measurements: $dataModel.flattendMeasurements)
+                ResultsTableView(measurements: dataModel.sortedMeasurements, order: $dataModel.order, searchString: $dataModel.search)
             }.tabItem { Text("􀏣") }
             VStack {
                 Text("Graphs")
@@ -26,10 +26,11 @@ struct ResultsView: View {
     }
 }
 
-/*
- #Preview {
 
-     ResultsView(dataModel: DataModel())
- }
- */
+struct ResultsView_Previews: PreviewProvider {
+    static var previews: some View {
+        let dataModel = DataModel()
+        ResultsView(dataModel: dataModel)
+    }
+}
 
