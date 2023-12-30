@@ -13,15 +13,18 @@ struct ResultsView: View {
     
     var body: some View {
         TabView {
-            VStack {
-                ResultsTableView(measurements: dataModel.sortedMeasurements, order: $dataModel.order, searchString: $dataModel.search)
-            }.tabItem { Text("􀏣") }
-            VStack {
-                ResultsGraphView(measurements: dataModel.sortedMeasurements)
-            }.tabItem { Text("􁂥") }
-            VStack {
-                Text("Mean")
-            }.tabItem { Text("μ") }
+            ResultsTableView(measurements: dataModel.sortedAndFilteredMeasurements, order: $dataModel.order, searchString: $dataModel.search)
+                .background(.white)
+                .tabItem { Text("􀏣") }
+            ResultsGraphView(measurements: dataModel.sortedAndFilteredMeasurements)
+                .background(.white)
+                .tabItem { Text("􁂥") }
+                .onAppear() {
+                    
+                }
+            Text("Mean")
+                .background(.white)
+                .tabItem { Text("μ") }
         }
     }
 }

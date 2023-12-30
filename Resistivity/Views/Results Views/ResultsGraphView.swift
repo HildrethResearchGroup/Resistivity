@@ -13,40 +13,36 @@ struct ResultsGraphView: View {
     var measurements: [Measurement]
     
     var body: some View {
-        GroupBox() {
-            Chart(measurements) { nextMeasurement in
-                LineMark(x: .value("Measurement #", nextMeasurement.globalMeasurementNumber), y: .value("Resistance", nextMeasurement.resistance), series: .value("Sample", nextMeasurement.sampleInfo.name))
-                    .foregroundStyle(by: .value("Sample", nextMeasurement.sampleInfo.name))
-                    .symbol(by: .value("Sample", nextMeasurement.sampleInfo.name))
-                    .lineStyle(StrokeStyle(dash: [9, 10]))
-                
-                
-                /*
-                 PointMark(x: .value("Measurement #", nextMeasurement.globalMeasurementNumber), y: .value("Resistance", nextMeasurement.resistance))
-                 
-                 */
-                
-            }
-            .chartLegend(position: .trailing, alignment: .top)
-            .chartXAxisLabel(position: .bottom, alignment: .center) {
-                Text("Measurement # [-]")
-            }
+        Chart(measurements) { nextMeasurement in
+            LineMark(x: .value("Measurement #", nextMeasurement.globalMeasurementNumber), y: .value("Resistance", nextMeasurement.resistance), series: .value("Sample", nextMeasurement.sampleInfo.name))
+                .foregroundStyle(by: .value("Sample", nextMeasurement.sampleInfo.name))
+                //.symbol(by: .value("Sample", nextMeasurement.sampleInfo.name))
+                .lineStyle(StrokeStyle(dash: [9, 10]))
             
-            .chartYAxis() {
-                AxisMarks(position: .leading)
-            }
+             PointMark(x: .value("Measurement #", nextMeasurement.globalMeasurementNumber), y: .value("Resistance", nextMeasurement.resistance))
+                .foregroundStyle(by: .value("Sample", nextMeasurement.sampleInfo.name))
+                .symbol(by: .value("Sample", nextMeasurement.sampleInfo.name))
             
-            .chartYAxisLabel(position: .leading, alignment: .center) {
-                Text("Resistance [Ω]")
-                    .rotationEffect(.degrees(180), anchor: .center)
-                    .frame(width: 80, height: 80)
-            }
-        } label: {
-            Text("Resistance Measurements")
-                .font(.title)
         }
-        .groupBoxStyle(WhiteGroupBoxStyle())
-        
+        .chartLegend(position: .trailing, alignment: .top)
+        .chartXAxisLabel(position: .bottom, alignment: .center) {
+            Text("Measurement # [-]")
+        }
+        .chartYAxis() {
+            AxisMarks(position: .leading)
+        }
+        .chartYAxisLabel(position: .leading, alignment: .center) {
+            Text("Resistance [Ω]")
+                .rotationEffect(.degrees(180), anchor: .center)
+                .frame(width: 80, height: 80)
+        }
+        //.chartScrollableAxes(.horizontal)
+        .chartPlotStyle { plotContent in
+          plotContent
+                .background(.white)
+                .border(.white)
+        }
+        .padding()
     }
     
     struct WhiteGroupBoxStyle: GroupBoxStyle {
@@ -70,6 +66,6 @@ struct ResultsGraphView: View {
 struct ResultsGraphView_Previews: PreviewProvider {
     static var previews: some View {
         let dataModel = DataModel(withInitialData: true)
-        ResultsGraphView(measurements: dataModel.sortedMeasurements)
+        ResultsGraphView(measurements: dataModel.flattendMeasurements)
     }
 }

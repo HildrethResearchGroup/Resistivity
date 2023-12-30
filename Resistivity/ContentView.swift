@@ -29,7 +29,8 @@ struct ContentView: View {
             .frame(minWidth: 300, maxWidth: 500)
             VStack {
                 ResultsView(dataModel: appController.dataModel)
-            }.frame(minWidth: 400, maxWidth: .infinity)
+            }
+            .frame(minWidth: 400, maxWidth: .infinity)
         }
         .padding()
     }

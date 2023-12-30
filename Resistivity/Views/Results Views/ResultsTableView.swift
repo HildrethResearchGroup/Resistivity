@@ -23,6 +23,8 @@ struct ResultsTableView: View {
             TableColumn("SampleID", value: \.sampleID)
         }
         .searchable(text: $searchString)
+        .background(.white)
+        .padding()
 
     }
 }

@@ -14,26 +14,19 @@ class DataModel: ObservableObject {
     @Published var measurementNumber: Int = 1
     
     @Published var order: [KeyPathComparator<Measurement>] = [
-               .init(\.globalMeasurementNumber, order: SortOrder.forward),
-               .init(\.resistance, order: SortOrder.forward),
-               .init(\.sampleInfo.name, order: SortOrder.forward),
-               .init(\.locationInfo.name, order: SortOrder.forward),
-               .init(\.sampleID, order: SortOrder.forward),
+        .init(\.globalMeasurementNumber, order: SortOrder.forward),
+        .init(\.resistance, order: SortOrder.forward),
+        .init(\.sampleInfo.name, order: SortOrder.forward),
+        .init(\.locationInfo.name, order: SortOrder.forward),
+        .init(\.sampleID, order: SortOrder.forward),
     ] {
         didSet {
             flattendMeasurements = flattendMeasurements.sorted(using: order)
         }
     }
     
+    
     @Published var search: String = ""
-    
-    
-    
-    
-    var currentSample: Sample? {
-        return samples.last
-    }
-    
     
     @Published var flattendMeasurements: [Measurement] = []
     
@@ -41,7 +34,7 @@ class DataModel: ObservableObject {
         return self.filterMeasurements(flattendMeasurements, withString: search)
     }
     
-    var sortedMeasurements: [Measurement] {
+    var sortedAndFilteredMeasurements: [Measurement] {
         var localMeasurements = filteredMeasurements
         
         localMeasurements.sort(using: self.order)
@@ -50,6 +43,13 @@ class DataModel: ObservableObject {
     }
     
     
+    // MARK: - Convenience Properties
+    var currentSample: Sample? {
+        return samples.last
+    }
+    
+    
+    // MARK: - Initialization
     init() {
         self.registerForNotifications()
     }
@@ -59,9 +59,14 @@ class DataModel: ObservableObject {
         
         self.generateInitialData()
     }
-
     
-    func addNewMeasurement(withValue measurement: Double, 
+}
+
+
+
+// MARK: - New Measurements
+extension DataModel {
+    func addNewMeasurement(withValue measurement: Double,
                            withSampleInfo sampleInfo: SampleInfo,
                            locationInfo: LocationInfo,
                            resistivityInfo: ResistivityMeasurementInfo,
@@ -74,12 +79,12 @@ class DataModel: ObservableObject {
         
         
         
-        self.currentSample?.addMeasurement(measurement, 
+        self.currentSample?.addMeasurement(measurement,
                                            globalMeasurementNumber: globalMeasurementNumber,
-                                           locationInfo: locationInfo, 
+                                           locationInfo: locationInfo,
                                            resistivityInfo: resistivityInfo,
                                            lineResistanceInfo: lineResistanceInfo)
-
+        
         measurementNumber += 1
     }
     
@@ -94,7 +99,6 @@ class DataModel: ObservableObject {
     }
     
     
-    
     private func createnewSample(withInfo sampleInfo: SampleInfo) {
         
         if newSampleNeeded(sampleInfo) {
@@ -103,15 +107,12 @@ class DataModel: ObservableObject {
             var sampleInfo = sampleInfo
             
             sampleInfo.sampleNumber = sampleNumber
-
+            
             let newSample = Sample(sampleInfo)
             
             samples.append(newSample)
         }
     }
-    
-    
-    
 }
 
 
@@ -121,8 +122,6 @@ extension DataModel {
     private func registerForNotifications() {
         NotificationCenter.default.addObserver(forName: .newMeasurementAdded, object: nil, queue: nil, using: updateFlattenedMeasurement(_:))
     }
-    
-    
     
     /// Updates the array of Flattened Measurements whenever a new measurement is created.  This function is triggered when the `newMeasurementAdded` notification is received.
     ///
@@ -158,8 +157,7 @@ extension DataModel {
 
 
 
-// MARK: - Provide Initial Data
-
+// MARK: -  Initial Data for Testing
 extension DataModel {
     private func generateInitialData() {
         let resistivityInfo = ResistivityMeasurementInfo(shouldCalculateResistivity: false, thickness: 1.0, thicknessCorrectionFactor: 1.0, finiteWidthCorrectionFactor: 1.0)
@@ -167,14 +165,22 @@ extension DataModel {
         
         for nextSample in self.generateInitialSampleInfo() {
             for nextLocation in self.generateInitalLocationInfo() {
-                let data = generateRandomResistance()
                 
-                self.addNewMeasurement(withValue: data, 
-                                       withSampleInfo: nextSample,
-                                       locationInfo: nextLocation,
-                                       resistivityInfo: resistivityInfo,
-                                       lineResistanceInfo: lineResistanceInfo,
-                                       globalMeasurementNumber: self.measurementNumber)
+                for _ in 1...4 {
+                    let data = generateRandomResistance()
+                    var localLocation = nextLocation
+                    localLocation.measurementNumber += 1
+                    
+                    var localSample = nextSample
+                    localSample.measurementNumber += 1
+                    
+                    self.addNewMeasurement(withValue: data,
+                                           withSampleInfo: localSample,
+                                           locationInfo: localLocation,
+                                           resistivityInfo: resistivityInfo,
+                                           lineResistanceInfo: lineResistanceInfo,
+                                           globalMeasurementNumber: self.measurementNumber)
+                }
             }
         }
     }
@@ -182,11 +188,10 @@ extension DataModel {
     private func generateInitialSampleInfo() -> [SampleInfo] {
         var localSamples:[SampleInfo] = []
         
-        let sample1 = SampleInfo(name: "Sample 1", sampleNumber: 1)
-        let sample2 = SampleInfo(name: "Sample 2", sampleNumber: 2)
-        let sample3 = SampleInfo(name: "Sample 3", sampleNumber: 3)
-        
-        localSamples.append(contentsOf: [sample1, sample2, sample3])
+        for index in 1...5 {
+            let newSample = SampleInfo(name: "Sample \(index)", sampleNumber: index)
+            localSamples.append(newSample)
+        }
         
         return localSamples
     }
@@ -194,11 +199,10 @@ extension DataModel {
     private func generateInitalLocationInfo() -> [LocationInfo] {
         var localLocations: [LocationInfo] = []
         
-        let location1 = LocationInfo(name: "Location 1", locationNumber: 1)
-        let location2 = LocationInfo(name: "Location 2", locationNumber: 2)
-        let location3 = LocationInfo(name: "Location 3", locationNumber: 3)
-        
-        localLocations.append(contentsOf: [location1, location2, location3])
+        for index in 1...5 {
+            let newLocation = LocationInfo(name: "Location \(index)", locationNumber: index)
+            localLocations.append(newLocation)
+        }
         
         return localLocations
     }
