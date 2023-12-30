@@ -22,7 +22,7 @@ struct ContentView: View {
                 
                 Divider()
                 
-                SummaryStatisticsView()
+                SummaryStatisticsView(dataModel: appController.dataModel)
                 
                 Divider()
             }

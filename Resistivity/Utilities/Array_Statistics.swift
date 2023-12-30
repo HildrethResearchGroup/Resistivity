@@ -43,8 +43,8 @@ extension Array {
         
         for nextItem in self {
             if let nextDouble = nextItem[keyPath: keyPath] as? Double {
-                let nextDifference = nextDouble - localMean
-                squares += nextDifference
+                let nextDifference = (nextDouble - localMean)
+                squares += nextDifference*nextDifference
             }
         }
         

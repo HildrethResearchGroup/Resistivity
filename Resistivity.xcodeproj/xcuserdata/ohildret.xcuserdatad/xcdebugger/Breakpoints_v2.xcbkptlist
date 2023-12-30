@@ -161,5 +161,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A59A4C4-428C-4BE9-8BEE-DDFD6F36575E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Resistivity/Utilities/Array_Statistics.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "standardDeviation(withPath:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5A59A4C4-428C-4BE9-8BEE-DDFD6F36575E - 9b855b0ed51132e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.Array.standardDeviation&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.FloatingPoint&gt;(withPath: Swift.KeyPath&lt;&#x3c4;_0_0, &#x3c4;_1_0&gt;) throws -&gt; Swift.Double"
+                  moduleName = "Resistivity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Utilities/Array_Statistics.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "1160">
+               </Location>
+               <Location
+                  uuid = "5A59A4C4-428C-4BE9-8BEE-DDFD6F36575E - 9b855b0ed51132e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.Array.standardDeviation&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.FloatingPoint&gt;(withPath: Swift.KeyPath&lt;&#x3c4;_0_0, &#x3c4;_1_0&gt;) throws -&gt; Swift.Double"
+                  moduleName = "Resistivity"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Utilities/Array_Statistics.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "1164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

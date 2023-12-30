@@ -41,6 +41,7 @@ class Sample {
     // MARK: - Initializers
     init(_ sampleInfo: SampleInfo) {
         self.info = sampleInfo
+        self.registerForNotifications()
     }
     
     
@@ -122,6 +123,25 @@ extension Sample {
 extension Sample {
     func save() {
         print("Save")
+    }
+}
+
+// MARK: - Handling Notifications
+extension Sample {
+    
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(forName: .newMeasurementAdded, object: nil, queue: nil, using: updateStatistics(_:))
+    }
+    
+    private func updateStatistics(_ notification: Notification) {
+        guard let location = notification.object as? Location else {
+            return
+        }
+        
+        if locations.contains(location) {
+            self.updateStatistics()
+        }
+        
     }
 }
 

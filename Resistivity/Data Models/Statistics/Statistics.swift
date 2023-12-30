@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Statistics<Element> {
+struct Statistics<Element: Comparable> {
     typealias T = Double
     let keyPath: KeyPath<Element,  T>
     var name: String
@@ -15,6 +15,8 @@ struct Statistics<Element> {
     
     var mean: Double = 0.0
     var standardDeviation: Double = 0.0
+    var min: Double = 0.0
+    var max: Double = 0.0
     
     mutating func update(with items: [Element]) {
         guard let localMean = try? items.mean(withPath: keyPath) else {
@@ -27,8 +29,23 @@ struct Statistics<Element> {
             return
         }
         
+        
+         guard let localMin = items.min() else {
+             reset()
+             return
+         }
+         
+        
+        guard let localMax = items.max() else {
+            reset()
+            return
+        }
+        
+        
         mean = localMean
         standardDeviation = localStdDev
+        min = localMin[keyPath: keyPath] as Double
+        max = localMax[keyPath: keyPath] as Double
     }
     
     private mutating func reset() {

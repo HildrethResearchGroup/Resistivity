@@ -28,6 +28,7 @@ class DataModel: ObservableObject {
     
     @Published var search: String = ""
     
+    // MARK: - Measurement Properties
     @Published var flattendMeasurements: [Measurement] = []
     
     var filteredMeasurements: [Measurement] {
@@ -35,17 +36,24 @@ class DataModel: ObservableObject {
     }
     
     var sortedAndFilteredMeasurements: [Measurement] {
-        var localMeasurements = filteredMeasurements
         
-        localMeasurements.sort(using: self.order)
-        
-        return localMeasurements
+        return filteredMeasurements.sorted(using: self.order)
     }
     
     
     // MARK: - Convenience Properties
     var currentSample: Sample? {
         return samples.last
+    }
+    
+    
+    // MARK: - Statistics Properties
+    var resistanceStatistics = Statistics<Measurement>(keyPath: \.resistance, name: "Resistance", units: "Ω")
+    var resistivityStatistics = Statistics<Measurement>(keyPath: \.resistivity, name: "Resistivity", units: "Ω-m")
+    
+    private func updateStatistics() {
+        resistanceStatistics.update(with: flattendMeasurements)
+        resistivityStatistics.update(with: flattendMeasurements)
     }
     
     
@@ -140,11 +148,8 @@ extension DataModel {
                     measurements.append(contentsOf: nextSample.flattendMeasurements)
                 }
                 
-                // measurements = filterMeasurements(measurements, withString: self.search)
-                
-                // measurements.sort(using: self.order)
-                
                 flattendMeasurements =  measurements
+                self.updateStatistics()
             }
         }
     }

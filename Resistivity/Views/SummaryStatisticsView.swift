@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct SummaryStatisticsView: View {
+    
+    @ObservedObject var dataModel: DataModel
+    
     var body: some View {
         VStack {
             Text("Summary Statistics").font(.title)
             HStack {
                 VStack(alignment: .leading) {
                     Text("Resistance:").font(.title2)
-                    Text("µ = 202.681 mΩ")
-                    Text("σ = 0.867 mΩ")
-                    Text("min = 164.671 mΩ")
-                    Text("max = 241.347 mΩ")
+                    Text("µ = \(dataModel.resistanceStatistics.mean) Ω")
+                    Text("σ = \(dataModel.resistanceStatistics.standardDeviation) Ω")
+                    Text("min = \(dataModel.resistanceStatistics.min) Ω")
+                    Text("max = \(dataModel.resistanceStatistics.max) Ω")
                 }
                 Divider()
                 VStack(alignment: .leading) {
@@ -43,7 +46,7 @@ struct SummaryStatisticsView: View {
 
 struct SummaryStatisticsView_Previews: PreviewProvider {
     static var previews: some View {
-        
-        SummaryStatisticsView()
+        let dataModel = DataModel()
+        SummaryStatisticsView(dataModel: dataModel)
     }
 }

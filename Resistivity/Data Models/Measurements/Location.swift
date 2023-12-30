@@ -15,7 +15,7 @@ class Location {
 
     var measurements: [Measurement] = [] {
         didSet {
-            NotificationCenter.default.post(name: .newMeasurementAdded, object: nil)
+            NotificationCenter.default.post(name: .newMeasurementAdded, object: self)
         }
     }
     
@@ -27,17 +27,8 @@ class Location {
 
 
 
-// MARK: - Common Conformances
-extension Location: Identifiable, Equatable {
-    static func == (lhs: Location, rhs: Location) -> Bool {
-        lhs.id == rhs.id
-    }
-}
 
-
-
-
-// MARK: - Handling Measurements
+// MARK: - Adding Measurements
 extension Location {
     func addMeasurement(withResistance resistanceIn: Double, sampleInfo: SampleInfo, resistivityInfo: ResistivityMeasurementInfo, lineResistanceInfo: LineResistanceInfo, globalMeasurementNumber: Int) {
         
@@ -54,6 +45,14 @@ extension Location {
     }
 }
 
+
+
+// MARK: - Common Conformances
+extension Location: Identifiable, Equatable {
+    static func == (lhs: Location, rhs: Location) -> Bool {
+        lhs.id == rhs.id
+    }
+}
 
 
 

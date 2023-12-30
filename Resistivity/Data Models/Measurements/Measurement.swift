@@ -41,7 +41,11 @@ struct Measurement {
 
 
 // MARK: - Common Conformances
-extension Measurement: Identifiable, Hashable {
+extension Measurement: Identifiable, Hashable, Comparable {
+    static func < (lhs: Measurement, rhs: Measurement) -> Bool {
+        lhs.resistance < rhs.resistance
+    }
+    
     static func == (lhs: Measurement, rhs: Measurement) -> Bool {
         lhs.id == rhs.id
     }
