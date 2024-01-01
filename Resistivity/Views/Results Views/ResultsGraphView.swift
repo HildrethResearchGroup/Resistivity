@@ -10,6 +10,8 @@ import Charts
 
 struct ResultsGraphView: View {
     
+    let fontColor: Color = .black
+    
     var measurements: [Measurement]
     
     var body: some View {
@@ -25,25 +27,55 @@ struct ResultsGraphView: View {
             
         }
         .chartLegend(position: .trailing, alignment: .top)
+        .foregroundStyle(fontColor)
         .chartXAxisLabel(position: .bottom, alignment: .center) {
             Text("Measurement # [-]")
+                .font(.title)
+                .foregroundStyle(fontColor)
         }
+        .chartXAxis() {
+            AxisMarks() {
+                AxisTick(length: 10, stroke: StrokeStyle(lineWidth: 1))
+                    .foregroundStyle(fontColor)
+                AxisValueLabel()
+                    .font(.title)
+                    .foregroundStyle(fontColor)
+                AxisGridLine(stroke: StrokeStyle(dash: [10,0])).foregroundStyle(fontColor)
+            }
+            
+        }
+         .chartYAxisLabel(position: .leading, alignment: .center) {
+             Text("Resistance [Ω]")
+                 .scaledToFit()
+                 .frame(width: 150, height: 150)
+                 .offset(x: 0, y: 50)
+                 .rotationEffect(.degrees(180))
+                 .font(.title)
+                 .foregroundStyle(fontColor)
+  
+         }
         .chartYAxis() {
-            AxisMarks(position: .leading)
+            AxisMarks(position: .leading) { _ in
+                AxisTick(length: 10, stroke: StrokeStyle(lineWidth: 1))
+                    .foregroundStyle(fontColor)
+                AxisValueLabel().font(.title)
+                    .font(.title)
+                    .foregroundStyle(fontColor)
+                AxisGridLine(stroke: StrokeStyle(dash: [10,0])).foregroundStyle(fontColor)
+            }
         }
-        .chartYAxisLabel(position: .leading, alignment: .center) {
-            Text("Resistance [Ω]")
-                .rotationEffect(.degrees(180), anchor: .center)
-                .frame(width: 80, height: 80)
-        }
-        //.chartScrollableAxes(.horizontal)
+        
         .chartPlotStyle { plotContent in
           plotContent
+                .foregroundStyle(fontColor)
                 .background(.white)
                 .border(.white)
         }
+        .offset(x: -50, y: 0)
         .padding()
+        
     }
+    
     
     struct WhiteGroupBoxStyle: GroupBoxStyle {
         func makeBody(configuration: Configuration) -> some View {
