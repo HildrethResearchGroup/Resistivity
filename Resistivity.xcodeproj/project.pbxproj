@@ -56,6 +56,11 @@
 		C0DB471D2ACB4FFA00FBAC23 /* DelayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */; };
 		C0DB47212ACB509B00FBAC23 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB47202ACB509B00FBAC23 /* Sample.swift */; };
 		C0E8B7C02B4327CA002CEBA8 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7BF2B4327CA002CEBA8 /* DataViewModel.swift */; };
+		C0E8B7C42B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7C32B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift */; };
+		C0E8B7C62B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7C52B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift */; };
+		C0E8B7C82B43D14B002CEBA8 /* LocationInfo_Exportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7C72B43D14B002CEBA8 /* LocationInfo_Exportable.swift */; };
+		C0E8B7CA2B43D18F002CEBA8 /* SampleInfo_Exportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7C92B43D18F002CEBA8 /* SampleInfo_Exportable.swift */; };
+		C0E8B7CC2B43D44F002CEBA8 /* ExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7CB2B43D44F002CEBA8 /* ExportManager.swift */; };
 		C0ED06AB2B34FA750050D626 /* ResistivityMeasurementInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED06AA2B34FA750050D626 /* ResistivityMeasurementInfo.swift */; };
 		C0ED06AD2B34FA970050D626 /* LineResistanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED06AC2B34FA970050D626 /* LineResistanceSettings.swift */; };
 		C0ED06B02B34FF300050D626 /* Protocol_Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED06AF2B34FF300050D626 /* Protocol_Info.swift */; };
@@ -115,6 +120,11 @@
 		C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayType.swift; sourceTree = "<group>"; };
 		C0DB47202ACB509B00FBAC23 /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		C0E8B7BF2B4327CA002CEBA8 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
+		C0E8B7C32B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistivityMeasurementInfo_Exportable.swift; sourceTree = "<group>"; };
+		C0E8B7C52B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineResistanceInfo_Exportable.swift; sourceTree = "<group>"; };
+		C0E8B7C72B43D14B002CEBA8 /* LocationInfo_Exportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo_Exportable.swift; sourceTree = "<group>"; };
+		C0E8B7C92B43D18F002CEBA8 /* SampleInfo_Exportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInfo_Exportable.swift; sourceTree = "<group>"; };
+		C0E8B7CB2B43D44F002CEBA8 /* ExportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportManager.swift; sourceTree = "<group>"; };
 		C0ED06AA2B34FA750050D626 /* ResistivityMeasurementInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistivityMeasurementInfo.swift; sourceTree = "<group>"; };
 		C0ED06AC2B34FA970050D626 /* LineResistanceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineResistanceSettings.swift; sourceTree = "<group>"; };
 		C0ED06AF2B34FF300050D626 /* Protocol_Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol_Info.swift; sourceTree = "<group>"; };
@@ -285,8 +295,13 @@
 			isa = PBXGroup;
 			children = (
 				C0C2C0322AD8A55E00E2385E /* Exportable.swift */,
+				C0E8B7CB2B43D44F002CEBA8 /* ExportManager.swift */,
 				C0C2C0342AD8A62000E2385E /* Measurement_Exportable.swift */,
+				C0E8B7C52B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift */,
+				C0E8B7C72B43D14B002CEBA8 /* LocationInfo_Exportable.swift */,
+				C0E8B7C32B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift */,
 				C0C2C0362AD8A9C200E2385E /* Statistics_Exportable.swift */,
+				C0E8B7C92B43D18F002CEBA8 /* SampleInfo_Exportable.swift */,
 			);
 			path = Exporting;
 			sourceTree = "<group>";
@@ -434,13 +449,16 @@
 				C08CA0B32B3F3D350082E4CB /* ResultsGraphViewModel.swift in Sources */,
 				C094C19F2AC5FA4900E655CA /* ReturnMode.swift in Sources */,
 				C0C2C0302AD8A48000E2385E /* Location.swift in Sources */,
+				C0E8B7CA2B43D18F002CEBA8 /* SampleInfo_Exportable.swift in Sources */,
 				C0DB471B2ACB4F6A00FBAC23 /* Measurement.swift in Sources */,
 				C0C2C02E2AD8A41A00E2385E /* SampleInfo.swift in Sources */,
 				C0D122732B4268EB00BBFFC8 /* ResistivityUnits.swift in Sources */,
 				C0E8B7C02B4327CA002CEBA8 /* DataViewModel.swift in Sources */,
 				C0C2C0372AD8A9C200E2385E /* Statistics_Exportable.swift in Sources */,
+				C0E8B7C62B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift in Sources */,
 				C0DB47082ACB313600FBAC23 /* Notifications.swift in Sources */,
 				C0A3659E2AC7D25A00EA2EB6 /* ResistanceUnits.swift in Sources */,
+				C0E8B7C82B43D14B002CEBA8 /* LocationInfo_Exportable.swift in Sources */,
 				C036EAD12B0DBE8300CB02D6 /* AppController.swift in Sources */,
 				C0DB47212ACB509B00FBAC23 /* Sample.swift in Sources */,
 				C00D82502B27A85F004024E9 /* LineResistanceInfo.swift in Sources */,
@@ -465,9 +483,11 @@
 				C01324802B106AA100DCAC6D /* ResultsTableView.swift in Sources */,
 				C0DB47172ACB44C800FBAC23 /* PreferencesView.swift in Sources */,
 				C0DB470C2ACB32FE00FBAC23 /* MeasurementConfiguratorView.swift in Sources */,
+				C0E8B7C42B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift in Sources */,
 				C0D122772B42859C00BBFFC8 /* UnitsSettings.swift in Sources */,
 				C0ED06B42B3544090050D626 /* LocationSettings.swift in Sources */,
 				C011FD052B37D37A008F8066 /* LineResistanceSettingsView.swift in Sources */,
+				C0E8B7CC2B43D44F002CEBA8 /* ExportManager.swift in Sources */,
 				C0A365A12AC7D4EF00EA2EB6 /* ConvertableUnits_Protocol.swift in Sources */,
 				C0ED06AD2B34FA970050D626 /* LineResistanceSettings.swift in Sources */,
 				C094C1A12AC5FA6E00E655CA /* NanoVoltMeterController.swift in Sources */,

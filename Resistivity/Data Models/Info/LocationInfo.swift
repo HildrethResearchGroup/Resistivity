@@ -23,3 +23,6 @@ struct LocationInfo {
     /// An integer representing the number of measurements taken at this location.
     var measurementNumber = 0
 }
+
+
+

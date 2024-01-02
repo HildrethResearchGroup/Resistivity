@@ -25,5 +25,3 @@ struct LineResistanceInfo {
         return resistance / gap
     }
 }
-
-

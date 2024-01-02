@@ -9,14 +9,17 @@ import Foundation
 
 extension Statistics: Exportable {
     func header() -> [String] {
-        let meanString = "Mean: " + name + " [" + units + "]"
-        let stdDevString = "Std. Dev. " + name + " [" + units + "]"
+        let unitsString = name + " [" + units + "]"
+        let meanString = "Mean: " + unitsString
+        let stdDevString = "Std. Dev. "  + unitsString
+        let minString = "Min. " + unitsString
+        let maxString = "Mix. " + unitsString
         
-        return [meanString, stdDevString]
+        return [meanString, stdDevString, minString, maxString]
     }
     
     func data() -> [String] {
-        return [String(mean), String(standardDeviation)]
+        return [String(mean), String(standardDeviation), String(min), String(max)]
     }
     
     
