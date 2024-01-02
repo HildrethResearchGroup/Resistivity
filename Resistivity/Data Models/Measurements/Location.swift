@@ -37,7 +37,9 @@ class Location {
 
 // MARK: - Adding Measurements
 extension Location {
+    
     /// Adds a new measurement to the location.
+    ///
     /// Increments the measurement number and appends a new `Measurement` object to the `measurements` array.
     /// - Parameters:
     ///   - resistanceIn: The resistance value of the measurement.
@@ -45,7 +47,6 @@ extension Location {
     ///   - resistivityInfo: Information about the resistivity measurement.
     ///   - lineResistanceInfo: Information about the line resistance.
     ///   - globalMeasurementNumber: A global identifier for the measurement across all locations.
-
     func addMeasurement(withResistance resistanceIn: Double, sampleInfo: SampleInfo, resistivityInfo: ResistivityMeasurementInfo, lineResistanceInfo: LineResistanceInfo, globalMeasurementNumber: Int) {
         
         // Increment the measurement number to reflect a new measurement being added.

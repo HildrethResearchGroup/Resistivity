@@ -24,8 +24,6 @@ class MeasurementSettings: ObservableObject {
         }
     }
     
-    
-    
     var timeBetweenMeasurements: Double {
         get { _timeBetweenMeasurements }
         
@@ -40,6 +38,12 @@ class MeasurementSettings: ObservableObject {
         }
     }
     
+    @Published var resistanceUnits: ResistanceUnits {
+        didSet {
+            UserDefaults.standard.set(resistanceUnits, forKey: "resistanceUnits")
+        }
+    }
+    
     @Published private var _timeBetweenMeasurements: Double
     @Published private var _numberOfMeasurements: Int
     
@@ -47,5 +51,6 @@ class MeasurementSettings: ObservableObject {
         _numberOfMeasurements = UserDefaults.standard.object(forKey: "numberOfMeasurements") as? Int ?? 1
         _timeBetweenMeasurements = UserDefaults.standard.object(forKey: "timeBetweenMeasurements") as? Double  ?? 1.0
         
+        resistanceUnits = UserDefaults.standard.object(forKey: "resistanceUnits") as? ResistanceUnits ?? .ohms
     }
 }

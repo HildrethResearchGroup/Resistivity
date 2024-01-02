@@ -12,8 +12,13 @@ struct LineResistanceInfo {
     
     var voltageSensingGap: Double?
     
-    func calculateLineResistance(_ resistance: Double) -> Double? {
-        guard let gap = voltageSensingGap else {return nil}
+    func lineResistance(forResistance resistance: Double) -> Double {
+        
+        if shouldCalculateLineResistance == false {
+            return .nan
+        }
+        
+        guard let gap = voltageSensingGap else {return .nan}
         
         if gap == .zero {return .nan}
         

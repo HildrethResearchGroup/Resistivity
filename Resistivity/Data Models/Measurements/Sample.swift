@@ -126,6 +126,7 @@ extension Sample {
     }
 }
 
+
 // MARK: - Handling Notifications
 extension Sample {
     
@@ -143,10 +144,4 @@ extension Sample {
         }
         
     }
-}
-
-
-// MARK: - Notifcations
-extension Notification.Name {
-    static let newMeasurementAdded = Notification.Name("newMeasurementAdded")
 }

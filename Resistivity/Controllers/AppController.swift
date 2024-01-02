@@ -11,6 +11,7 @@ import Foundation
 class AppController: ObservableObject {
     @Published var collectionController: DataCollectionController
     @Published var dataModel: DataModel
+    @Published var dataViewModel: DataViewModel
     
     @Published var measurementSettings = MeasurementSettings()
     @Published var resistivitySettings = ResistivityMeasurementSettings()
@@ -22,12 +23,14 @@ class AppController: ObservableObject {
     @Published var nanoVoltMeterStatus: EquipmentStatus = .disconnected
     
     
-    
     var globalMeasurementNumber = 1
     
     init() {
         collectionController = DataCollectionController()
-        dataModel = DataModel(withInitialData: true)
+        
+        let localDataModel = DataModel(withInitialData: true)
+        dataModel = localDataModel
+        dataViewModel = DataViewModel(dataModel: localDataModel)
         registerForNotifications()
     }
     

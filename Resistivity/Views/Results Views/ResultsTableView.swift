@@ -10,14 +10,17 @@ import SwiftUI
 
 struct ResultsTableView: View {
     
+    @AppStorage("resistanceUnits") var resistanceUnits: ResistanceUnits = .ohms
+    
     var measurements: [Measurement]
+    
     @Binding var order: [KeyPathComparator<Measurement>]
     @Binding var searchString: String
     
     var body: some View {
         Table(measurements, sortOrder: $order) {
             TableColumn("Measurement #") {Text("\($0.globalMeasurementNumber)")}
-            TableColumn("Resistance", value: \.resistance) {Text("\($0.resistance)")}
+            TableColumn("Resistance \(resistanceUnitsDisplay)", value: \.resistance) { Text("\($0.scaledResistance(resistanceUnits))") }
             TableColumn("Sample Name", value: \.sampleInfo.name)
             TableColumn("Location", value: \.locationInfo.name)
             TableColumn("SampleID", value: \.sampleID)
@@ -27,9 +30,13 @@ struct ResultsTableView: View {
         .padding()
 
     }
+    
+    var resistanceUnitsDisplay: String { "[" + String(resistanceUnits.description) + "]" }
+    
 }
 
 
+// MARK: - Previews
 struct ResultsTableView_Previews: PreviewProvider {
     static var previews: some View {
         let dataModel = DataModel(withInitialData: true)

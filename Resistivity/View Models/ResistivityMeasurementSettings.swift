@@ -28,6 +28,12 @@ class ResistivityMeasurementSettings: ObservableObject {
         
     }
     
+    @Published var resistivityUnits: ResistivityUnits {
+        didSet {
+            UserDefaults.standard.set(resistivityUnits, forKey: "resistivityUnits")
+        }
+    }
+    
     
     init() {
         shouldCalculateResistivity = UserDefaults.standard.object(forKey: "shouldCalculateResistivity") as? Bool ?? false
@@ -37,6 +43,8 @@ class ResistivityMeasurementSettings: ObservableObject {
         thicknessCorrectionFactor = UserDefaults.standard.object(forKey: "thicknessCorrectionFactor") as? Double ?? 1.0
         
         finiteWidthCorrectionFactor = UserDefaults.standard.object(forKey: "finiteWidthCorrectionFactor") as? Double ?? 1.0
+        
+        resistivityUnits = UserDefaults.standard.object(forKey: "resistivityUnits") as? ResistivityUnits ?? .ohm_meters
     }
     
 

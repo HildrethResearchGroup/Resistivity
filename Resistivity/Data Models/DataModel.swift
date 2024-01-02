@@ -36,7 +36,6 @@ class DataModel: ObservableObject {
     }
     
     var sortedAndFilteredMeasurements: [Measurement] {
-        
         return filteredMeasurements.sorted(using: self.order)
     }
     
@@ -47,6 +46,7 @@ class DataModel: ObservableObject {
     }
     
     
+    // TODO: Remove.  These properties have moved to DataViewModel.
     // MARK: - Statistics Properties
     var resistanceStatistics = Statistics<Measurement>(keyPath: \.resistance, name: "Resistance", units: "Ω")
     var resistivityStatistics = Statistics<Measurement>(keyPath: \.resistivity, name: "Resistivity", units: "Ω-m")
@@ -159,6 +159,7 @@ extension DataModel {
         return measurementsIn.filter({$0.contains(information: filterString)})
     }
 }
+
 
 
 

@@ -12,14 +12,31 @@ struct ResistivityApp: App {
     @NSApplicationDelegateAdaptor(ResistivityAppDelegate.self) var appDelegate
     @StateObject var appController = AppController()
     
+    
+    @AppStorage("resistanceUnits") var resistanceUnits: ResistanceUnits = .ohms
+    @AppStorage("resistivityUnits") var resistivityUnits: ResistivityUnits = .ohm_meters
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .frame(minWidth: 100, maxWidth: .infinity)
                 .environmentObject(appController)
-                .toolbar {
-                    Button_measureResistanceWithNanovoltmeter()
-                    Button_connectToNanoVoltmeter()
+                .toolbar() {
+                    ToolbarItemGroup(placement: .primaryAction) {
+                        Picker("Ω Units", selection: $resistanceUnits) {
+                            ForEach(ResistanceUnits.allCases) { units in
+                                Text(String(describing: units))
+                                
+                            }
+                        }
+                        Picker("Ω-m Units", selection: $resistivityUnits) {
+                            ForEach(ResistivityUnits.allCases) { units in
+                                Text(String(describing: units))
+                            }
+                        }
+                        Button_measureResistanceWithNanovoltmeter()
+                        Button_connectToNanoVoltmeter()
+                    }
                 }
         }
         
@@ -27,11 +44,9 @@ struct ResistivityApp: App {
             PreferencesView()
         }
     }
-    
-    
-    
-    
 }
+
+
 
 
 // MARK: - Toolbar Nanovoltmeter Connect Button Implementation
@@ -87,7 +102,7 @@ extension ResistivityApp {
     
     var measureResistanceWithNanovoltmeterIsDisabled: Bool {
         get {
-           
+            
             let status = appController.nanoVoltMeterStatus
             
             switch status {
@@ -102,9 +117,9 @@ extension ResistivityApp {
     var measureResistanceButtonColor: Color {
         get {
             switch appController.nanoVoltMeterStatus {
-            case .measuring: return .yellow
-            case .disconnected: return .gray
-            case .connecting: return .gray
+            case .measuring: return .blue
+            case .disconnected: return .red
+            case .connecting: return .yellow
             case .connected: return .green
             }
         }

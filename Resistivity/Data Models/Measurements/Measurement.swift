@@ -11,42 +11,47 @@ import Foundation
 struct Measurement {
     /// A unique identifier for the measurement.
     var id = UUID()
+    
     /// The resistance value obtained from the measurement.
     let resistance: Double
     
     /// Information about the sample being measured.
     var sampleInfo: SampleInfo
+    
     /// Information about the location where the measurement is taken.
     var locationInfo: LocationInfo
     
     /// Information specific to the resistivity measurement.
     var resistivityInfo: ResistivityMeasurementInfo
+    
     /// Information about the line resistance.
     var lineResistanceInfo: LineResistanceInfo
     
     /// A global number assigned to the measurement for identification.
     var globalMeasurementNumber: Int
+    
     /// A number representing the measurement count for the sample.
-    var sampleMeasurementNumber: Int {
-        return sampleInfo.sampleNumber + sampleInfo.measurementNumber
-    }
+    var sampleMeasurementNumber: Int {  sampleInfo.sampleNumber + sampleInfo.measurementNumber  }
+    
     /// A number representing the measurement count for the location.
-    var locationMeasurementNumber: Int {
-        return locationInfo.locationNumber + locationInfo.measurementNumber
-    }
+    var locationMeasurementNumber: Int {  locationInfo.locationNumber + locationInfo.measurementNumber  }
     
     /// A string identifier combining sample and location information.
-    var sampleID: String {
-        return "\(sampleInfo.sampleNumber)-\(locationInfo.locationNumber)-\(locationInfo.measurementNumber)"
-    }
+    var sampleID: String {  return "\(sampleInfo.sampleNumber)-\(locationInfo.locationNumber)-\(locationInfo.measurementNumber)"  }
     
     /// The date and time when the measurement was taken.
     let date: Date = .now
     /// The duration of the measurement.
     let measurementDuration: Duration = .zero
     
-    /// The calculated resistivity value, initialized to zero.
-    let resistivity = 0.0
+    /// The calculated resistivity value, initialized to zero.  
+    ///
+    /// Returns `.nan` if `shouldCalculateResistivity` is set to false
+    var resistivity: Double { resistivityInfo.resistivity(forResistance: resistance) }
+    
+    
+    var lineResistance: Double { lineResistanceInfo.lineResistance(forResistance: resistance) }
+    
 }
 
 // MARK: - Common Conformances
@@ -77,8 +82,8 @@ extension Measurement: Identifiable, Hashable, Comparable {
     }
 }
 
-// MARK: - Calculate Resistivity
 
+// MARK: - Calculate Resistivity
 extension Measurement {
     /// Calculates the resistivity based on the measurement information.
     /// - Returns: The calculated resistivity as a `Double`.
@@ -107,5 +112,17 @@ extension Measurement {
         if self.sampleID.contains(infoString) { return true }
         
         return false
+    }
+}
+
+
+// MARK: - Units Scaling
+extension Measurement {
+    func scaledResistance(_ units: ResistanceUnits) -> Double {
+        return units.scaledFromBaseOhms(resistance)
+    }
+    
+    func scaledResistivity(_ units: ResistivityUnits) -> Double {
+        return units.scaledFromBaseOhm_meters(resistance)
     }
 }

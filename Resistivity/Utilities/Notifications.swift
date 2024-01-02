@@ -7,10 +7,16 @@
 
 import Foundation
 
+// MARK: - Measuring
 extension NSNotification.Name {
     static let disableMeasuring = NSNotification.Name("disableMeasuring")
     static let enableMeasuring = NSNotification.Name("enableMeasuring")
     static let disableStopping = NSNotification.Name("disableStopping")
     static let enableStopping = NSNotification.Name("enableStopping")
     static let modelDidChange = NSNotification.Name("modelDidChange")
+}
+
+// MARK: - Adding New Measurement
+extension Notification.Name {
+    static let newMeasurementAdded = Notification.Name("newMeasurementAdded")
 }

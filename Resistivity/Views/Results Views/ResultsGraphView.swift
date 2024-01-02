@@ -9,6 +9,7 @@ import SwiftUI
 import Charts
 
 struct ResultsGraphView: View {
+    @AppStorage("resistanceUnits") var resistanceUnits: ResistanceUnits = .ohms
     
     let fontColor: Color = .black
     
@@ -16,15 +17,17 @@ struct ResultsGraphView: View {
     
     var body: some View {
         Chart(measurements) { nextMeasurement in
-            LineMark(x: .value("Measurement #", nextMeasurement.globalMeasurementNumber), y: .value("Resistance", nextMeasurement.resistance), series: .value("Sample", nextMeasurement.sampleInfo.name))
+            LineMark(x: .value("Measurement #", nextMeasurement.globalMeasurementNumber), 
+                     y: .value("Resistance", nextMeasurement.scaledResistance(resistanceUnits)),
+                     series: .value("Sample", nextMeasurement.sampleInfo.name))
                 .foregroundStyle(by: .value("Sample", nextMeasurement.sampleInfo.name))
                 //.symbol(by: .value("Sample", nextMeasurement.sampleInfo.name))
                 .lineStyle(StrokeStyle(dash: [9, 10]))
             
-             PointMark(x: .value("Measurement #", nextMeasurement.globalMeasurementNumber), y: .value("Resistance", nextMeasurement.resistance))
+             PointMark(x: .value("Measurement #", nextMeasurement.globalMeasurementNumber), 
+                       y: .value("Resistance", nextMeasurement.scaledResistance(resistanceUnits)))
                 .foregroundStyle(by: .value("Sample", nextMeasurement.sampleInfo.name))
                 .symbol(by: .value("Sample", nextMeasurement.sampleInfo.name))
-            
         }
         .chartLegend(position: .trailing, alignment: .top)
         .foregroundStyle(fontColor)
@@ -45,10 +48,10 @@ struct ResultsGraphView: View {
             
         }
          .chartYAxisLabel(position: .leading, alignment: .center) {
-             Text("Resistance [Ω]")
+             Text("Resistance \(resistanceUnitsDisplay)")
                  .scaledToFit()
-                 .frame(width: 150, height: 150)
-                 .offset(x: 0, y: 50)
+                 .frame(width: 200, height: 200)
+                 .offset(x: 0, y: 75)
                  .rotationEffect(.degrees(180))
                  .font(.title)
                  .foregroundStyle(fontColor)
@@ -71,7 +74,7 @@ struct ResultsGraphView: View {
                 .background(.white)
                 .border(.white)
         }
-        .offset(x: -50, y: 0)
+        .offset(x: -100, y: 0)
         .padding()
         
     }
@@ -91,8 +94,13 @@ struct ResultsGraphView: View {
         }
     }
     
-    
-    
+    var resistanceUnitsDisplay: String {
+        get {
+            let unitsString = String(resistanceUnits.description)
+            
+            return "[" + unitsString + "]"
+        }
+    }    
 }
 
 struct ResultsGraphView_Previews: PreviewProvider {
