@@ -12,7 +12,8 @@ struct SummaryStatisticsView: View {
     @AppStorage("resistivityUnits") var resistivityUnits: ResistivityUnits = .ohm_meters
     
     
-    @ObservedObject var dataModel: DataModel
+    @ObservedObject var dataViewModel: DataViewModel
+    
     
     var body: some View {
         VStack {
@@ -45,10 +46,10 @@ extension SummaryStatisticsView {
     var resistanceUnitsDisplay: String {  return String(resistanceUnits.description)  }
     func scaledResistances(_ valueIn: Double) -> Double {  return valueIn * resistanceUnits.scaleFactor()  }
     
-    var resistanceMean: Double { scaledResistances(dataModel.resistanceStatistics.mean) }
-    var resistanceSTD: Double { scaledResistances(dataModel.resistanceStatistics.standardDeviation) }
-    var resistanceMin: Double { scaledResistances(dataModel.resistanceStatistics.min) }
-    var resistanceMax: Double { scaledResistances(dataModel.resistanceStatistics.max) }
+    var resistanceMean: Double { scaledResistances(dataViewModel.resistanceStatistics.mean) }
+    var resistanceSTD: Double { scaledResistances(dataViewModel.resistanceStatistics.standardDeviation) }
+    var resistanceMin: Double { scaledResistances(dataViewModel.resistanceStatistics.min) }
+    var resistanceMax: Double { scaledResistances(dataViewModel.resistanceStatistics.max) }
 }
 
 
@@ -57,23 +58,17 @@ extension SummaryStatisticsView {
     var resistivityUnitsDisplay: String {  return String(resistivityUnits.description)  }
     func scaledResistivity(_ valueIn: Double) -> Double {  return valueIn * resistivityUnits.scaleFactor()  }
     
-    var resistivityMean: Double { scaledResistivity(dataModel.resistivityStatistics.mean) }
-    var resistivitySTD: Double { scaledResistivity(dataModel.resistivityStatistics.standardDeviation) }
-    var resistivityMin: Double { scaledResistivity(dataModel.resistivityStatistics.min) }
-    var resistivityMax: Double { scaledResistivity(dataModel.resistivityStatistics.max) }
+    var resistivityMean: Double { scaledResistivity(dataViewModel.resistivityStatistics.mean) }
+    var resistivitySTD: Double { scaledResistivity(dataViewModel.resistivityStatistics.standardDeviation) }
+    var resistivityMin: Double { scaledResistivity(dataViewModel.resistivityStatistics.min) }
+    var resistivityMax: Double { scaledResistivity(dataViewModel.resistivityStatistics.max) }
 }
 
-/*
- #Preview {
-     SummaryStatisticsView()
- }
- */
 
-
-
+// MARK: - Previews
 struct SummaryStatisticsView_Previews: PreviewProvider {
     static var previews: some View {
-        let dataModel = DataModel()
-        SummaryStatisticsView(dataModel: dataModel)
+        let dataViewModel = DataViewModel(dataModel: DataModel(withInitialData: true))
+        SummaryStatisticsView(dataViewModel: dataViewModel)
     }
 }

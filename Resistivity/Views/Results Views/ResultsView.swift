@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ResultsView: View {
     
-    @ObservedObject var dataModel: DataModel
+    @ObservedObject var dataViewModel: DataViewModel
     
     var body: some View {
         TabView {
-            ResultsTableView(measurements: dataModel.sortedAndFilteredMeasurements, order: $dataModel.order, searchString: $dataModel.search)
+            ResultsTableView(measurements: dataViewModel.measurements, order: $dataViewModel.order, searchString: $dataViewModel.search)
                 .background(.white)
                 .tabItem { Text("􀏣") }
-            ResultsGraphView(measurements: dataModel.sortedAndFilteredMeasurements)
+            ResultsGraphView(measurements: dataViewModel.measurements)
                 .background(.white)
                 .tabItem { Text("􁂥") }
                 .onAppear() {
@@ -32,8 +32,9 @@ struct ResultsView: View {
 
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        let dataModel = DataModel()
-        ResultsView(dataModel: dataModel)
+        let dataModel = DataModel(withInitialData: true)
+        let dataViewModel = DataViewModel(dataModel: dataModel)
+        ResultsView(dataViewModel: dataViewModel)
     }
 }
 

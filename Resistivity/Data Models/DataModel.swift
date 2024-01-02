@@ -31,13 +31,16 @@ class DataModel: ObservableObject {
     // MARK: - Measurement Properties
     @Published var flattendMeasurements: [Measurement] = []
     
-    var filteredMeasurements: [Measurement] {
-        return self.filterMeasurements(flattendMeasurements, withString: search)
-    }
+    /*
+     var filteredMeasurements: [Measurement] {
+         return self.filterMeasurements(flattendMeasurements, withString: search)
+     }
+     
+     var sortedAndFilteredMeasurements: [Measurement] {
+         return filteredMeasurements.sorted(using: self.order)
+     }
+     */
     
-    var sortedAndFilteredMeasurements: [Measurement] {
-        return filteredMeasurements.sorted(using: self.order)
-    }
     
     
     // MARK: - Convenience Properties
@@ -45,16 +48,18 @@ class DataModel: ObservableObject {
         return samples.last
     }
     
+    /*
+     // TODO: Remove.  These properties have moved to DataViewModel.
+     // MARK: - Statistics Properties
+     var resistanceStatistics = Statistics<Measurement>(keyPath: \.resistance, name: "Resistance", units: "Ω")
+     var resistivityStatistics = Statistics<Measurement>(keyPath: \.resistivity, name: "Resistivity", units: "Ω-m")
+     
+     private func updateStatistics() {
+         resistanceStatistics.update(with: flattendMeasurements)
+         resistivityStatistics.update(with: flattendMeasurements)
+     }
+     */
     
-    // TODO: Remove.  These properties have moved to DataViewModel.
-    // MARK: - Statistics Properties
-    var resistanceStatistics = Statistics<Measurement>(keyPath: \.resistance, name: "Resistance", units: "Ω")
-    var resistivityStatistics = Statistics<Measurement>(keyPath: \.resistivity, name: "Resistivity", units: "Ω-m")
-    
-    private func updateStatistics() {
-        resistanceStatistics.update(with: flattendMeasurements)
-        resistivityStatistics.update(with: flattendMeasurements)
-    }
     
     
     // MARK: - Initialization
@@ -149,15 +154,19 @@ extension DataModel {
                 }
                 
                 flattendMeasurements =  measurements
-                self.updateStatistics()
+                // REMOVE
+                //self.updateStatistics()
             }
         }
     }
     
+    // REMOVE
+    /*
+     func filterMeasurements(_ measurementsIn: [Measurement], withString filterString: String) -> [Measurement] {
+         return measurementsIn.filter({$0.contains(information: filterString)})
+     }
+     */
     
-    func filterMeasurements(_ measurementsIn: [Measurement], withString filterString: String) -> [Measurement] {
-        return measurementsIn.filter({$0.contains(information: filterString)})
-    }
 }
 
 

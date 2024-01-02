@@ -47,6 +47,7 @@ class DataViewModel: ObservableObject {
             .init(\.locationInfo.name, order: SortOrder.forward),
             .init(\.sampleID, order: SortOrder.forward),
         ]
+        self.updateFlattenedMeasurement()
     }
 }
 
@@ -58,7 +59,11 @@ extension DataViewModel {
     ///
     /// - Parameter notification: newMeasurementAdded notification
     nonisolated private func updateFlattenedMeasurement(_ notification: Notification) {
+        self.updateFlattenedMeasurement()
         
+    }
+    
+    nonisolated private func updateFlattenedMeasurement() {
         // Thie status must be updated within the updateFlattenedMeasurement closure.  However, updating the DataModel's flattendMeasurements must be done on the MainActor's thread since DataModel is marked as @MainActor
         
         Task {

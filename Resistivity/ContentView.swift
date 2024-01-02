@@ -23,13 +23,13 @@ struct ContentView: View {
                 
                 Divider()
                 
-                SummaryStatisticsView(dataModel: appController.dataModel)
+                SummaryStatisticsView(dataViewModel: appController.dataViewModel)
                 
                 Divider()
             }
             .frame(minWidth: 300, maxWidth: 500)
             VStack {
-                ResultsView(dataModel: appController.dataModel)
+                ResultsView(dataViewModel: appController.dataViewModel)
             }
             .frame(minWidth: 400, maxWidth: .infinity)
         }
