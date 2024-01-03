@@ -22,5 +22,18 @@ extension Statistics: Exportable {
         return [String(mean), String(standardDeviation), String(min), String(max)]
     }
     
-    
+    func exportFileHeader() -> String {
+        var exports = data()
+        
+        var exportString = ""
+        
+        for nextExport in exports {
+            exportString.append(nextExport)
+            exportString.append("\n")
+        }
+        
+        exportString.removeLast()
+        
+        return exportString
+    }
 }

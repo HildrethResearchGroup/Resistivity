@@ -248,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				C0FFEF402AF7510C00CCBD97 /* DataModel.swift */,
-				C0C2C0312AD8A54000E2385E /* Exporting */,
 				C0ED06AE2B34FF140050D626 /* Info */,
 				C0FFEF3C2AF750B200CCBD97 /* Measurements */,
 				C0FFEF3E2AF750E900CCBD97 /* Statistics */,
@@ -263,6 +262,7 @@
 				C036EAD02B0DBE8200CB02D6 /* AppController.swift */,
 				C0DB47182ACB4AAA00FBAC23 /* DataCollectionController.swift */,
 				C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */,
+				C0C2C0312AD8A54000E2385E /* Exporting */,
 				C094C19B2AC5F9D600E655CA /* Instrument Controllers */,
 			);
 			path = Controllers;
@@ -294,8 +294,8 @@
 		C0C2C0312AD8A54000E2385E /* Exporting */ = {
 			isa = PBXGroup;
 			children = (
-				C0C2C0322AD8A55E00E2385E /* Exportable.swift */,
 				C0E8B7CB2B43D44F002CEBA8 /* ExportManager.swift */,
+				C0C2C0322AD8A55E00E2385E /* Exportable.swift */,
 				C0C2C0342AD8A62000E2385E /* Measurement_Exportable.swift */,
 				C0E8B7C52B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift */,
 				C0E8B7C72B43D14B002CEBA8 /* LocationInfo_Exportable.swift */,
