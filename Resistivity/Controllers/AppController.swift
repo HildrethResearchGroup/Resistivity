@@ -13,6 +13,7 @@ class AppController: ObservableObject {
     @Published var collectionController: DataCollectionController
     @Published var dataModel: DataModel
     @Published var dataViewModel: DataViewModel
+    @Published var selectionManager: SelectionManager
     
     @Published var measurementSettings = MeasurementSettings()
     @Published var resistivitySettings = ResistivityMeasurementSettings()
@@ -32,6 +33,8 @@ class AppController: ObservableObject {
         let localDataModel = DataModel(withInitialData: true)
         dataModel = localDataModel
         dataViewModel = DataViewModel(dataModel: localDataModel)
+        selectionManager = SelectionManager(dataModel: localDataModel)
+        
         registerForNotifications()
     }
     
@@ -104,7 +107,7 @@ extension AppController {
     
     private func registerForNotifications() {
         NotificationCenter.default.addObserver(forName: .nanovoltmeterStatusDidChange, object: nil, queue: .current, using: updateNanovoltMeterStatus)
-        NotificationCenter.default.addObserver(forName: .copyMeasurements, object: nil, queue: .current, using: copyMeasurementsToClipboard(_:))
+        // NotificationCenter.default.addObserver(forName: .copyMeasurements, object: nil, queue: .current, using: copyMeasurementsToClipboard(_:))
     }
     
     
@@ -165,27 +168,33 @@ extension AppController {
     }
 }
 
-
-// MARK: - Copying
-extension AppController {
-    nonisolated private func copyMeasurementsToClipboard(_ notification: Notification) {
-        guard let measurements = notification.object as? [Measurement] else {return}
-        
-        Task {
-            await MainActor.run {
-                self.copyToClipboard(measurements)
-            }
-        }
-    }
-    
-    func copyToClipboard(_ measurements: [Measurement]) {
-        let em = ExportManager()
-        
-        let exportCSVString = em.csv(for: measurements)
-        
-        let pasteboard_general = NSPasteboard(name: .general)
-        
-        pasteboard_general.clearContents()
-        pasteboard_general.setString(exportCSVString, forType: .string)
-    }
-}
+/*
+ 
+ // MARK: - Copying
+ extension AppController {
+ nonisolated private func copyMeasurementsToClipboard(_ notification: Notification) {
+ guard let measurements = notification.object as? [Measurement] else {return}
+ 
+ Task {
+ await MainActor.run {
+ self.copyToClipboard(measurements)
+ }
+ }
+ }
+ 
+ func copyToClipboard(_ measurements: [Measurement]) {
+ let em = ExportManager()
+ 
+ let exportCSVString = em.csv(for: measurements)
+ 
+ let pasteboard_general = NSPasteboard(name: .general)
+ 
+ pasteboard_general.clearContents()
+ pasteboard_general.setString(exportCSVString, forType: .string)
+ }
+ }
+ 
+ extension Notification.Name {
+     static let copyMeasurements = Notification.Name("copyMeasurements")
+ }
+ */

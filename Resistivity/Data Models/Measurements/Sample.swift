@@ -119,6 +119,16 @@ extension Sample {
     }
 }
 
+
+// MARK: - Remove Measurements
+extension Sample {
+    func deleteMeasurements(_ measurementsIn: [Measurement]) {
+        for nextLocation in locations {
+            nextLocation.removeMeasurement(measurementsIn)
+        }
+    }
+}
+
 // MARK: - Saving
 extension Sample {
     func save() {

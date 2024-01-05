@@ -11,7 +11,7 @@ import Foundation
 class DataModel: ObservableObject {
     @Published var samples: [Sample] = []
     
-    @Published var measurementNumber: Int = 1
+    @Published var measurementNumber: Int = 0
     
     @Published var order: [KeyPathComparator<Measurement>] = [
         .init(\.globalMeasurementNumber, order: SortOrder.forward),
@@ -31,35 +31,11 @@ class DataModel: ObservableObject {
     // MARK: - Measurement Properties
     @Published var flattendMeasurements: [Measurement] = []
     
-    /*
-     var filteredMeasurements: [Measurement] {
-         return self.filterMeasurements(flattendMeasurements, withString: search)
-     }
-     
-     var sortedAndFilteredMeasurements: [Measurement] {
-         return filteredMeasurements.sorted(using: self.order)
-     }
-     */
     
     
     
     // MARK: - Convenience Properties
-    var currentSample: Sample? {
-        return samples.last
-    }
-    
-    /*
-     // TODO: Remove.  These properties have moved to DataViewModel.
-     // MARK: - Statistics Properties
-     var resistanceStatistics = Statistics<Measurement>(keyPath: \.resistance, name: "Resistance", units: "Ω")
-     var resistivityStatistics = Statistics<Measurement>(keyPath: \.resistivity, name: "Resistivity", units: "Ω-m")
-     
-     private func updateStatistics() {
-         resistanceStatistics.update(with: flattendMeasurements)
-         resistivityStatistics.update(with: flattendMeasurements)
-     }
-     */
-    
+    var currentSample: Sample? { return samples.last }
     
     
     // MARK: - Initialization
@@ -72,7 +48,6 @@ class DataModel: ObservableObject {
         
         self.generateInitialData()
     }
-    
 }
 
 
@@ -124,6 +99,16 @@ extension DataModel {
             let newSample = Sample(sampleInfo)
             
             samples.append(newSample)
+        }
+    }
+}
+
+
+// MARK: - Remove Measurements
+extension DataModel {
+    func deleteMeasurements(_ measurementsIn: [Measurement]) {
+        for nextSample in samples {
+            nextSample.deleteMeasurements(measurementsIn)
         }
     }
 }

@@ -10,10 +10,11 @@ import SwiftUI
 struct ResultsView: View {
     
     @ObservedObject var dataViewModel: DataViewModel
+    @EnvironmentObject var appController: AppController
     
     var body: some View {
         TabView {
-            ResultsTableView(measurements: dataViewModel.measurements, order: $dataViewModel.order, searchString: $dataViewModel.search)
+            ResultsTableView(measurements: dataViewModel.measurements, selectionManager: appController.selectionManager, order: $dataViewModel.order, searchString: $dataViewModel.search)
                 .background(.white)
                 .tabItem { Text("􀏣") }
             ResultsGraphView(measurements: dataViewModel.measurements)

@@ -14,14 +14,13 @@ struct ResultsTableView: View {
     
     var measurements: [Measurement]
     
+    @ObservedObject var selectionManager: SelectionManager
     @Binding var order: [KeyPathComparator<Measurement>]
     @Binding var searchString: String
     
-    @State var selection: Set<UUID> = []
-    
     
     var body: some View {
-        Table(selection: $selection, sortOrder: $order) {
+        Table(selection: $selectionManager.selection_measurements, sortOrder: $order) {
             TableColumn("Measurement #", value: \.globalMeasurementNumber) {Text("\($0.globalMeasurementNumber)")}
             TableColumn("Resistance \(resistanceUnitsDisplay)", value: \.resistance) { Text("\($0.scaledResistance(resistanceUnits))") }
             TableColumn("Sample Name", value: \.sampleInfo.name)
@@ -30,7 +29,12 @@ struct ResultsTableView: View {
         } rows: {
             ForEach(measurements) {
                 TableRow($0)
-                    .contextMenu() { copyButton() }
+                    .contextMenu() { 
+                        CopyMeasurementsButton(selectionManager: selectionManager)
+                            .keyboardShortcut("c", modifiers: .command)
+                        DeleteMeasurementsButton(selectionManager: selectionManager)
+                            .keyboardShortcut(.delete, modifiers: .command)
+                    }
             }
         }
         .searchable(text: $searchString)
@@ -44,30 +48,12 @@ struct ResultsTableView: View {
 }
 
 
-// MARK: - Copying
-extension ResultsTableView {
-    @ViewBuilder
-    func copyButton() -> some View {
-        Button("Copy") {
-            let copySelectionIDs = selection
-            let copyMeasurements = measurements.filter({ nextMeasurement in
-                copySelectionIDs.contains(nextMeasurement.id)
-            })
-            
-            NotificationCenter.default.post(name: .copyMeasurements, object: copyMeasurements)
-        }
-    }
-}
-
-extension Notification.Name {
-    static let copyMeasurements = Notification.Name("copyMeasurements")
-}
-
 
 // MARK: - Previews
 struct ResultsTableView_Previews: PreviewProvider {
     static var previews: some View {
         let dataModel = DataModel(withInitialData: true)
-        ResultsTableView(measurements: dataModel.flattendMeasurements, order: .constant(dataModel.order), searchString: .constant(dataModel.search))
+        let selectionManager = SelectionManager(dataModel: dataModel)
+        ResultsTableView(measurements: dataModel.flattendMeasurements, selectionManager: selectionManager, order: .constant(dataModel.order), searchString: .constant(dataModel.search))
     }
 }

@@ -34,6 +34,19 @@ struct ResistivityApp: App {
             CommandGroup(before: .saveItem) {
                 Button_export()
             }
+            CommandGroup(replacing: .pasteboard) {
+                CopyMeasurementsButton(selectionManager: appController.selectionManager)
+            }
+            CommandGroup(after: .pasteboard) {
+                DeleteMeasurementsButton(selectionManager: appController.selectionManager)
+            }
+            CommandGroup(after: .pasteboard) {
+                Divider()
+                Button("Clear Selection") {
+                    appController.selectionManager.clearMeasurementsSelection()
+                }
+                .keyboardShortcut(.escape, modifiers: .command)
+            }
         }
         
         Settings {

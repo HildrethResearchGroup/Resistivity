@@ -57,6 +57,9 @@
 		C0DB471D2ACB4FFA00FBAC23 /* DelayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */; };
 		C0DB47212ACB509B00FBAC23 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB47202ACB509B00FBAC23 /* Sample.swift */; };
 		C0DE77D92B479EC5006BC54B /* ResultsSummaryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE77D82B479EC5006BC54B /* ResultsSummaryGraphView.swift */; };
+		C0DE77DD2B47C56D006BC54B /* SelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE77DC2B47C56D006BC54B /* SelectionManager.swift */; };
+		C0DE77DF2B47CE6D006BC54B /* CopyMeasurementsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE77DE2B47CE6D006BC54B /* CopyMeasurementsButton.swift */; };
+		C0DE77E22B47CF69006BC54B /* DeleteMeasurementsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE77E12B47CF69006BC54B /* DeleteMeasurementsButton.swift */; };
 		C0E8B7C02B4327CA002CEBA8 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7BF2B4327CA002CEBA8 /* DataViewModel.swift */; };
 		C0E8B7C42B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7C32B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift */; };
 		C0E8B7C62B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7C52B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift */; };
@@ -124,6 +127,9 @@
 		C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayType.swift; sourceTree = "<group>"; };
 		C0DB47202ACB509B00FBAC23 /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		C0DE77D82B479EC5006BC54B /* ResultsSummaryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsSummaryGraphView.swift; sourceTree = "<group>"; };
+		C0DE77DC2B47C56D006BC54B /* SelectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionManager.swift; sourceTree = "<group>"; };
+		C0DE77DE2B47CE6D006BC54B /* CopyMeasurementsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyMeasurementsButton.swift; sourceTree = "<group>"; };
+		C0DE77E12B47CF69006BC54B /* DeleteMeasurementsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMeasurementsButton.swift; sourceTree = "<group>"; };
 		C0E8B7BF2B4327CA002CEBA8 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		C0E8B7C32B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistivityMeasurementInfo_Exportable.swift; sourceTree = "<group>"; };
 		C0E8B7C52B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineResistanceInfo_Exportable.swift; sourceTree = "<group>"; };
@@ -269,6 +275,7 @@
 				C036EAD02B0DBE8200CB02D6 /* AppController.swift */,
 				C0DB47182ACB4AAA00FBAC23 /* DataCollectionController.swift */,
 				C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */,
+				C0DE77DC2B47C56D006BC54B /* SelectionManager.swift */,
 				C0C2C0312AD8A54000E2385E /* Exporting */,
 				C094C19B2AC5F9D600E655CA /* Instrument Controllers */,
 			);
@@ -329,6 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				C0DB47142ACB40F500FBAC23 /* TabLabel.swift */,
+				C0DE77DE2B47CE6D006BC54B /* CopyMeasurementsButton.swift */,
+				C0DE77E12B47CF69006BC54B /* DeleteMeasurementsButton.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -454,6 +463,7 @@
 				C0FFEF412AF7510C00CCBD97 /* DataModel.swift in Sources */,
 				C0ED06B72B3545470050D626 /* SampleSettings.swift in Sources */,
 				C078BB002AD0A509002AF86B /* VISAInstrumentProtocol.swift in Sources */,
+				C0DE77DD2B47C56D006BC54B /* SelectionManager.swift in Sources */,
 				C08CA0B32B3F3D350082E4CB /* ResultsGraphViewModel.swift in Sources */,
 				C094C19F2AC5FA4900E655CA /* ReturnMode.swift in Sources */,
 				C0C2C0302AD8A48000E2385E /* Location.swift in Sources */,
@@ -464,6 +474,7 @@
 				C0C20EAB2B466AC4007EBA53 /* Sample_Exportable.swift in Sources */,
 				C0E8B7C02B4327CA002CEBA8 /* DataViewModel.swift in Sources */,
 				C0C2C0372AD8A9C200E2385E /* Statistics_Exportable.swift in Sources */,
+				C0DE77E22B47CF69006BC54B /* DeleteMeasurementsButton.swift in Sources */,
 				C0E8B7C62B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift in Sources */,
 				C0DB47082ACB313600FBAC23 /* Notifications.swift in Sources */,
 				C0A3659E2AC7D25A00EA2EB6 /* ResistanceUnits.swift in Sources */,
@@ -501,6 +512,7 @@
 				C0ED06AD2B34FA970050D626 /* LineResistanceSettings.swift in Sources */,
 				C094C1A12AC5FA6E00E655CA /* NanoVoltMeterController.swift in Sources */,
 				C094C19D2AC5F9EE00E655CA /* OmhMeterControllerProtocol.swift in Sources */,
+				C0DE77DF2B47CE6D006BC54B /* CopyMeasurementsButton.swift in Sources */,
 				C0DB47192ACB4AAA00FBAC23 /* DataCollectionController.swift in Sources */,
 				C0DE77D92B479EC5006BC54B /* ResultsSummaryGraphView.swift in Sources */,
 				C0C2C0332AD8A55E00E2385E /* Exportable.swift in Sources */,

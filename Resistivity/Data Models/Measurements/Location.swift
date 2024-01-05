@@ -22,6 +22,7 @@ class Location {
     /// When a new measurement is added, a notification is posted.
     var measurements: [Measurement] = [] {
         didSet {
+            
             NotificationCenter.default.post(name: .newMeasurementAdded, object: self)
         }
     }
@@ -65,6 +66,20 @@ extension Location {
         // This will trigger the didSet observer on the measurements property,
         // which posts a notification that a new measurement has been added.
         measurements.append(newMeasurement)
+    }
+}
+
+
+
+// MARK: - Remove Measurements
+extension Location {
+    func removeMeasurement(_ measurementsIn: [Measurement]) {
+        
+        let filteredMeasurements = measurements.filter({!measurementsIn.contains($0)})
+        
+        if filteredMeasurements.count != measurements.count {
+            measurements = filteredMeasurements
+        }
     }
 }
 

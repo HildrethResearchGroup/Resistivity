@@ -48,6 +48,7 @@ class DataViewModel: ObservableObject {
             .init(\.sampleID, order: SortOrder.forward),
         ]
         self.updateFlattenedMeasurement()
+        self.registerForNotifications()
     }
 }
 
@@ -66,15 +67,16 @@ extension DataViewModel {
     nonisolated private func updateFlattenedMeasurement() {
         // Thie status must be updated within the updateFlattenedMeasurement closure.  However, updating the DataModel's flattendMeasurements must be done on the MainActor's thread since DataModel is marked as @MainActor
         
+        
         Task {
             await MainActor.run {
-                var measurements: [Measurement] = []
+                var localMeasurements: [Measurement] = []
                 
                 for nextSample in dataModel.samples {
-                    measurements.append(contentsOf: nextSample.flattendMeasurements)
+                    localMeasurements.append(contentsOf: nextSample.flattendMeasurements)
                 }
                 
-                self.flattenedMeasurements =  measurements
+                self.flattenedMeasurements =  localMeasurements
                 self.updateStatistics()
             }
         }
@@ -87,7 +89,12 @@ extension DataViewModel {
     
     
     func filterMeasurements(_ measurementsIn: [Measurement], withString filterString: String) -> [Measurement] {
-        return measurementsIn.filter({$0.contains(information: filterString)})
+        if filterString.count != 0 {
+            return measurementsIn.filter({$0.contains(information: filterString)})
+        } else {
+            return measurementsIn
+        }
+       
     }
     
     
@@ -110,6 +117,6 @@ extension DataViewModel {
 // MARK: - Register for Notifications
 extension DataViewModel {
     private func registerForNotifications() {
-        NotificationCenter.default.addObserver(forName: .newMeasurementAdded, object: nil, queue: nil, using: updateFlattenedMeasurement(_:))
+        NotificationCenter.default.addObserver(forName: .newMeasurementAdded, object: nil, queue: .main, using: updateFlattenedMeasurement(_:))
     }
 }
