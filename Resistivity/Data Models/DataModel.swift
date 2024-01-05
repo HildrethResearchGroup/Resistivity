@@ -154,19 +154,9 @@ extension DataModel {
                 }
                 
                 flattendMeasurements =  measurements
-                // REMOVE
-                //self.updateStatistics()
             }
         }
     }
-    
-    // REMOVE
-    /*
-     func filterMeasurements(_ measurementsIn: [Measurement], withString filterString: String) -> [Measurement] {
-         return measurementsIn.filter({$0.contains(information: filterString)})
-     }
-     */
-    
 }
 
 

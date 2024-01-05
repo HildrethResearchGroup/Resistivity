@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 @MainActor
 class AppController: ObservableObject {
@@ -98,13 +99,12 @@ class AppController: ObservableObject {
 }
 
 
+// MARK: - Notifications
 extension AppController {
     
     private func registerForNotifications() {
-        
         NotificationCenter.default.addObserver(forName: .nanovoltmeterStatusDidChange, object: nil, queue: .current, using: updateNanovoltMeterStatus)
-        
-        
+        NotificationCenter.default.addObserver(forName: .copyMeasurements, object: nil, queue: .current, using: copyMeasurementsToClipboard(_:))
     }
     
     
@@ -116,14 +116,76 @@ extension AppController {
     /// - Parameter notification: nanovoltmeterStatusDidChange Notification
     nonisolated private func updateNanovoltMeterStatus(_ notification: Notification) {
         
-        // Thie status must be updated within the updatedNanovoltmeterStatus closure.  However, updating the AppController's nanoVoltMeterStatus must be done on the MainActor's thread since AppController is marked as @MainActor
+        // Thi status must be updated within the updatedNanovoltmeterStatus closure.  However, updating the AppController's nanoVoltMeterStatus must be done on the MainActor's thread since AppController is marked as @MainActor
         guard let status = notification.object as? EquipmentStatus else {return}
         Task {
             await MainActor.run {
                 self.nanoVoltMeterStatus = status
             }
         }
+    }
+}
+
+
+// MARK: - Exporting Files
+extension AppController {
+    func exportData(to url: URL?) throws {
+        guard let localURL = url else {throw ExportError.URLwasNil}
         
+        let extensionLessURL = localURL.deletingPathExtension()
+        let fileName = extensionLessURL.lastPathComponent
+        let saveDirectory = extensionLessURL.deletingLastPathComponent()
         
+        let rawDataFileName = fileName + "_RawData.csv"
+        let summaryDataFileName = fileName + "_SummaryData.csv"
+        
+        let rawDataURL = saveDirectory.appending(path: rawDataFileName)
+        let summaryDataURL = saveDirectory.appending(path: summaryDataFileName)
+        
+        let exportManager = ExportManager()
+        
+        try exportManager.export(self.dataModel.flattendMeasurements, to: rawDataURL)
+        
+        try exportManager.export(self.dataModel.samples, to: summaryDataURL)
+    }
+    
+    func exportCombinedData(to url: URL?) throws {
+        guard let localURL = url else {throw ExportError.URLwasNil}
+        
+        let exportManager = ExportManager()
+        let localMeasurements = self.dataModel.flattendMeasurements
+        let localSamples = self.dataModel.samples
+        
+        try exportManager.exportCombinedFile(measurements: localMeasurements, samples: localSamples, to: localURL)
+    }
+    
+    
+    enum ExportError: Error {
+        case URLwasNil
+    }
+}
+
+
+// MARK: - Copying
+extension AppController {
+    nonisolated private func copyMeasurementsToClipboard(_ notification: Notification) {
+        guard let measurements = notification.object as? [Measurement] else {return}
+        
+        Task {
+            await MainActor.run {
+                self.copyToClipboard(measurements)
+            }
+        }
+    }
+    
+    func copyToClipboard(_ measurements: [Measurement]) {
+        let em = ExportManager()
+        
+        let exportCSVString = em.csv(for: measurements)
+        
+        let pasteboard_general = NSPasteboard(name: .general)
+        
+        pasteboard_general.clearContents()
+        pasteboard_general.setString(exportCSVString, forType: .string)
     }
 }

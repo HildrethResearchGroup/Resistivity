@@ -17,13 +17,21 @@ struct ResultsTableView: View {
     @Binding var order: [KeyPathComparator<Measurement>]
     @Binding var searchString: String
     
+    @State var selection: Set<UUID> = []
+    
+    
     var body: some View {
-        Table(measurements, sortOrder: $order) {
-            TableColumn("Measurement #") {Text("\($0.globalMeasurementNumber)")}
+        Table(selection: $selection, sortOrder: $order) {
+            TableColumn("Measurement #", value: \.globalMeasurementNumber) {Text("\($0.globalMeasurementNumber)")}
             TableColumn("Resistance \(resistanceUnitsDisplay)", value: \.resistance) { Text("\($0.scaledResistance(resistanceUnits))") }
             TableColumn("Sample Name", value: \.sampleInfo.name)
             TableColumn("Location", value: \.locationInfo.name)
             TableColumn("SampleID", value: \.sampleID)
+        } rows: {
+            ForEach(measurements) {
+                TableRow($0)
+                    .contextMenu() { copyButton() }
+            }
         }
         .searchable(text: $searchString)
         .background(.white)
@@ -33,6 +41,26 @@ struct ResultsTableView: View {
     
     var resistanceUnitsDisplay: String { "[" + String(resistanceUnits.description) + "]" }
     
+}
+
+
+// MARK: - Copying
+extension ResultsTableView {
+    @ViewBuilder
+    func copyButton() -> some View {
+        Button("Copy") {
+            let copySelectionIDs = selection
+            let copyMeasurements = measurements.filter({ nextMeasurement in
+                copySelectionIDs.contains(nextMeasurement.id)
+            })
+            
+            NotificationCenter.default.post(name: .copyMeasurements, object: copyMeasurements)
+        }
+    }
+}
+
+extension Notification.Name {
+    static let copyMeasurements = Notification.Name("copyMeasurements")
 }
 
 

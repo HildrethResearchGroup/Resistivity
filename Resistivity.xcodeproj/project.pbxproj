@@ -35,6 +35,7 @@
 		C0A3659E2AC7D25A00EA2EB6 /* ResistanceUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A3659D2AC7D25A00EA2EB6 /* ResistanceUnits.swift */; };
 		C0A365A12AC7D4EF00EA2EB6 /* ConvertableUnits_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A365A02AC7D4EF00EA2EB6 /* ConvertableUnits_Protocol.swift */; };
 		C0B608982AC610E0008B0A39 /* Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B608972AC610E0008B0A39 /* Decoders.swift */; };
+		C0C20EAB2B466AC4007EBA53 /* Sample_Exportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C20EAA2B466AC4007EBA53 /* Sample_Exportable.swift */; };
 		C0C2C02E2AD8A41A00E2385E /* SampleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C2C02D2AD8A41A00E2385E /* SampleInfo.swift */; };
 		C0C2C0302AD8A48000E2385E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C2C02F2AD8A48000E2385E /* Location.swift */; };
 		C0C2C0332AD8A55E00E2385E /* Exportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C2C0322AD8A55E00E2385E /* Exportable.swift */; };
@@ -55,6 +56,7 @@
 		C0DB471B2ACB4F6A00FBAC23 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB471A2ACB4F6A00FBAC23 /* Measurement.swift */; };
 		C0DB471D2ACB4FFA00FBAC23 /* DelayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */; };
 		C0DB47212ACB509B00FBAC23 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB47202ACB509B00FBAC23 /* Sample.swift */; };
+		C0DE77D92B479EC5006BC54B /* ResultsSummaryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE77D82B479EC5006BC54B /* ResultsSummaryGraphView.swift */; };
 		C0E8B7C02B4327CA002CEBA8 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7BF2B4327CA002CEBA8 /* DataViewModel.swift */; };
 		C0E8B7C42B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7C32B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift */; };
 		C0E8B7C62B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B7C52B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift */; };
@@ -99,6 +101,8 @@
 		C0A3659D2AC7D25A00EA2EB6 /* ResistanceUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistanceUnits.swift; sourceTree = "<group>"; };
 		C0A365A02AC7D4EF00EA2EB6 /* ConvertableUnits_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertableUnits_Protocol.swift; sourceTree = "<group>"; };
 		C0B608972AC610E0008B0A39 /* Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoders.swift; sourceTree = "<group>"; };
+		C0C20EAA2B466AC4007EBA53 /* Sample_Exportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample_Exportable.swift; sourceTree = "<group>"; };
+		C0C20EAC2B467B25007EBA53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C0C2C02D2AD8A41A00E2385E /* SampleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInfo.swift; sourceTree = "<group>"; };
 		C0C2C02F2AD8A48000E2385E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C0C2C0322AD8A55E00E2385E /* Exportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exportable.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 		C0DB471A2ACB4F6A00FBAC23 /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayType.swift; sourceTree = "<group>"; };
 		C0DB47202ACB509B00FBAC23 /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
+		C0DE77D82B479EC5006BC54B /* ResultsSummaryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsSummaryGraphView.swift; sourceTree = "<group>"; };
 		C0E8B7BF2B4327CA002CEBA8 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		C0E8B7C32B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistivityMeasurementInfo_Exportable.swift; sourceTree = "<group>"; };
 		C0E8B7C52B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineResistanceInfo_Exportable.swift; sourceTree = "<group>"; };
@@ -161,6 +166,7 @@
 				C0DB47112ACB404500FBAC23 /* ResultsView.swift */,
 				C013247F2B106AA100DCAC6D /* ResultsTableView.swift */,
 				C08CA0B02B3F3D1C0082E4CB /* ResultsGraphView.swift */,
+				C0DE77D82B479EC5006BC54B /* ResultsSummaryGraphView.swift */,
 			);
 			path = "Results Views";
 			sourceTree = "<group>";
@@ -193,6 +199,7 @@
 		C094C1832AC5F91B00E655CA /* Resistivity */ = {
 			isa = PBXGroup;
 			children = (
+				C0C20EAC2B467B25007EBA53 /* Info.plist */,
 				C094C1842AC5F91B00E655CA /* ResistivityApp.swift */,
 				C094C1862AC5F91B00E655CA /* ContentView.swift */,
 				C094C19A2AC5F9B100E655CA /* Controllers */,
@@ -302,6 +309,7 @@
 				C0E8B7C32B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift */,
 				C0C2C0362AD8A9C200E2385E /* Statistics_Exportable.swift */,
 				C0E8B7C92B43D18F002CEBA8 /* SampleInfo_Exportable.swift */,
+				C0C20EAA2B466AC4007EBA53 /* Sample_Exportable.swift */,
 			);
 			path = Exporting;
 			sourceTree = "<group>";
@@ -453,6 +461,7 @@
 				C0DB471B2ACB4F6A00FBAC23 /* Measurement.swift in Sources */,
 				C0C2C02E2AD8A41A00E2385E /* SampleInfo.swift in Sources */,
 				C0D122732B4268EB00BBFFC8 /* ResistivityUnits.swift in Sources */,
+				C0C20EAB2B466AC4007EBA53 /* Sample_Exportable.swift in Sources */,
 				C0E8B7C02B4327CA002CEBA8 /* DataViewModel.swift in Sources */,
 				C0C2C0372AD8A9C200E2385E /* Statistics_Exportable.swift in Sources */,
 				C0E8B7C62B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift in Sources */,
@@ -493,6 +502,7 @@
 				C094C1A12AC5FA6E00E655CA /* NanoVoltMeterController.swift in Sources */,
 				C094C19D2AC5F9EE00E655CA /* OmhMeterControllerProtocol.swift in Sources */,
 				C0DB47192ACB4AAA00FBAC23 /* DataCollectionController.swift in Sources */,
+				C0DE77D92B479EC5006BC54B /* ResultsSummaryGraphView.swift in Sources */,
 				C0C2C0332AD8A55E00E2385E /* Exportable.swift in Sources */,
 				C04F9DCB2B390C4F00CC368C /* MeasurementSettings.swift in Sources */,
 				C011FCFF2B360088008F8066 /* LocationInfo.swift in Sources */,
@@ -636,9 +646,10 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Resistivity/Preview Content\"";
 				DEVELOPMENT_TEAM = Z553N3QGMH;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Resistivity/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -665,9 +676,10 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Resistivity/Preview Content\"";
 				DEVELOPMENT_TEAM = Z553N3QGMH;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Resistivity/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -23,21 +23,17 @@ struct ResistivityApp: App {
                 .environmentObject(appController)
                 .toolbar() {
                     ToolbarItemGroup(placement: .primaryAction) {
-                        Picker("Ω Units", selection: $resistanceUnits) {
-                            ForEach(ResistanceUnits.allCases) { units in
-                                Text(String(describing: units))
-                                
-                            }
-                        }
-                        Picker("Ω-m Units", selection: $resistivityUnits) {
-                            ForEach(ResistivityUnits.allCases) { units in
-                                Text(String(describing: units))
-                            }
-                        }
+                        Button_resistanceUnits()
+                        Button_resistivityUnits()
                         Button_measureResistanceWithNanovoltmeter()
                         Button_connectToNanoVoltmeter()
                     }
                 }
+        }
+        .commands {
+            CommandGroup(before: .saveItem) {
+                Button_export()
+            }
         }
         
         Settings {
@@ -84,7 +80,8 @@ extension ResistivityApp {
     }
 }
 
-// MARK: - Toolbar Nanovoltmeter Measure Button Implementation
+
+// MARK: - Toolbar Nanovoltmeter Measure Button
 extension ResistivityApp {
     @ViewBuilder
     func Button_measureResistanceWithNanovoltmeter() -> some View {
@@ -123,5 +120,57 @@ extension ResistivityApp {
             case .connected: return .green
             }
         }
+    }
+}
+
+
+// MARK: - Toolbar Units Picker Buttons
+extension ResistivityApp {
+    
+    @ViewBuilder
+    func Button_resistivityUnits() -> some View {
+        Picker("Ω-m Units", selection: $resistivityUnits) {
+            ForEach(ResistivityUnits.allCases) { units in
+                Text(String(describing: units))
+            }
+        }
+    }
+    
+    
+    @ViewBuilder
+    func Button_resistanceUnits() -> some View {
+        Picker("Ω Units", selection: $resistanceUnits) {
+            ForEach(ResistanceUnits.allCases) { units in
+                Text(String(describing: units))
+            }
+        }
+    }
+}
+
+
+// MARK: - File Export
+extension ResistivityApp {
+    func exportFileLocation() -> URL? {
+        let panel = NSSavePanel()
+        panel.title = "Export"
+        panel.allowedContentTypes = [.commaSeparatedText]
+        panel.nameFieldLabel = "Base File Name"
+        panel.canCreateDirectories = true
+        if panel.runModal() == .OK {
+            return panel.url
+        } else {return nil}
+    }
+    
+    @ViewBuilder
+    func Button_export() -> some View {
+        Button(action: {
+            let exportURL = exportFileLocation()
+            do {
+                try appController.exportCombinedData(to: exportURL)
+            } catch  {
+                print(error)
+            }
+        }, label: {Text("Export Data")})
+        .keyboardShortcut("s", modifiers: /*@START_MENU_TOKEN@*/.command/*@END_MENU_TOKEN@*/)
     }
 }

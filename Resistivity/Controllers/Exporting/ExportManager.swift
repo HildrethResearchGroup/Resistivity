@@ -15,6 +15,39 @@ struct ExportManager {
         
         try combinedData.write(to: targetURL, atomically: true, encoding: .utf8)
     }
+    
+    func export(_ samples: [Sample], to targetURL: URL) throws {
+        let exportStrings = self.collateSampleStatistics(samples)
+        
+        let combinedData = combineLines(for: exportStrings)
+        
+        try combinedData.write(to: targetURL, atomically: true, encoding: .utf8)
+    }
+    
+    func exportCombinedFile(measurements: [Measurement], samples: [Sample], to targetURL: URL) throws {
+        
+        // Get arrays of csv data lines
+        let summaryStrings = self.collateSampleStatistics(samples)
+        let measurementStrings = self.collateMeasurements(measurements)
+        
+        // Convert csv data lines to individual CSV strings
+        let summaryCSV = combineLines(for: summaryStrings)
+        let dataCSV = combineLines(for: measurementStrings)
+        
+        
+        let combinedCSV = "Summary Data\n\n" + summaryCSV + "\n\n\n\nRaw Data\n\n" + dataCSV
+        
+        try combinedCSV.write(to: targetURL, atomically: true, encoding: .utf8)
+        
+    }
+    
+    func csv(for measurements: [Measurement]) -> String {
+        let measurementStrings = collateMeasurements(measurements)
+        
+        let cvsOutput = self.csvString(for: measurementStrings)
+        
+        return cvsOutput
+    }
 }
 
 
@@ -29,7 +62,7 @@ extension ExportManager {
     }
 }
 
-// MARK: - Data to CVS
+// MARK: - Raw Data to CVS
 extension ExportManager {
     private func collateMeasurements(_ measurements: [Measurement]) -> [String] {
                 
@@ -72,31 +105,23 @@ extension ExportManager {
 }
 
 
-// MARK: - Headers
+// MARK: - Statistics to CVS
 extension ExportManager {
-    func generateHeader(equipmentInfo: String, forSamples samples: [Sample]) -> String {
-        var headerString = ""
-        headerString.append(equipmentInfo + "\n")
+    private func collateSampleStatistics(_ samples: [Sample]) -> [String] {
+        var dataStrings: [String] = []
         
+        guard let headerSample = samples.first else { return dataStrings }
         
-        let date = samples.first?.flattendMeasurements.first?.date ?? .now
-        let dateString = "Date Measured: " + date.formatted(.dateTime) + "\n"
-        headerString.append(dateString)
+        let header = headerSample.header()
         
-        let numberOfSamples = samples.count
-        headerString.append("Samples: \(numberOfSamples)")
+        dataStrings.append(csvString(for: header))
         
-        var allMeasurements: [Measurement] = []
         for nextSample in samples {
-            let nextMeasurements = nextSample.flattendMeasurements
-            allMeasurements.append(contentsOf: nextMeasurements)
+            let sampleData = nextSample.data()
+            
+            dataStrings.append(csvString(for: sampleData))
         }
-        headerString.append("Total # of Measurements: \(allMeasurements.count)\n")
         
-        var resistanceStatistics = Statistics<Measurement>(keyPath: \.resistance, name: "Resistance", units: "Ω")
-        
-        headerString.append(resistanceStatistics.exportFileHeader())
-        
-        return headerString
+        return dataStrings
     }
 }

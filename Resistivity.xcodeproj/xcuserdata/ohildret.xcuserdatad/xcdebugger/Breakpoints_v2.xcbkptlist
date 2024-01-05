@@ -23,49 +23,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5A59A4C4-428C-4BE9-8BEE-DDFD6F36575E"
+            uuid = "3109F870-B350-4C98-929D-444CD7BFB834"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Resistivity/Utilities/Array_Statistics.swift"
+            filePath = "Resistivity/Controllers/PasteBoardController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "standardDeviation(withPath:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "pushCSVStringToPasteboard(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5A59A4C4-428C-4BE9-8BEE-DDFD6F36575E - 9b855b0ed51132e1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Swift.Array.standardDeviation&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.FloatingPoint&gt;(withPath: Swift.KeyPath&lt;&#x3c4;_0_0, &#x3c4;_1_0&gt;) throws -&gt; Swift.Double"
-                  moduleName = "Resistivity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Utilities/Array_Statistics.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "1160">
-               </Location>
-               <Location
-                  uuid = "5A59A4C4-428C-4BE9-8BEE-DDFD6F36575E - 9b855b0ed51132e1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Swift.Array.standardDeviation&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.FloatingPoint&gt;(withPath: Swift.KeyPath&lt;&#x3c4;_0_0, &#x3c4;_1_0&gt;) throws -&gt; Swift.Double"
-                  moduleName = "Resistivity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ohildret/Documents/Code/Research/Mines/Resistivity/Resistivity/Utilities/Array_Statistics.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "1164">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB3BA80A-1A20-4BBF-AA93-E5291C187376"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Resistivity/Controllers/PasteBoardController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "pushCSVStringToPasteboard(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

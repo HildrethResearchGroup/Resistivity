@@ -15,9 +15,9 @@ class Sample {
     
     @Published var locations: [Location] = []
     
-    var resistanceStatistics = Statistics<Measurement>(keyPath: \.resistance, name: "Resistance", units: "Ω")
-    var resistivityStatistics = Statistics<Measurement>(keyPath: \.resistivity, name: "Resistivity", units: "Ω-m")
-    
+    @Published var resistanceStatistics = Statistics<Measurement>(keyPath: \.resistance, name: "Resistance", units: "Ω")
+    @Published var resistivityStatistics = Statistics<Measurement>(keyPath: \.resistivity, name: "Resistivity", units: "Ω-m")
+    @Published var lineResistanceStatistics = Statistics<Measurement>(keyPath: \.lineResistance, name: "Resistivity", units: "Ω-m")
     
     // MARK: - Convienence Getters
     var flattendMeasurements: [Measurement] {

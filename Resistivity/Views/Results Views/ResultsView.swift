@@ -19,10 +19,7 @@ struct ResultsView: View {
             ResultsGraphView(measurements: dataViewModel.measurements)
                 .background(.white)
                 .tabItem { Text("􁂥") }
-                .onAppear() {
-                    
-                }
-            Text("Mean")
+            ResultsSummaryGraphView(samples: dataViewModel.dataModel.samples)
                 .background(.white)
                 .tabItem { Text("μ") }
         }
