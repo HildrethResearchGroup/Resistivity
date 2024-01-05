@@ -25,7 +25,7 @@ struct ResistivityApp: App {
                     ToolbarItemGroup(placement: .primaryAction) {
                         Button_resistanceUnits()
                         Button_resistivityUnits()
-                        Button_measureResistanceWithNanovoltmeter()
+                        Button_measureResistanceWithNanovoltmeter().disabled(measureResistanceWithNanovoltmeterIsDisabled)
                         Button_connectToNanoVoltmeter()
                     }
                 }
@@ -128,8 +128,8 @@ extension ResistivityApp {
         get {
             switch appController.nanoVoltMeterStatus {
             case .measuring: return .blue
-            case .disconnected: return .red
-            case .connecting: return .yellow
+            case .disconnected: return .gray
+            case .connecting: return .gray
             case .connected: return .green
             }
         }

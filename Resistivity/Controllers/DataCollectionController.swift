@@ -41,7 +41,7 @@ class DataCollectionController: Observable {
     }
     
     var returnMode: ReturnMode = .identifier
-    
+        
     
     @Published var equipmentStatus: EquipmentStatus = .disconnected {
         didSet {
