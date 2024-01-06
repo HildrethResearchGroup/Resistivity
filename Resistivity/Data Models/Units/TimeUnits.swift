@@ -7,9 +7,6 @@
 
 import Foundation
 
-
-
-
 /// An enumeration representing different time units that can be converted.
 ///
 /// Seconds are the base unit.
@@ -17,11 +14,11 @@ import Foundation
 /// It can be used to convert between these units and perform calculations with time values.
 ///
 /// Cases:
-///   - microsecons: 1.0E-6 sec
-///   - milliseconds: 1.0E-3 sec
-///   - seconds: 1.0 sec
-///   - minutes: 60 sec
-///   - hours: 3,600 sec
+///   - microseconds: Represents a microsecond, which is 1.0E-6 of a second.
+///   - milliseconds: Represents a millisecond, which is 1.0E-3 of a second.
+///   - seconds: Represents a second, the base unit of time in this context.
+///   - minutes: Represents a minute, which is equivalent to 60 seconds.
+///   - hours: Represents an hour, which is equivalent to 3,600 seconds.
 ///
 enum TimeUnits: String, Codable {
     case microseconds
@@ -31,13 +28,13 @@ enum TimeUnits: String, Codable {
     case hours
 }
 
-
 /// Extension to make `TimeUnits` conform to `ConvertableUnits` protocol.
 extension TimeUnits: ConvertableUnits {
     
-    /// Provides the scale factor to go from the base value to target Time Units
-    /// - Parameter unitIn: Time Units to scale from the base units to
-    /// - Returns: Scale factor to go from the unitsIn to the base units.
+    /// Provides the scale factor to convert from the base unit (seconds) to the specified time unit.
+    ///
+    /// - Parameter unitIn: The `TimeUnits` value to which the conversion scale factor is required.
+    /// - Returns: The scale factor as a `Double` to convert from seconds to the specified unit.
     func scaleFactor(for unitIn: TimeUnits) -> Double {
         switch unitIn {
         case .microseconds: return 1.0E6
@@ -48,16 +45,14 @@ extension TimeUnits: ConvertableUnits {
         }
     }
     
-    
-    /// Scales a value from set Resistance units to the base units
-    /// - Parameter valueIn: Double value to scale
-    /// - Returns: Scaled value
+    /// Scales a value from the base unit (seconds) to the unit represented by the instance.
+    ///
+    /// - Parameter valueIn: The value in seconds to be scaled.
+    /// - Returns: The scaled value as a `Double` in the unit represented by the instance.
     func scaledFromBaseValue(_ valueIn: Double) -> Double {
         let scalefactor = scaleFactor(for: self)
-        
         return valueIn * scalefactor
     }
-    
     
     /// Returns the scale factor for the current time unit instance.
     ///
@@ -69,29 +64,28 @@ extension TimeUnits: ConvertableUnits {
         return scaleFactor(for: self)
     }
     
-    
-    /// Scales a value from set Resistance units to the base units
+    /// Scales a value from the base unit (seconds) to the unit represented by the instance.
     ///
-    /// - Parameters:
-    ///    - valueIn: Double value to scale
+    /// This method is a convenience wrapper around the `scaledFromBaseValue(_:)` method that uses the current instance as the parameter.
+    /// It's used to scale a value from seconds to the unit represented by the instance.
     ///
-    /// - Returns: Scaled value
+    /// - Parameter valueIn: The value in seconds to be scaled.
+    /// - Returns: The scaled value as a `Double` in the unit represented by the instance.
     func scaledFromBaseSeconds(_ valueIn: Double) -> Double {
         return scaledFromBaseValue(valueIn)
     }
 }
 
-
+/// Extension to conform `TimeUnits` to `CustomStringConvertible` for better string representation.
 extension TimeUnits: CustomStringConvertible {
+    /// Provides a textual representation of the time unit.
     var description: String {
-        get {
-            switch self {
-            case .microseconds: return "µs"
-            case .milliseconds: return "ms"
-            case .seconds: return "s"
-            case .minutes: return "min"
-            case .hours: return "hrs"
-            }
+        switch self {
+        case .microseconds: return "µs"
+        case .milliseconds: return "ms"
+        case .seconds: return "s"
+        case .minutes: return "min"
+        case .hours: return "hrs"
         }
     }
 }

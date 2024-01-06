@@ -12,7 +12,6 @@ struct ResistivityApp: App {
     @NSApplicationDelegateAdaptor(ResistivityAppDelegate.self) var appDelegate
     @StateObject var appController = AppController()
     
-    
     @AppStorage("resistanceUnits") var resistanceUnits: ResistanceUnits = .ohms
     @AppStorage("resistivityUnits") var resistivityUnits: ResistivityUnits = .ohm_meters
     

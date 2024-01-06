@@ -7,21 +7,14 @@
 
 import Foundation
 
-/// Used to set the units for resistance.  Base value is set to 1.0 Ohms (Ω).
+/// An enumeration representing different units of electrical resistance.
 ///
-/// The ResistanceUnits enum is used to scale the values of a measured resistance from the base units (Ohms) to a new unit.
-///
-/// Cases:
-///   - nanoOhms: 1.0E-9 Ω
-///   - microOhms: 1.0E-6 Ω
-///   - milliOhms: 1.0E-3 Ω
-///   - ohms: 1.0 Ω
-///   - kiloOhms: 1.0E3 Ω
-///   - megaOhms: 1.0E6 Ω
-///   - gigOhms: 1.0E9 Ω
-///
+/// This enumeration provides a set of resistance units ranging from nanoOhms to gigOhms,
+/// each with an associated raw value that represents the unit's string representation.
+/// It conforms to `Codable` for easy serialization, `CaseIterable` for iterating over all cases,
+/// and `Identifiable` for use in SwiftUI or other frameworks that require unique identification of enum cases.
 enum ResistanceUnits: String, Codable, CaseIterable, Identifiable {
-    var id: Self {self}
+    var id: Self { self }
     
     case nanoOhms
     case microOhms
@@ -30,15 +23,14 @@ enum ResistanceUnits: String, Codable, CaseIterable, Identifiable {
     case kiloOhms
     case megaOhms
     case gigOhms
-    
 }
-
 
 /// Extension to make `ResistanceUnits` conform to `ConvertableUnits` protocol.
 extension ResistanceUnits: ConvertableUnits {
-    /// Provides the scale factor to go from the base value to target Resistance Units
-    /// - Parameter unitIn: Resistance Units to scale from the base units to
-    /// - Returns: Scale factor to go from the unitsIn to the base units.
+    /// Provides the scale factor to convert a resistance value from the specified unit to Ohms.
+    ///
+    /// - Parameter unitIn: The unit from which to convert.
+    /// - Returns: The scale factor to convert from the specified unit to Ohms.
     func scaleFactor(for unitIn: ResistanceUnits) -> Double {
         switch unitIn {
         case .nanoOhms: return 1.0E9
@@ -51,8 +43,7 @@ extension ResistanceUnits: ConvertableUnits {
         }
     }
     
-    
-    /// Returns the scale factor for the current unit to convert to base units (Ohms).
+    /// Returns the scale factor for the current unit to convert to Ohms.
     ///
     /// This method is a convenience wrapper around the `scaleFactor(for:)` method, using the current unit instance.
     ///
@@ -61,29 +52,27 @@ extension ResistanceUnits: ConvertableUnits {
         scaleFactor(for: self)
     }
     
-    
-    
-    /// Scales a value from set Resistance units to the base units
-    /// - Parameter valueIn: Double value to scale
-    /// - Returns: Scaled value
+    /// Scales a resistance value from the base unit (Ohms) to the current unit.
+    ///
+    /// - Parameter valueIn: The resistance value in Ohms to be scaled.
+    /// - Returns: The scaled resistance value in the current unit.
     func scaledFromBaseValue(_ valueIn: Double) -> Double {
         let scalefactor = scaleFactor(for: self)
-        
         return valueIn * scalefactor
     }
     
-    
-    
-    /// Scales a value from set Resistance units to Ohms
-    /// - Parameter valueIn: Double value to scale
-    /// - Returns: Scaled value
+    /// Scales a resistance value from Ohms to the current unit.
+    ///
+    /// This method is equivalent to `scaledFromBaseValue(_:)` and is provided for clarity when working specifically with Ohms.
+    ///
+    /// - Parameter valueIn: The resistance value in Ohms to be scaled.
+    /// - Returns: The scaled resistance value in the current unit.
     func scaledFromBaseOhms(_ valueIn: Double) -> Double {
         return scaledFromBaseValue(valueIn)
     }
 }
 
-
-
+/// Extension to provide a textual representation of the `ResistanceUnits`.
 extension ResistanceUnits: CustomStringConvertible {
     var description: String {
         get {

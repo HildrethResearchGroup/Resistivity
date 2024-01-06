@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class Sample {
     var id = UUID()
     

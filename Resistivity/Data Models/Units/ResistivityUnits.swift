@@ -10,20 +10,19 @@ import Foundation
 /// An enumeration representing different units of resistivity.
 ///
 /// Cases:
-///   - microOhm_centimeters: 1.0E-8 Ω-m
-///   - ohm_micrometers:  1.0E-6 Ω-m
-///   - ohm_millimeters: 1.0E-3 Ω-m
-///   - ohm_meters: 1.0 Ω-m
+///   - microOhm_centimeters: Represents resistivity in microohm-centimeters (1.0E-8 Ω-m).
+///   - ohm_micrometers: Represents resistivity in ohm-micrometers (1.0E-6 Ω-m).
+///   - ohm_millimeters: Represents resistivity in ohm-millimeters (1.0E-3 Ω-m).
+///   - ohm_meters: Represents resistivity in ohm-meters (1.0 Ω-m).
 enum ResistivityUnits: String, Codable, CaseIterable, Identifiable {
-    var id: Self {self}
+    /// The unique identifier for each resistivity unit case.
+    var id: Self { self }
     
     case microOhm_centimeters
     case ohm_micrometers
     case ohm_millimeters
     case ohm_meters
 }
-
-
 
 /// Extension to make `ResistivityUnits` conform to `ConvertableUnits` protocol.
 extension ResistivityUnits: ConvertableUnits {
@@ -50,7 +49,7 @@ extension ResistivityUnits: ConvertableUnits {
     /// - Parameter valueIn: The resistivity value in ohm meters to be converted.
     /// - Returns: The converted resistivity value in the current unit.
     func scaledFromBaseValue(_ valueIn: Double) -> Double {
-        return valueIn * self.scaleFactor()
+        return valueIn / self.scaleFactor()
     }
     
     /// Converts a resistivity value from ohm meters to the current unit.
@@ -63,17 +62,15 @@ extension ResistivityUnits: ConvertableUnits {
     
 }
 
-
-
+/// Extension to provide a custom string representation for `ResistivityUnits`.
 extension ResistivityUnits: CustomStringConvertible {
+    /// A string representation of the resistivity unit.
     var description: String {
-        get {
-            switch self {
-            case .microOhm_centimeters: return "µΩ-cm"
-            case .ohm_micrometers: return "Ω-µm"
-            case .ohm_millimeters: return "Ω-mm"
-            case .ohm_meters: return "Ω-m"
-            }
+        switch self {
+        case .microOhm_centimeters: return "µΩ-cm"
+        case .ohm_micrometers: return "Ω-µm"
+        case .ohm_millimeters: return "Ω-mm"
+        case .ohm_meters: return "Ω-m"
         }
     }
 }
