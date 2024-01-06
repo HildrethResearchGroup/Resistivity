@@ -51,7 +51,7 @@ extension Location {
     func addMeasurement(withResistance resistanceIn: Double, sampleInfo: SampleInfo, resistivityInfo: ResistivityMeasurementInfo, lineResistanceInfo: LineResistanceInfo, globalMeasurementNumber: Int) {
         
         // Increment the measurement number to reflect a new measurement being added.
-        info.measurementNumber += 1
+        info.measurementNumber = measurements.count + 1
         
         // Create a new Measurement instance using the provided resistance value, sample information,
         // location information, resistivity information, line resistance information, and a global measurement number.

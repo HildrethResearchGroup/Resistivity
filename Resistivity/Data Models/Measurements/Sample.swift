@@ -45,7 +45,6 @@ class Sample {
     }
     
     
-    
     private func updateStatistics() {
         let localMeasurements = flattendMeasurements
         resistanceStatistics.update(with: localMeasurements)
@@ -74,7 +73,6 @@ extension Sample {
         
         //
         if self.isANewLocationNeeded(withInfo: locationInfo) {
-            
             createNewLocation(withInfo: locationInfo)
         }
         
@@ -91,6 +89,8 @@ extension Sample {
                                 globalMeasurementNumber: globalMeasurementNumber)
         
     }
+    
+    
     
     // MARK: - Location Management
     private func isANewLocationNeeded(withInfo locationInfo: LocationInfo) -> Bool {
@@ -110,10 +110,10 @@ extension Sample {
         
         let newLocationNumber = locations.count + 1
         
-        var locationInfo = locationInfo
-        locationInfo.locationNumber = newLocationNumber
+        var localLocationInfo = locationInfo
+        localLocationInfo.locationNumber = newLocationNumber
         
-        let newLocation = Location(locationInfo)
+        let newLocation = Location(localLocationInfo)
         
         locations.append(newLocation)
     }

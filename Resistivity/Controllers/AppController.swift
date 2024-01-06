@@ -167,34 +167,3 @@ extension AppController {
         case URLwasNil
     }
 }
-
-/*
- 
- // MARK: - Copying
- extension AppController {
- nonisolated private func copyMeasurementsToClipboard(_ notification: Notification) {
- guard let measurements = notification.object as? [Measurement] else {return}
- 
- Task {
- await MainActor.run {
- self.copyToClipboard(measurements)
- }
- }
- }
- 
- func copyToClipboard(_ measurements: [Measurement]) {
- let em = ExportManager()
- 
- let exportCSVString = em.csv(for: measurements)
- 
- let pasteboard_general = NSPasteboard(name: .general)
- 
- pasteboard_general.clearContents()
- pasteboard_general.setString(exportCSVString, forType: .string)
- }
- }
- 
- extension Notification.Name {
-     static let copyMeasurements = Notification.Name("copyMeasurements")
- }
- */
