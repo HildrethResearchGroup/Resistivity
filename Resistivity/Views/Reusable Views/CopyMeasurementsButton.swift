@@ -22,7 +22,8 @@ struct CopyMeasurementsButton: View {
 struct CopyMeasurementsButton_Previews: PreviewProvider {
     static var previews: some View {
         let dataModel = DataModel(withInitialData: true)
-        let selectionManager = SelectionManager(dataModel: dataModel)
+        let dataViewModel = DataViewModel(dataModel: dataModel)
+        let selectionManager = SelectionManager(dataViewModel: dataViewModel)
         CopyMeasurementsButton(selectionManager: selectionManager)
     }
 }

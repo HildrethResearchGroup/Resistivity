@@ -24,7 +24,8 @@ struct DeleteMeasurementsButton: View {
 struct DeleteMeasurementsButton_Previews: PreviewProvider {
     static var previews: some View {
         let dataModel = DataModel(withInitialData: true)
-        let selectionManager = SelectionManager(dataModel: dataModel)
+        let dataViewModel = DataViewModel(dataModel: dataModel)
+        let selectionManager = SelectionManager(dataViewModel: dataViewModel)
         DeleteMeasurementsButton(selectionManager: selectionManager)
     }
 }

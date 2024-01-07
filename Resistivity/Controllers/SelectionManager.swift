@@ -12,20 +12,22 @@ import AppKit
 /// It interacts with the `DataModel` to filter and manipulate selected measurements.
 @MainActor
 class SelectionManager: ObservableObject {
-    private var dataModel: DataModel
+    //private var dataModel: DataModel
+    private var dataViewModel: DataViewModel
+    
     @Published var selection_measurements: Set<UUID> = []
     var numberOfSelectedMeasurements: Int {selection_measurements.count}
     
     /// Initializes a new SelectionManager with a given DataModel.
     /// - Parameter dataModel: The `DataModel` instance that contains the measurements.
-    init(dataModel: DataModel) {
-        self.dataModel = dataModel
+    init(dataViewModel: DataViewModel) {
+        self.dataViewModel = dataViewModel
     }
     
     /// Retrieves the currently selected measurements from the data model.
     /// - Returns: An array of `Measurement` objects that are currently selected.
     func selectedMeasurements() -> [Measurement] {
-        let localMeasurements = dataModel.flattendMeasurements
+        let localMeasurements = dataViewModel.dataModel.flattendMeasurements
         
         let copySelectionIDs = selection_measurements
         let copyMeasurements = localMeasurements.filter({ nextMeasurement in
@@ -55,11 +57,18 @@ class SelectionManager: ObservableObject {
     
     /// Deletes the selected measurements from the data model.
     func deleteSelectedMeasurements() {
-        dataModel.deleteMeasurements(selectedMeasurements())
+        dataViewModel.dataModel.deleteMeasurements(selectedMeasurements())
     }
     
     /// Clears the current selection of measurements.
     func clearMeasurementsSelection() {
         selection_measurements.removeAll()
+    }
+    
+    /// Selects all measurements.
+    func selectAllMeasurements() {
+        let allmeasurements = dataViewModel.measurements.map({$0.id})
+        
+        selection_measurements = Set<UUID>(allmeasurements)
     }
 }

@@ -49,33 +49,23 @@ class DataCollectionController: Observable {
         }
     }
     
-    func createOhmMeter() throws {
+    func createOhmMeter() async throws {
         guard let localIPAddress = ipAddress else { throw DataCollectionError.noIPAddress }
         guard let localPort = port else { throw DataCollectionError.noPort }
         
         equipmentStatus = .connecting
         
-        
-        Task {
-            guard let meter = await NanoVoltMeterController(ipAddress: localIPAddress, port: localPort) else {
-                equipmentStatus = .disconnected
-                throw DataCollectionError.couldNotCreateOhmMeter
-            }
+        guard let meter = await NanoVoltMeterController(ipAddress: localIPAddress, port: localPort) else {
+            equipmentStatus = .disconnected
             
-            ohmMeter = meter
-            // equipmentStatus = .connected
-            
-            if ohmMeter != nil {
-                equipmentStatus = .connected
-            }
-            
-            if let info =  try? await self.getInformation() {
-                print(info)
-            } else {
-                print("Could not get info at end of createOhmMeter")
-            }
-
+            throw DataCollectionError.couldNotCreateOhmMeter
         }
+        
+        ohmMeter = meter
+        equipmentStatus = .connected
+        
+        let _ =  try await self.getInformation()
+
     }
     
     enum DataCollectionError: Error {
@@ -175,8 +165,8 @@ extension DataCollectionController {
          }
          
         guard let info = try await ohmMeter?.getIdentifier() else {
-            //throw DataCollectionError.couldNotGetInstrumentInformation
-            return "Could Not Get Identifier"
+            throw DataCollectionError.couldNotGetInstrumentInformation
+            //return "Could Not Get Identifier"
         }
         
         return info

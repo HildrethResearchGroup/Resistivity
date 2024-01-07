@@ -15,6 +15,8 @@ struct ResistivityApp: App {
     @AppStorage("resistanceUnits") var resistanceUnits: ResistanceUnits = .ohms
     @AppStorage("resistivityUnits") var resistivityUnits: ResistivityUnits = .ohm_meters
     
+    @State var presentConnectionAlert = false
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -41,10 +43,8 @@ struct ResistivityApp: App {
             }
             CommandGroup(after: .pasteboard) {
                 Divider()
-                Button("Clear Selection") {
-                    appController.selectionManager.clearMeasurementsSelection()
-                }
-                .keyboardShortcut(.escape, modifiers: .command)
+                Button_selectAll()
+                Button_clearAll()
             }
         }
         
@@ -74,12 +74,14 @@ extension ResistivityApp {
     }
     
     func connect() {
-        do {
-            try appController.collectionController.createOhmMeter()
-        } catch {
-            print("Could Not Create Ohm Meter")
-            print(error)
+        Task {
+            do {
+                try await appController.collectionController.createOhmMeter()
+            } catch {
+                self.presentConnectionAlert = true
+            }
         }
+        
     }
     
     @ViewBuilder
@@ -89,17 +91,38 @@ extension ResistivityApp {
                 .foregroundStyle(voltmeterColor())
                 .padding([.leading, .trailing], 5.0)
         }.help(tip_connectButton())
+            .alert("Connection Error", isPresented: $presentConnectionAlert, actions: {
+                Button("Close") {presentConnectionAlert = false}
+            }, message: {
+                Text(connectionAlertMessage())
+            })
     }
     
     func tip_connectButton() -> String {
         var tipText = ""
         switch appController.nanoVoltMeterStatus {
-            case .connected: tipText = "Connected to: \(appController.information)"
-            case .connecting: tipText = "Connecting to Nanovoltmeter"
-            case .measuring: tipText = "Measurement in Progress"
-            case .disconnected: tipText = "Connect to Nanovoltmeter"
+        case .connected: tipText = "Connected to: \(appController.information)"
+        case .connecting: tipText = "Connecting to Nanovoltmeter"
+        case .measuring: tipText = "Measurement in Progress"
+        case .disconnected: tipText = "Connect to Nanovoltmeter"
         }
         return tipText
+    }
+    
+    func connectionAlertMessage() -> String {
+        
+        
+        
+        if appController.collectionController.ipAddress != nil && appController.collectionController.port != nil {
+            let address = appController.collectionController.ipAddress!
+            let port = appController.collectionController.port!
+            let message = "Could not connect to Nanovoltmeter at: \(address):\(port)).\nPossible solutions:\nCheck network connections & permissions/blockers.  Verify instrument is on, GPID adapter is powered, cables are connected."
+            return message
+        } else {
+            let message = "Could not connect to Nanovoltmeter.\nIP Address or Port Missing.  Update these values in Settings."
+            return message
+        }
+        
     }
 }
 
@@ -208,5 +231,27 @@ extension ResistivityApp {
         }, label: {Text("Export Data")})
         .keyboardShortcut("s", modifiers: /*@START_MENU_TOKEN@*/.command/*@END_MENU_TOKEN@*/)
         .help("Export Summary and Raw Data as csv file")
+    }
+}
+
+
+// MARK: - Selection Menu Buttons
+extension ResistivityApp {
+    @ViewBuilder
+    func Button_selectAll() -> some View {
+        Button("Select All") {
+            appController.selectionManager.selectAllMeasurements()
+        }
+        .keyboardShortcut("a", modifiers: .command)
+        .help("Select all measurements")
+    }
+    
+    @ViewBuilder
+    func Button_clearAll() -> some View {
+        Button("Clear Selection") {
+            appController.selectionManager.clearMeasurementsSelection()
+        }
+        .keyboardShortcut(.escape, modifiers: .command)
+        .help("Clear Selection")
     }
 }

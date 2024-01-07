@@ -14,7 +14,11 @@ class DataViewModel: ObservableObject {
     @Published var dataModel: DataModel
     
     /// The search string used for filtering measurements.
-    @Published var search: String = ""
+    @Published var search: String = "" {
+        didSet {
+            self.updateFlattenedMeasurement()
+        }
+    }
     
     /// The array of comparators used for sorting measurements. When the order is changed, the sorted measurements are updated.
     @Published var order: [KeyPathComparator<Measurement>] {

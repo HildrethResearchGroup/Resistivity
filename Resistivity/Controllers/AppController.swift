@@ -27,13 +27,18 @@ class AppController: ObservableObject {
     
     var globalMeasurementNumber = 1
     
+    
     init() {
         collectionController = DataCollectionController()
         
-        let localDataModel = DataModel(withInitialData: true)
+        // let localDataModel = DataModel(withInitialData: true)
+        let localDataModel = DataModel()
+        
         dataModel = localDataModel
-        dataViewModel = DataViewModel(dataModel: localDataModel)
-        selectionManager = SelectionManager(dataModel: localDataModel)
+        
+        let localDataViewModel = DataViewModel(dataModel: localDataModel)
+        dataViewModel = localDataViewModel
+        selectionManager = SelectionManager(dataViewModel: DataViewModel(dataModel: localDataModel))
         
         registerForNotifications()
     }
