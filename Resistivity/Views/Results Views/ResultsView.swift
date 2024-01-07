@@ -25,7 +25,7 @@ struct ResultsView: View {
                 .tabItem { Text("􁂥")
                         .help("Graph view of resistance data")
                 }
-            ResultsSummaryGraphView(samples: dataViewModel.dataModel.samples)
+            ResultsSummaryGraphView(samples: dataViewModel.filteredSamples)
                 .background(.white)
                 .tabItem { Text("μ")
                         .help("Graph view of summary data")

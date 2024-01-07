@@ -45,6 +45,22 @@ class DataViewModel: ObservableObject {
     @Published var measurements: [Measurement] = []
     
     
+    var filteredSamples: [Sample] {
+        if search.count == 0 {
+            return dataModel.samples
+        } else {
+            var localSamples: [Sample] = []
+            
+            for nextSample in dataModel.samples {
+                if nextSample.flattendMeasurements.filter({$0.contains(information: search)}).count != 0 {
+                    localSamples.append(nextSample)
+                }
+            }
+            return localSamples
+        }
+    }
+    
+    
     // MARK: - Statistics Properties
     
     /// Statistics for resistance measurements, including the name and units for display purposes.

@@ -104,12 +104,12 @@ extension Measurement {
     func contains(information infoString: String) -> Bool {
         
         if infoString.isEmpty { return true }
+         
+        if self.sampleInfo.name.localizedCaseInsensitiveContains(infoString) { return true }
         
-        if self.sampleInfo.name.contains(infoString) { return true }
+        if self.locationInfo.name.localizedCaseInsensitiveContains(infoString) { return true }
         
-        if self.locationInfo.name.contains(infoString) { return true }
-        
-        if self.sampleID.contains(infoString) { return true }
+        if self.sampleID.localizedCaseInsensitiveContains(infoString) { return true }
         
         return false
     }
