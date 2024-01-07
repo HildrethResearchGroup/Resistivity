@@ -16,13 +16,21 @@ struct ResultsView: View {
         TabView {
             ResultsTableView(measurements: dataViewModel.measurements, selectionManager: appController.selectionManager, order: $dataViewModel.order, searchString: $dataViewModel.search)
                 .background(.white)
-                .tabItem { Text("􀏣") }
+                .tabItem { Text("􀏣")
+                        .help("Table view of raw data")
+                }
+                
             ResultsGraphView(measurements: dataViewModel.measurements)
                 .background(.white)
-                .tabItem { Text("􁂥") }
+                .tabItem { Text("􁂥")
+                        .help("Graph view of resistance data")
+                }
             ResultsSummaryGraphView(samples: dataViewModel.dataModel.samples)
                 .background(.white)
-                .tabItem { Text("μ") }
+                .tabItem { Text("μ")
+                        .help("Graph view of summary data")
+                }
+                
         }
     }
 }

@@ -24,7 +24,8 @@ struct SampleInformationView: View {
                     .alignmentGuide(.textFieldAlignmentGuide) {context in
                         context[.leading]
                     }
-                    .frame(minWidth: 200, idealWidth: 300, maxWidth: 350)
+                    .frame(width: 300)
+                    .help("What is the Sample's name or ID?  Example:  RSI-S23 - Humidty Tests-50% rh, 100 ˚C, 20 layers")
             }
             HStack {
                 Text("Location:")
@@ -32,7 +33,8 @@ struct SampleInformationView: View {
                     .alignmentGuide(.textFieldAlignmentGuide) {context in
                         context[.leading]
                     }
-                    .frame(minWidth: 200, idealWidth: 300, maxWidth: 350)
+                    .frame(width: 300)
+                    .help("Where on the sample is the measurement being collected?  Examples: Right left corner, center, Line 5, etc.")
                 //Text("TextField: Measurement Location")
             }
             

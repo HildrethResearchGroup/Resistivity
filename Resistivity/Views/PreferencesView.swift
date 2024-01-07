@@ -17,9 +17,11 @@ struct PreferencesView: View {
             Text("IP Address:")
             TextField("", text: $ipAddress)
                 .padding(.trailing)
+                .help("Enter the Nanovoltmeter's IP Address")
             
             Text("Port:")
             TextField("", value: $port, formatter: format)
+                .help("Enter the Nanovoltmeter's Port Number")
         }
         .padding()
         

@@ -18,7 +18,7 @@ struct ResistivityApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .frame(minWidth: 100, maxWidth: .infinity)
+                .frame(minWidth: 400, maxWidth: .infinity, minHeight: 600, maxHeight: .infinity)
                 .environmentObject(appController)
                 .toolbar() {
                     ToolbarItemGroup(placement: .primaryAction) {
@@ -88,7 +88,18 @@ extension ResistivityApp {
             Text("􀋦")
                 .foregroundStyle(voltmeterColor())
                 .padding([.leading, .trailing], 5.0)
+        }.help(tip_connectButton())
+    }
+    
+    func tip_connectButton() -> String {
+        var tipText = ""
+        switch appController.nanoVoltMeterStatus {
+            case .connected: tipText = "Connected to: \(appController.information)"
+            case .connecting: tipText = "Connecting to Nanovoltmeter"
+            case .measuring: tipText = "Measurement in Progress"
+            case .disconnected: tipText = "Connect to Nanovoltmeter"
         }
+        return tipText
     }
 }
 
@@ -102,6 +113,7 @@ extension ResistivityApp {
                 .foregroundStyle(measureResistanceButtonColor)
                 .disabled(measureResistanceWithNanovoltmeterIsDisabled)
                 .padding([.leading, .trailing], 5.0)
+                .help(tip_measurementButton)
         }
     }
     
@@ -133,6 +145,15 @@ extension ResistivityApp {
             }
         }
     }
+    
+    var tip_measurementButton: String {
+        switch appController.nanoVoltMeterStatus {
+        case .connected: "Take a measurement"
+        case .connecting: "Nanovoltmeter connection in progress."
+        case .disconnected: "Cannot take a measurement until the Nanovoltmeter is connected"
+        case .measuring: "Measurement in progress"
+        }
+    }
 }
 
 
@@ -146,6 +167,7 @@ extension ResistivityApp {
                 Text(String(describing: units))
             }
         }
+        .help("Select Resistivity Units")
     }
     
     
@@ -156,6 +178,7 @@ extension ResistivityApp {
                 Text(String(describing: units))
             }
         }
+        .help("Select Resistance Units")
     }
 }
 
@@ -184,5 +207,6 @@ extension ResistivityApp {
             }
         }, label: {Text("Export Data")})
         .keyboardShortcut("s", modifiers: /*@START_MENU_TOKEN@*/.command/*@END_MENU_TOKEN@*/)
+        .help("Export Summary and Raw Data as csv file")
     }
 }

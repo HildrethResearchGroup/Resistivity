@@ -14,6 +14,7 @@ struct ResistivitySettingsView: View {
     var body: some View {
         Form {
             Toggle("Calculate Resistivity", isOn: $settings.shouldCalculateResistivity)
+                .help(settings.shouldCalculateResistivity ? "Resistivity will be calculated.  Toggle to turn off calculations" : "Resistivity won't be calculated.  Toggle to turn on calculations")
             TextField("Thickness", value: $settings.thickness, format: .number)
                 .help("Thickness [m]")
                 .disabled(!settings.shouldCalculateResistivity)

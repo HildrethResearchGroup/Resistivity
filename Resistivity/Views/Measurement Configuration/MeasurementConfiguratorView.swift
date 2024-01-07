@@ -16,6 +16,7 @@ struct MeasurementConfiguratorView: View {
             HStack {
                 Text("# of Measurements:")
                 TextField("# of Measurements", value: $appController.measurementSettings.numberOfMeasurements, format: .number)
+                    .help("# of measurements to take at a time.")
                     .frame(width: 100)
             }
             Divider()

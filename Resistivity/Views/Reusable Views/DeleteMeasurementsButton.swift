@@ -14,6 +14,7 @@ struct DeleteMeasurementsButton: View {
             selectionManager.deleteSelectedMeasurements()
         }
         .keyboardShortcut(.delete)
+        .help("Delected the \(selectionManager.numberOfSelectedMeasurements) selected measurements.")
     }
 }
 

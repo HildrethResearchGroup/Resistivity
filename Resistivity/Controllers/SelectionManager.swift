@@ -14,6 +14,7 @@ import AppKit
 class SelectionManager: ObservableObject {
     private var dataModel: DataModel
     @Published var selection_measurements: Set<UUID> = []
+    var numberOfSelectedMeasurements: Int {selection_measurements.count}
     
     /// Initializes a new SelectionManager with a given DataModel.
     /// - Parameter dataModel: The `DataModel` instance that contains the measurements.

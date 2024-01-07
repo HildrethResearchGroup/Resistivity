@@ -14,6 +14,7 @@ struct CopyMeasurementsButton: View {
             selectionManager.postCopyMeasurements()
         }
         .keyboardShortcut("c", modifiers: /*@START_MENU_TOKEN@*/.command/*@END_MENU_TOKEN@*/)
+        .help("Copy the \(selectionManager.numberOfSelectedMeasurements) selected measurements.")
     }
 }
 

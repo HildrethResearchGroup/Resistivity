@@ -13,13 +13,13 @@ class LineResistanceSettings: ObservableObject {
     
     /// A boolean value that determines whether line resistance calculation should be performed.
     /// When set, it updates the corresponding value in `UserDefaults`.
-    var shouldCalculateLineResistance: Bool {
+    @Published var shouldCalculateLineResistance: Bool {
         didSet {  UserDefaults.standard.set(shouldCalculateLineResistance, forKey: "shouldCalculateLineResistance")  }
     }
     
     /// A double value representing the gap between voltage sensing points.
     /// When set, it updates the corresponding value in `UserDefaults`.
-    var voltageSensingGap: Double {
+    @Published var voltageSensingGap: Double {
         didSet {  UserDefaults.standard.set(voltageSensingGap, forKey: "voltageSensingGap")  }
     }
     
