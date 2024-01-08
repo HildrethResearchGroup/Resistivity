@@ -116,7 +116,7 @@ extension ResistivityApp {
         if appController.collectionController.ipAddress != nil && appController.collectionController.port != nil {
             let address = appController.collectionController.ipAddress!
             let port = appController.collectionController.port!
-            let message = "Could not connect to Nanovoltmeter at: \(address):\(port)).\nPossible solutions:\nCheck network connections & permissions/blockers.  Verify instrument is on, GPID adapter is powered, cables are connected."
+            let message = "Could not connect to Nanovoltmeter at: \(address):\(port)).\nPossible solutions:\nCheck network connections & permissions/blockers.\nVerify instrument is on, GPID adapter is powered, cables are connected."
             return message
         } else {
             let message = "Could not connect to Nanovoltmeter.\nIP Address or Port Missing.  Update these values in Settings."

@@ -31,12 +31,13 @@ class AppController: ObservableObject {
     init() {
         collectionController = DataCollectionController()
         
-        let localDataModel = DataModel(withInitialData: true)
-        // let localDataModel = DataModel()
+        // let localDataModel = DataModel(withInitialData: true)
+        let localDataModel = DataModel()
         
         dataModel = localDataModel
         
         let localDataViewModel = DataViewModel(dataModel: localDataModel)
+        
         dataViewModel = localDataViewModel
         selectionManager = SelectionManager(dataViewModel: DataViewModel(dataModel: localDataModel))
         

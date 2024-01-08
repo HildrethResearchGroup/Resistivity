@@ -100,7 +100,9 @@ struct ResultsGraphView: View {
         let scaleFactor = resistanceUnits.scaleFactor()
         if let selection = selectedMeasurent {
             VStack(alignment: .leading) {
-                Text("Sample: \(selection.sampleID)")
+                Text(selection.sampleInfo.name)
+                Text("Loc.: \(selection.locationInfo.name)")
+                Text("ID: \(selection.sampleID)")
                 Text("Resistance: \(selection.resistance * scaleFactor) \(resistanceUnitsDisplay)")
             }
         } else {

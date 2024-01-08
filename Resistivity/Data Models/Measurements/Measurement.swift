@@ -83,16 +83,6 @@ extension Measurement: Identifiable, Hashable, Comparable {
 }
 
 
-// MARK: - Calculate Resistivity
-extension Measurement {
-    /// Calculates the resistivity based on the measurement information.
-    /// - Returns: The calculated resistivity as a `Double`.
-    func calculateResistivity() -> Double {
-        // TODO: Setup Resistivity Calculation
-        return 0.0
-    }
-}
-
 
 // MARK: - Filterin
 extension Measurement {

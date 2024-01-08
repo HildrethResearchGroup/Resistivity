@@ -75,17 +75,17 @@ extension Measurement: Exportable {
         let section6 = [String(globalMeasurementNumber),
                         String(sampleMeasurementNumber),
                         String(locationMeasurementNumber),
-                        date.formatted(date: .complete, time: .omitted),
+                        date.formatted(date: .numeric, time: .omitted),
                         date.formatted(date: .omitted, time: .complete)]
         
         // Combine all data into a single array
-        var allHeadings = section1
-        allHeadings.append(contentsOf: section2)
-        allHeadings.append(contentsOf: section3)
-        allHeadings.append(contentsOf: section4)
-        allHeadings.append(contentsOf: section5)
-        allHeadings.append(contentsOf: section6)
+        var allData = section1
+        allData.append(contentsOf: section2)
+        allData.append(contentsOf: section3)
+        allData.append(contentsOf: section4)
+        allData.append(contentsOf: section5)
+        allData.append(contentsOf: section6)
         
-        return allHeadings
+        return allData
     }
 }

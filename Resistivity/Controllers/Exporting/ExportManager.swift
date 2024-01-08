@@ -21,7 +21,7 @@ struct ExportManager {
         
         let combinedData = combineLines(for: exportStrings)
         
-        try combinedData.write(to: targetURL, atomically: true, encoding: .utf8)
+        try combinedData.write(to: targetURL, atomically: true, encoding: .utf16)
     }
     
     /// Exports an array of `Sample` objects to a specified URL in CSV format.
@@ -34,7 +34,7 @@ struct ExportManager {
         
         let combinedData = combineLines(for: exportStrings)
         
-        try combinedData.write(to: targetURL, atomically: true, encoding: .utf8)
+        try combinedData.write(to: targetURL, atomically: true, encoding: .utf16)
     }
     
     /// Exports both measurements and sample statistics to a single CSV file.
@@ -57,7 +57,7 @@ struct ExportManager {
         
         let combinedCSV = "Summary Data\n\n" + summaryCSV + "\n\n\n\nRaw Data\n\n" + dataCSV
         
-        try combinedCSV.write(to: targetURL, atomically: true, encoding: .utf8)
+        try combinedCSV.write(to: targetURL, atomically: true, encoding: .utf16)
         
     }
     
@@ -105,7 +105,9 @@ extension ExportManager {
         for nextMeasurement in measurements {
             let measurementData = nextMeasurement.data()
             
-            dataStrings.append(csvString(for: measurementData))
+            let csvStrings = "\n" + csvString(for: measurementData)
+            
+            dataStrings.append(csvStrings)
         }
         
         return dataStrings
@@ -121,7 +123,7 @@ extension ExportManager {
             newString += nextString + ", "
         }
         
-        newString.removeLast()
+        newString.removeLast(2)
         
         return newString
     }
@@ -133,7 +135,7 @@ extension ExportManager {
         var newString = ""
         
         for nextline in stringLines {
-            newString += nextline + "\n"
+            newString += "\n" + nextline
         }
         
         return newString
