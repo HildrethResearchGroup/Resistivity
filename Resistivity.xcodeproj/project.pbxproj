@@ -14,6 +14,15 @@
 		C013247E2B1030DC00DCAC6D /* EquipmentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */; };
 		C01324802B106AA100DCAC6D /* ResultsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013247F2B106AA100DCAC6D /* ResultsTableView.swift */; };
 		C036EAD12B0DBE8300CB02D6 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036EAD02B0DBE8200CB02D6 /* AppController.swift */; };
+		C048E2D32B4CAC4000E45C15 /* LineResistanceUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2D22B4CAC4000E45C15 /* LineResistanceUnits.swift */; };
+		C048E2D82B4CB02C00E45C15 /* Button_resistivityUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2D72B4CB02C00E45C15 /* Button_resistivityUnits.swift */; };
+		C048E2DA2B4CB0A500E45C15 /* Button_resistanceUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2D92B4CB0A500E45C15 /* Button_resistanceUnits.swift */; };
+		C048E2DC2B4CB14100E45C15 /* Button_clearAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2DB2B4CB14100E45C15 /* Button_clearAll.swift */; };
+		C048E2DE2B4CB27800E45C15 /* Button_selectAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2DD2B4CB27800E45C15 /* Button_selectAll.swift */; };
+		C048E2E02B4CB29D00E45C15 /* Button_export.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2DF2B4CB29D00E45C15 /* Button_export.swift */; };
+		C048E2E22B4CB35500E45C15 /* Button_connectToNanovoltmeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2E12B4CB35500E45C15 /* Button_connectToNanovoltmeter.swift */; };
+		C048E2E42B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2E32B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift */; };
+		C048E2E92B4CB6F200E45C15 /* ResistivityApp_menuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2E82B4CB6F200E45C15 /* ResistivityApp_menuItems.swift */; };
 		C04F9DCB2B390C4F00CC368C /* MeasurementSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F9DCA2B390C4F00CC368C /* MeasurementSettings.swift */; };
 		C078BB002AD0A509002AF86B /* VISAInstrumentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078BAFF2AD0A509002AF86B /* VISAInstrumentProtocol.swift */; };
 		C078BB032AD2612E002AF86B /* IPAddressValidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078BB022AD2612E002AF86B /* IPAddressValidity.swift */; };
@@ -81,6 +90,15 @@
 		C013247D2B1030DB00DCAC6D /* EquipmentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentStatus.swift; sourceTree = "<group>"; };
 		C013247F2B106AA100DCAC6D /* ResultsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableView.swift; sourceTree = "<group>"; };
 		C036EAD02B0DBE8200CB02D6 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		C048E2D22B4CAC4000E45C15 /* LineResistanceUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineResistanceUnits.swift; sourceTree = "<group>"; };
+		C048E2D72B4CB02C00E45C15 /* Button_resistivityUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button_resistivityUnits.swift; sourceTree = "<group>"; };
+		C048E2D92B4CB0A500E45C15 /* Button_resistanceUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button_resistanceUnits.swift; sourceTree = "<group>"; };
+		C048E2DB2B4CB14100E45C15 /* Button_clearAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button_clearAll.swift; sourceTree = "<group>"; };
+		C048E2DD2B4CB27800E45C15 /* Button_selectAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button_selectAll.swift; sourceTree = "<group>"; };
+		C048E2DF2B4CB29D00E45C15 /* Button_export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button_export.swift; sourceTree = "<group>"; };
+		C048E2E12B4CB35500E45C15 /* Button_connectToNanovoltmeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button_connectToNanovoltmeter.swift; sourceTree = "<group>"; };
+		C048E2E32B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button_measureResistanceWithNanovoltmeter.swift; sourceTree = "<group>"; };
+		C048E2E82B4CB6F200E45C15 /* ResistivityApp_menuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistivityApp_menuItems.swift; sourceTree = "<group>"; };
 		C04F9DCA2B390C4F00CC368C /* MeasurementSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementSettings.swift; sourceTree = "<group>"; };
 		C078BAFF2AD0A509002AF86B /* VISAInstrumentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VISAInstrumentProtocol.swift; sourceTree = "<group>"; };
 		C078BB022AD2612E002AF86B /* IPAddressValidity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressValidity.swift; sourceTree = "<group>"; };
@@ -175,6 +193,23 @@
 			path = "Results Views";
 			sourceTree = "<group>";
 		};
+		C048E2D42B4CAF5500E45C15 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				C048E2E82B4CB6F200E45C15 /* ResistivityApp_menuItems.swift */,
+				C0DE77DE2B47CE6D006BC54B /* CopyMeasurementsButton.swift */,
+				C0DE77E12B47CF69006BC54B /* DeleteMeasurementsButton.swift */,
+				C048E2D72B4CB02C00E45C15 /* Button_resistivityUnits.swift */,
+				C048E2D92B4CB0A500E45C15 /* Button_resistanceUnits.swift */,
+				C048E2DB2B4CB14100E45C15 /* Button_clearAll.swift */,
+				C048E2DD2B4CB27800E45C15 /* Button_selectAll.swift */,
+				C048E2DF2B4CB29D00E45C15 /* Button_export.swift */,
+				C048E2E12B4CB35500E45C15 /* Button_connectToNanovoltmeter.swift */,
+				C048E2E32B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		C078BB012AD0A52D002AF86B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +265,7 @@
 		C094C1972AC5F99400E655CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C048E2D42B4CAF5500E45C15 /* Buttons */,
 				C011FD072B38A179008F8066 /* Results Views */,
 				C011FD062B37D9A8008F8066 /* Measurement Configuration */,
 				C0DB47132ACB40DE00FBAC23 /* Reusable Views */,
@@ -294,10 +330,11 @@
 		C0A3659F2AC7D4C200EA2EB6 /* Units */ = {
 			isa = PBXGroup;
 			children = (
-				C0A3659B2AC7CCC400EA2EB6 /* TimeUnits.swift */,
-				C0A3659D2AC7D25A00EA2EB6 /* ResistanceUnits.swift */,
 				C0A365A02AC7D4EF00EA2EB6 /* ConvertableUnits_Protocol.swift */,
+				C048E2D22B4CAC4000E45C15 /* LineResistanceUnits.swift */,
+				C0A3659D2AC7D25A00EA2EB6 /* ResistanceUnits.swift */,
 				C0D122722B4268EB00BBFFC8 /* ResistivityUnits.swift */,
+				C0A3659B2AC7CCC400EA2EB6 /* TimeUnits.swift */,
 			);
 			path = Units;
 			sourceTree = "<group>";
@@ -333,8 +370,6 @@
 			isa = PBXGroup;
 			children = (
 				C0DB47142ACB40F500FBAC23 /* TabLabel.swift */,
-				C0DE77DE2B47CE6D006BC54B /* CopyMeasurementsButton.swift */,
-				C0DE77E12B47CF69006BC54B /* DeleteMeasurementsButton.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -455,10 +490,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0C2C0352AD8A62000E2385E /* Measurement_Exportable.swift in Sources */,
+				C048E2DE2B4CB27800E45C15 /* Button_selectAll.swift in Sources */,
 				C0B608982AC610E0008B0A39 /* Decoders.swift in Sources */,
+				C048E2E92B4CB6F200E45C15 /* ResistivityApp_menuItems.swift in Sources */,
 				C0ED06AB2B34FA750050D626 /* ResistivityMeasurementInfo.swift in Sources */,
 				C0FFEF412AF7510C00CCBD97 /* DataModel.swift in Sources */,
 				C0ED06B72B3545470050D626 /* SampleSettings.swift in Sources */,
+				C048E2E02B4CB29D00E45C15 /* Button_export.swift in Sources */,
 				C078BB002AD0A509002AF86B /* VISAInstrumentProtocol.swift in Sources */,
 				C0DE77DD2B47C56D006BC54B /* SelectionManager.swift in Sources */,
 				C094C19F2AC5FA4900E655CA /* ReturnMode.swift in Sources */,
@@ -476,10 +514,12 @@
 				C0A3659E2AC7D25A00EA2EB6 /* ResistanceUnits.swift in Sources */,
 				C0E8B7C82B43D14B002CEBA8 /* LocationInfo_Exportable.swift in Sources */,
 				C036EAD12B0DBE8300CB02D6 /* AppController.swift in Sources */,
+				C048E2DA2B4CB0A500E45C15 /* Button_resistanceUnits.swift in Sources */,
 				C0DB47212ACB509B00FBAC23 /* Sample.swift in Sources */,
 				C00D82502B27A85F004024E9 /* LineResistanceInfo.swift in Sources */,
 				C0C2C03B2AD8F8DF00E2385E /* ResistivityMeasurementSettings.swift in Sources */,
 				C0A3659A2AC7CC0700EA2EB6 /* SimulatedNanoVoltMeterController.swift in Sources */,
+				C048E2DC2B4CB14100E45C15 /* Button_clearAll.swift in Sources */,
 				C094C1872AC5F91B00E655CA /* ContentView.swift in Sources */,
 				C0DB471D2ACB4FFA00FBAC23 /* DelayType.swift in Sources */,
 				C0ED06B02B34FF300050D626 /* Protocol_Info.swift in Sources */,
@@ -493,7 +533,9 @@
 				C078BB032AD2612E002AF86B /* IPAddressValidity.swift in Sources */,
 				C08CA0B52B3F5C270082E4CB /* ResistivityAppDelegate.swift in Sources */,
 				C0DB470E2ACB367B00FBAC23 /* SummaryStatisticsView.swift in Sources */,
+				C048E2E42B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift in Sources */,
 				C094C1852AC5F91B00E655CA /* ResistivityApp.swift in Sources */,
+				C048E2D82B4CB02C00E45C15 /* Button_resistivityUnits.swift in Sources */,
 				C078BB072AD26CDF002AF86B /* Statistics.swift in Sources */,
 				C078BB052AD26368002AF86B /* Array_Statistics.swift in Sources */,
 				C01324802B106AA100DCAC6D /* ResultsTableView.swift in Sources */,
@@ -501,6 +543,7 @@
 				C0DB470C2ACB32FE00FBAC23 /* MeasurementConfiguratorView.swift in Sources */,
 				C0E8B7C42B43CD60002CEBA8 /* ResistivityMeasurementInfo_Exportable.swift in Sources */,
 				C0D122772B42859C00BBFFC8 /* UnitsSettings.swift in Sources */,
+				C048E2E22B4CB35500E45C15 /* Button_connectToNanovoltmeter.swift in Sources */,
 				C0ED06B42B3544090050D626 /* LocationSettings.swift in Sources */,
 				C011FD052B37D37A008F8066 /* LineResistanceSettingsView.swift in Sources */,
 				C0E8B7CC2B43D44F002CEBA8 /* ExportManager.swift in Sources */,
@@ -512,6 +555,7 @@
 				C0DB47192ACB4AAA00FBAC23 /* DataCollectionController.swift in Sources */,
 				C0DE77D92B479EC5006BC54B /* ResultsSummaryGraphView.swift in Sources */,
 				C0C2C0332AD8A55E00E2385E /* Exportable.swift in Sources */,
+				C048E2D32B4CAC4000E45C15 /* LineResistanceUnits.swift in Sources */,
 				C04F9DCB2B390C4F00CC368C /* MeasurementSettings.swift in Sources */,
 				C011FCFF2B360088008F8066 /* LocationInfo.swift in Sources */,
 				C011FD032B37D223008F8066 /* ResistivitySettingsView.swift in Sources */,
