@@ -25,12 +25,7 @@ struct ResistivityApp: App {
                 .frame(minWidth: 400, maxWidth: .infinity, minHeight: 600, maxHeight: .infinity)
                 .environmentObject(appController)
                 .toolbar() {
-                    ToolbarItemGroup(placement: .primaryAction) {
-                        Button_resistanceUnits()
-                        Button_resistivityUnits()
-                        Button_measureResistanceWithNanovoltmeter(appController: appController)
-                        Button_connectToNanovoltmeter(appController: appController)
-                    }
+                    toolbarItems
                 }
         }
         .commands {

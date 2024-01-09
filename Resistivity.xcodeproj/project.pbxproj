@@ -24,6 +24,7 @@
 		C048E2E42B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2E32B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift */; };
 		C048E2E92B4CB6F200E45C15 /* ResistivityApp_menuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048E2E82B4CB6F200E45C15 /* ResistivityApp_menuItems.swift */; };
 		C04F9DCB2B390C4F00CC368C /* MeasurementSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F9DCA2B390C4F00CC368C /* MeasurementSettings.swift */; };
+		C07145492B4CC7C800FBB650 /* ResistivityApp_toolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07145482B4CC7C800FBB650 /* ResistivityApp_toolbarItems.swift */; };
 		C078BB002AD0A509002AF86B /* VISAInstrumentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078BAFF2AD0A509002AF86B /* VISAInstrumentProtocol.swift */; };
 		C078BB032AD2612E002AF86B /* IPAddressValidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078BB022AD2612E002AF86B /* IPAddressValidity.swift */; };
 		C078BB052AD26368002AF86B /* Array_Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078BB042AD26368002AF86B /* Array_Statistics.swift */; };
@@ -100,6 +101,7 @@
 		C048E2E32B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button_measureResistanceWithNanovoltmeter.swift; sourceTree = "<group>"; };
 		C048E2E82B4CB6F200E45C15 /* ResistivityApp_menuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistivityApp_menuItems.swift; sourceTree = "<group>"; };
 		C04F9DCA2B390C4F00CC368C /* MeasurementSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementSettings.swift; sourceTree = "<group>"; };
+		C07145482B4CC7C800FBB650 /* ResistivityApp_toolbarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResistivityApp_toolbarItems.swift; sourceTree = "<group>"; };
 		C078BAFF2AD0A509002AF86B /* VISAInstrumentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VISAInstrumentProtocol.swift; sourceTree = "<group>"; };
 		C078BB022AD2612E002AF86B /* IPAddressValidity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressValidity.swift; sourceTree = "<group>"; };
 		C078BB042AD26368002AF86B /* Array_Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array_Statistics.swift; sourceTree = "<group>"; };
@@ -196,18 +198,26 @@
 		C048E2D42B4CAF5500E45C15 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				C048E2E82B4CB6F200E45C15 /* ResistivityApp_menuItems.swift */,
 				C0DE77DE2B47CE6D006BC54B /* CopyMeasurementsButton.swift */,
 				C0DE77E12B47CF69006BC54B /* DeleteMeasurementsButton.swift */,
-				C048E2D72B4CB02C00E45C15 /* Button_resistivityUnits.swift */,
-				C048E2D92B4CB0A500E45C15 /* Button_resistanceUnits.swift */,
 				C048E2DB2B4CB14100E45C15 /* Button_clearAll.swift */,
 				C048E2DD2B4CB27800E45C15 /* Button_selectAll.swift */,
 				C048E2DF2B4CB29D00E45C15 /* Button_export.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		C071454A2B4CC81000FBB650 /* Toolbar and Menus */ = {
+			isa = PBXGroup;
+			children = (
+				C048E2E82B4CB6F200E45C15 /* ResistivityApp_menuItems.swift */,
+				C07145482B4CC7C800FBB650 /* ResistivityApp_toolbarItems.swift */,
+				C048E2D72B4CB02C00E45C15 /* Button_resistivityUnits.swift */,
+				C048E2D92B4CB0A500E45C15 /* Button_resistanceUnits.swift */,
 				C048E2E12B4CB35500E45C15 /* Button_connectToNanovoltmeter.swift */,
 				C048E2E32B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift */,
 			);
-			path = Buttons;
+			path = "Toolbar and Menus";
 			sourceTree = "<group>";
 		};
 		C078BB012AD0A52D002AF86B /* Protocols */ = {
@@ -265,6 +275,7 @@
 		C094C1972AC5F99400E655CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C071454A2B4CC81000FBB650 /* Toolbar and Menus */,
 				C048E2D42B4CAF5500E45C15 /* Buttons */,
 				C011FD072B38A179008F8066 /* Results Views */,
 				C011FD062B37D9A8008F8066 /* Measurement Configuration */,
@@ -533,6 +544,7 @@
 				C078BB032AD2612E002AF86B /* IPAddressValidity.swift in Sources */,
 				C08CA0B52B3F5C270082E4CB /* ResistivityAppDelegate.swift in Sources */,
 				C0DB470E2ACB367B00FBAC23 /* SummaryStatisticsView.swift in Sources */,
+				C07145492B4CC7C800FBB650 /* ResistivityApp_toolbarItems.swift in Sources */,
 				C048E2E42B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift in Sources */,
 				C094C1852AC5F91B00E655CA /* ResistivityApp.swift in Sources */,
 				C048E2D82B4CB02C00E45C15 /* Button_resistivityUnits.swift in Sources */,
