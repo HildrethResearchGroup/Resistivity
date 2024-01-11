@@ -1,4 +1,3 @@
-```swift
 //
 //  DataModel.swift
 //  Resistivity
@@ -78,7 +77,7 @@ extension DataModel {
                 var measurements: [Measurement] = []
                 
                 for nextSample in samples {
-                    measurements.append(contentsOf: nextSample.flattenedMeasurements)
+                    measurements.append(contentsOf: nextSample.flattendMeasurements)
                 }
                 
                 flattendMeasurements = measurements
@@ -86,4 +85,3 @@ extension DataModel {
         }
     }
 }
-```

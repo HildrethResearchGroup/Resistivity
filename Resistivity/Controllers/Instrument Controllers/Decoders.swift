@@ -43,8 +43,6 @@ extension NanoVoltMeterController {
         /// - Returns: A `Double` value represented by the string.
         /// - Throws: `ExponentDecoderError.couldNotFormatNumberFromString` if the string cannot be formatted to a number.
         func decode(_ message: String) throws -> Double {
-            print("Decoding")
-            print("Message = \(message)")
             
             var fixedString = message
             

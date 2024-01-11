@@ -54,7 +54,6 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
         
         // Retrieve and print the instrument identifier.
         let info = try? await getIdentifier()
-        print(info ?? "Info not available")
     }
     
     // MARK: - Interface
