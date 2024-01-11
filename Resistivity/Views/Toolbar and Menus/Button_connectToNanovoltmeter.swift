@@ -39,7 +39,7 @@ struct Button_connectToNanovoltmeter: View {
     }
     
     
-    @MainActor func tip_connectButton() -> String {
+    func tip_connectButton() -> String {
         var tipText = ""
         switch appController.nanoVoltMeterStatus {
         case .connected: tipText = "Connected to: \(appController.information)"
@@ -51,7 +51,7 @@ struct Button_connectToNanovoltmeter: View {
     }
     
     
-    @MainActor func connectionAlertMessage() -> String {
+    func connectionAlertMessage() -> String {
         if appController.collectionController.ipAddress != nil && appController.collectionController.port != nil {
             let address = appController.collectionController.ipAddress!
             let port = appController.collectionController.port!
@@ -64,7 +64,7 @@ struct Button_connectToNanovoltmeter: View {
     }
     
     
-    @MainActor func voltmeterColor() -> Color {
+    func voltmeterColor() -> Color {
         switch appController.nanoVoltMeterStatus {
         case .disconnected:
             return .red

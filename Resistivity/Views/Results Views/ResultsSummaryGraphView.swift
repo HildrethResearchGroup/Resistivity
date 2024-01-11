@@ -56,7 +56,7 @@ struct ResultsSummaryGraphView: View {
             .chartLegend(position: .trailing, alignment: .top)
             .foregroundStyle(fontColor)
             .chartXAxisLabel(position: .bottom, alignment: .center) {
-                Text("Measurement # [-]")
+                Text("Sample # [-]")
                     .font(.title)
                     .foregroundStyle(fontColor)
             }
