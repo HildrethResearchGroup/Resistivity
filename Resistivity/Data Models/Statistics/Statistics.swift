@@ -9,7 +9,7 @@ import Foundation
 
 /// A structure to calculate and store statistical properties of a collection of elements.
 /// The elements must be comparable and contain a property of type `Double` that can be accessed via a `KeyPath`.
-struct Statistics<Element: Comparable> {
+struct Statistics<Element: Comparable>: Statistic {
     typealias T = Double // Defines a typealias for the Double type to be used within the structure.
     let keyPath: KeyPath<Element,  T> // The key path to the property of the element that will be used for statistical calculations.
     var name: String // The name of the statistical metric.

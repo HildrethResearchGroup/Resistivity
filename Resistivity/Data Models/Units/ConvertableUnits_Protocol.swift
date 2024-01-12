@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol ConvertableUnits {
+protocol ConvertableUnits: CustomStringConvertible {
     associatedtype Element: ConvertableUnits
     
     /// Provides the scale factor to go from the base value to target Units

@@ -115,4 +115,8 @@ extension Measurement {
     func scaledResistivity(_ units: ResistivityUnits) -> Double {
         return units.scaledFromBaseOhm_meters(resistance)
     }
+    
+    func scaledLineResistance(_ units: LineResistanceUnits) -> Double {
+        return units.scaledFromBaseValue(lineResistance)
+    }
 }

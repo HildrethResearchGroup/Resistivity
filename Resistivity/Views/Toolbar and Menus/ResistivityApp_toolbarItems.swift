@@ -14,6 +14,7 @@ extension ResistivityApp {
         ToolbarItemGroup(placement: .primaryAction) {
             Button_resistanceUnits()
             Button_resistivityUnits()
+            Button_lineResistanceUnits()
             Button_measureResistanceWithNanovoltmeter(appController: appController)
             Button_connectToNanovoltmeter(appController: appController)
         }

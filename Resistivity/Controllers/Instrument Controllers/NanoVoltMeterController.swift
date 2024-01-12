@@ -52,8 +52,8 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
         // Flush old data for the current return mode to ensure accurate readings.
         await flushOldData(for: returnMode)
         
-        // Retrieve and print the instrument identifier.
-        let info = try? await getIdentifier()
+        // Retrieve and print the instrument identifier to make sure everything is working.
+        let _ = try? await getIdentifier()
     }
     
     // MARK: - Interface

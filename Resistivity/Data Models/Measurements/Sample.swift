@@ -48,6 +48,7 @@ class Sample {
         let localMeasurements = flattendMeasurements
         resistanceStatistics.update(with: localMeasurements)
         resistivityStatistics.update(with: localMeasurements)
+        lineResistanceStatistics.update(with: localMeasurements)
     }
     
 }

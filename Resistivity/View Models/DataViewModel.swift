@@ -69,6 +69,7 @@ class DataViewModel: ObservableObject {
     /// Statistics for resistivity measurements, including the name and units for display purposes.
     var resistivityStatistics = Statistics<Measurement>(keyPath: \.resistivity, name: "Resistivity", units: "Ω-m")
     
+    var lineResistanceStatistics = Statistics<Measurement>(keyPath: \.lineResistance, name: "Resistivity", units: "Ω/m")
     
     /// Initializes a new `DataViewModel` with a given `DataModel`.
     /// - Parameter dataModel: The `DataModel` instance to be managed by this view model.
@@ -145,6 +146,7 @@ extension DataViewModel {
     private func updateStatistics() {
         resistanceStatistics.update(with: flattenedMeasurements)
         resistivityStatistics.update(with: flattenedMeasurements)
+        lineResistanceStatistics.update(with: flattenedMeasurements)
     }
 }
 

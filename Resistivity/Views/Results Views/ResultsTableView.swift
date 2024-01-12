@@ -11,6 +11,8 @@ import SwiftUI
 struct ResultsTableView: View {
     
     @AppStorage("resistanceUnits") var resistanceUnits: ResistanceUnits = .ohms
+    @AppStorage("resistivityUnits") var resistivityUnits: ResistivityUnits = .ohm_meters
+    @AppStorage("lineResistanceUnits") var lineResistanceUnits: LineResistanceUnits = .ohmPerMeters
     
     var measurements: [Measurement]
     
@@ -22,7 +24,9 @@ struct ResultsTableView: View {
     var body: some View {
         Table(selection: $selectionManager.selection_measurements, sortOrder: $order) {
             TableColumn("Measurement #", value: \.globalMeasurementNumber) {Text("\($0.globalMeasurementNumber)")}
-            TableColumn("Resistance \(resistanceUnitsDisplay)", value: \.resistance) { Text("\($0.scaledResistance(resistanceUnits))") }
+            TableColumn("Resistance \(resistanceUnitsDisplay)", value: \.resistance) { Text(resistance(for:$0)) }
+            TableColumn("Resistivity \(resistivityUnitsDisplay)", value: \.resistivity) { Text(resistivity(for:$0)) }
+            TableColumn("Line Resistance \(lineResistanceUnitsDisplay)", value: \.lineResistance) { Text(lineResistance(for:$0)) }
             TableColumn("Sample Name", value: \.sampleInfo.name)
             TableColumn("Location", value: \.locationInfo.name)
             TableColumn("SampleID", value: \.sampleID)
@@ -44,7 +48,32 @@ struct ResultsTableView: View {
     }
     
     var resistanceUnitsDisplay: String { "[" + String(resistanceUnits.description) + "]" }
+    var resistivityUnitsDisplay: String { "[" + String(resistivityUnits.description) + "]" }
+    var lineResistanceUnitsDisplay: String { "[" + String(lineResistanceUnits.description) + "]" }
     
+    func resistance(for measurement: Measurement) -> String {
+        let scaledValue = measurement.scaledResistance(resistanceUnits)
+        return formatted(scaledValue)
+    }
+    
+    func resistivity(for measurement: Measurement) -> String {
+        let scaledValue = measurement.scaledResistivity(resistivityUnits)
+        return formatted(scaledValue)
+    }
+    
+    func lineResistance(for measurement: Measurement) -> String {
+        let scaledValue = measurement.scaledLineResistance(lineResistanceUnits)
+        return formatted(scaledValue)
+    }
+    
+    
+    func formatted(_ valueIn: Double) -> String {
+        let number = NSNumber(value: valueIn)
+        
+        return formatter.string(from: number) ?? "NaN"
+    }
+    
+    private let formatter = NumberFormatter.shortNumber
 }
 
 
