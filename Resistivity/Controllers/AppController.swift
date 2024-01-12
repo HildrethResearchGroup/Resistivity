@@ -35,9 +35,11 @@ class AppController: ObservableObject {
     /// It also registers for notifications to update the nanovoltmeter status.
     init() {
         collectionController = DataCollectionController()
-        
+        #if DEBUG
         let localDataModel = DataModel(withInitialData: true)
-        // let localDataModel = DataModel()
+        #else
+        let localDataModel = DataModel()
+        #endif
         
         dataModel = localDataModel
         
