@@ -78,7 +78,6 @@
 		C0DB471B2ACB4F6A00FBAC23 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB471A2ACB4F6A00FBAC23 /* Measurement.swift */; };
 		C0DB471D2ACB4FFA00FBAC23 /* DelayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */; };
 		C0DB47212ACB509B00FBAC23 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DB47202ACB509B00FBAC23 /* Sample.swift */; };
-		C0DE77D92B479EC5006BC54B /* ResultsSummaryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE77D82B479EC5006BC54B /* ResultsSummaryGraphView.swift */; };
 		C0DE77DD2B47C56D006BC54B /* SelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE77DC2B47C56D006BC54B /* SelectionManager.swift */; };
 		C0DE77DF2B47CE6D006BC54B /* CopyMeasurementsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE77DE2B47CE6D006BC54B /* CopyMeasurementsButton.swift */; };
 		C0DE77E22B47CF69006BC54B /* DeleteMeasurementsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE77E12B47CF69006BC54B /* DeleteMeasurementsButton.swift */; };
@@ -173,7 +172,6 @@
 		C0DB471A2ACB4F6A00FBAC23 /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayType.swift; sourceTree = "<group>"; };
 		C0DB47202ACB509B00FBAC23 /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
-		C0DE77D82B479EC5006BC54B /* ResultsSummaryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsSummaryGraphView.swift; sourceTree = "<group>"; };
 		C0DE77DC2B47C56D006BC54B /* SelectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionManager.swift; sourceTree = "<group>"; };
 		C0DE77DE2B47CE6D006BC54B /* CopyMeasurementsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyMeasurementsButton.swift; sourceTree = "<group>"; };
 		C0DE77E12B47CF69006BC54B /* DeleteMeasurementsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMeasurementsButton.swift; sourceTree = "<group>"; };
@@ -485,7 +483,6 @@
 			isa = PBXGroup;
 			children = (
 				C0FD931D2B533FFF0025C949 /* SamplesGraphView.swift */,
-				C0DE77D82B479EC5006BC54B /* ResultsSummaryGraphView.swift */,
 				C0FD931A2B53381D0025C949 /* GraphSummaryView.swift */,
 				C0FD931F2B53401C0025C949 /* GraphSummaryPreview.swift */,
 			);
@@ -675,7 +672,6 @@
 				C051DA972B5256730075D317 /* GraphMeasurementsPreview.swift in Sources */,
 				C0DE77DF2B47CE6D006BC54B /* CopyMeasurementsButton.swift in Sources */,
 				C0DB47192ACB4AAA00FBAC23 /* DataCollectionController.swift in Sources */,
-				C0DE77D92B479EC5006BC54B /* ResultsSummaryGraphView.swift in Sources */,
 				C06955BB2B51E5B90041AE7C /* GraphMeasurementsView.swift in Sources */,
 				C0C2C0332AD8A55E00E2385E /* Exportable.swift in Sources */,
 				C048E2D32B4CAC4000E45C15 /* LineResistanceUnits.swift in Sources */,
