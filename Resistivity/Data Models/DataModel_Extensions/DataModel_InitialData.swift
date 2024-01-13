@@ -13,9 +13,9 @@ extension DataModel {
     /// It uses predefined sample and location information, and default resistivity and line resistance information.
     public func generateInitialData() {
         // Default resistivity measurement information used for all generated data
-        let resistivityInfo = ResistivityMeasurementInfo(shouldCalculateResistivity: false, thickness: 1.0, thicknessCorrectionFactor: 1.0, finiteWidthCorrectionFactor: 1.0)
+        let resistivityInfo = ResistivityMeasurementInfo(shouldCalculateResistivity: true, thickness: 1.0, thicknessCorrectionFactor: 1.0, finiteWidthCorrectionFactor: 1.0)
         // Default line resistance information used for all generated data
-        let lineResistanceInfo = LineResistanceInfo(shouldCalculateLineResistance: false)
+        let lineResistanceInfo = LineResistanceInfo(shouldCalculateLineResistance: true, voltageSensingGap: 0.02)
         
         // Generate initial sample and location information and create measurements for each combination
         for nextSample in self.generateInitialSampleInfo() {

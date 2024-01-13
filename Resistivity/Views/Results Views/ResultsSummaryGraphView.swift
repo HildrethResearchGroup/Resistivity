@@ -153,9 +153,6 @@ struct ResultsSummaryGraphView: View {
 }
 
 
-
-
-
 struct ResultsSummaryGraphView_Previews: PreviewProvider {
     static var previews: some View {
         let dataModel = DataModel(withInitialData: true)

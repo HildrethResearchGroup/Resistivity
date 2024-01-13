@@ -62,6 +62,8 @@ extension ResistivityMeasurementInfo {
     private var f2: Double { return finiteWidthCorrectionFactor }
     
     /// Calculates the resistivity of the material based on the provided resistance.
+    ///
+    /// See: https://www.ossila.com/pages/sheet-resistance-theory for more information on how resistivity is calcluated
     /// - Parameter resistance: The electrical resistance of the material.
     /// - Returns: The calculated resistivity if `shouldCalculateResistivity` is true, otherwise returns NaN.
     func resistivity(forResistance resistance: Double) -> Double {

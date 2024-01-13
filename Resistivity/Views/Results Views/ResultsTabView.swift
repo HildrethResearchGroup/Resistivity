@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-struct ResultsView: View {
+struct ResultsTabView: View {
     
     @ObservedObject var dataViewModel: DataViewModel
     @EnvironmentObject var appController: AppController
+    
+    @AppStorage("resistanceUnits") var resistanceUnits: ResistanceUnits = .ohms
     
     var body: some View {
         TabView {
@@ -19,12 +21,22 @@ struct ResultsView: View {
                 .tabItem { Text("􀏣")
                         .help("Table view of raw data")
                 }
-                
-            ResultsGraphView(measurements: dataViewModel.measurements)
+            
+            MeasurementsGraphView(measurements: dataViewModel.measurements)
                 .background(.white)
                 .tabItem { Text("􁂥")
                         .help("Graph view of resistance data")
                 }
+            
+            /*
+             GraphView(title: "Resistance", keyPath: \.resistance, units: resistanceUnits, measurements: dataViewModel.measurements)
+                 .background(.white)
+                 .tabItem { Text("􁂥")
+                         .help("Graph view of resistance data")
+                 }
+
+             */
+                        
             ResultsSummaryGraphView(samples: dataViewModel.filteredSamples)
                 .background(.white)
                 .tabItem { Text("μ")
@@ -32,6 +44,7 @@ struct ResultsView: View {
                 }
                 
         }
+        .frame(minWidth: 500, maxWidth: .infinity)
     }
 }
 
@@ -40,7 +53,7 @@ struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
         let dataModel = DataModel(withInitialData: true)
         let dataViewModel = DataViewModel(dataModel: dataModel)
-        ResultsView(dataViewModel: dataViewModel)
+        ResultsTabView(dataViewModel: dataViewModel)
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct ResultsGraphView: View {
+struct ResultsResistanceGraphView: View {
     @AppStorage("resistanceUnits") var resistanceUnits: ResistanceUnits = .ohms
     
     @State var rawSelectedMeasurement: Int?
@@ -108,7 +108,6 @@ struct ResultsGraphView: View {
         } else {
             EmptyView()
         }
-        
     }
     
     
@@ -138,6 +137,6 @@ struct ResultsGraphView: View {
 struct ResultsGraphView_Previews: PreviewProvider {
     static var previews: some View {
         let dataModel = DataModel(withInitialData: true)
-        ResultsGraphView(measurements: dataModel.flattendMeasurements)
+        ResultsResistanceGraphView(measurements: dataModel.flattendMeasurements)
     }
 }
