@@ -122,6 +122,7 @@ extension GraphMeasurementsView {
         return measurements.first(where: {$0.globalMeasurementNumber == rawSelection} )
     }
     
+    
     @ViewBuilder
     func selectionOverlay() -> some View {
         if let selection = selectedMeasurent {

@@ -146,11 +146,13 @@ struct GraphSummaryView: View {
 
 
 
-
-
-/*
- #Preview {
-     GraphSummaryView()
- }
- */
+// MARK: - Previews
+struct GraphSummaryView_Previews: PreviewProvider {
+    static var previews: some View {
+        let units: ResistanceUnits = .ohms
+        let dataModel = DataModel(withInitialData: true)
+        let dataViewModel = DataViewModel(dataModel: dataModel)
+        GraphSummaryView(title: "Resistance", keyPath: \.resistanceStatistics, units: units, samples: dataViewModel.filteredSamples)
+    }
+}
 

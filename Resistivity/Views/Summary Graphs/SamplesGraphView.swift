@@ -68,3 +68,11 @@ struct SamplesGraphView: View {
 }
 
 
+// MARK: - Previews
+struct SamplesGraphView_Previews: PreviewProvider {
+    static var previews: some View {
+        let dataModel = DataModel(withInitialData: true)
+        let dataViewModel = DataViewModel(dataModel: dataModel)
+        SamplesGraphView(samples: dataViewModel.filteredSamples)
+    }
+}
