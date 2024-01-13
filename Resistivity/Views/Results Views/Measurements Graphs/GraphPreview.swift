@@ -27,6 +27,7 @@ struct GraphPreview: View {
     var body: some View {
         VStack {
             Text("\(title) \(unitsDisplay)")
+                .foregroundStyle(fontColor)
             chart
         }
     }
@@ -96,3 +97,13 @@ extension GraphPreview {
 
 
 
+
+// MARK: - Previews
+struct GraphPreview_Previews: PreviewProvider {
+    static var previews: some View {
+        let units: ResistanceUnits = .ohms
+        let dataModel = DataModel(withInitialData: true)
+        let dataViewModel = DataViewModel(dataModel: dataModel)
+        GraphPreview(title: "Resistance", keyPath: \.resistance, units: units, measurements: dataViewModel.measurements)
+    }
+}

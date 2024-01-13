@@ -28,16 +28,19 @@ struct MeasurementsGraphView: View {
                 List(selection: $selection) {
                     GraphPreview(title: "Resistance", keyPath: \.resistance, units: resistanceUnits, measurements: measurements)
                         .tag(1)
-                        .padding(.vertical)
+                        .padding()
                         .listRowSeparator(.hidden)
+                        .background(in: RoundedRectangle(cornerRadius: 6.0))
                     GraphPreview(title: "Resistivity", keyPath: \.resistivity, units: resistivityUnits, measurements: measurements)
                         .tag(2)
                         .padding(.vertical)
                         .listRowSeparator(.hidden)
+                        .background(in: RoundedRectangle(cornerRadius: 6.0))
                     GraphPreview(title: "Line Resistance", keyPath: \.lineResistance, units: lineResistanceUnits, measurements: measurements)
                         .tag(3)
                         .padding(.vertical)
                         .listRowSeparator(.hidden)
+                        .background(in: RoundedRectangle(cornerRadius: 6.0))
                 }
                 Spacer()
             }
@@ -48,6 +51,8 @@ struct MeasurementsGraphView: View {
             print("Selection = \(selection)")
         }
     }
+    
+    
     
     @ViewBuilder
     func primaryGraph() -> some View {
@@ -60,19 +65,15 @@ struct MeasurementsGraphView: View {
     }
 }
 
-extension MeasurementsGraphView {
-    enum FocusData {
-        case resistance
-        case resistivity
-        case lineResistance
+
+
+
+
+
+struct MeasurementGraphView_Previews: PreviewProvider {
+    static var previews: some View {
+        let dataModel = DataModel(withInitialData: true)
+        let dataViewModel = DataViewModel(dataModel: dataModel)
+        MeasurementsGraphView(measurements: dataViewModel.measurements)
     }
 }
-
-
-
-/*
- #Preview {
-     MeasurementsGraphView()
- }
- */
-

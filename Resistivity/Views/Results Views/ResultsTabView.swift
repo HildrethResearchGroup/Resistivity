@@ -12,7 +12,6 @@ struct ResultsTabView: View {
     @ObservedObject var dataViewModel: DataViewModel
     @EnvironmentObject var appController: AppController
     
-    @AppStorage("resistanceUnits") var resistanceUnits: ResistanceUnits = .ohms
     
     var body: some View {
         TabView {
@@ -28,14 +27,6 @@ struct ResultsTabView: View {
                         .help("Graph view of resistance data")
                 }
             
-            /*
-             GraphView(title: "Resistance", keyPath: \.resistance, units: resistanceUnits, measurements: dataViewModel.measurements)
-                 .background(.white)
-                 .tabItem { Text("􁂥")
-                         .help("Graph view of resistance data")
-                 }
-
-             */
                         
             ResultsSummaryGraphView(samples: dataViewModel.filteredSamples)
                 .background(.white)

@@ -168,4 +168,11 @@ extension GraphView {
 
 
 // MARK: - Previews
-
+struct GraphView_Previews: PreviewProvider {
+    static var previews: some View {
+        let units: ResistanceUnits = .ohms
+        let dataModel = DataModel(withInitialData: true)
+        let dataViewModel = DataViewModel(dataModel: dataModel)
+        GraphView(title: "Resistance", keyPath: \.resistance, units: units, measurements: dataViewModel.measurements)
+    }
+}
