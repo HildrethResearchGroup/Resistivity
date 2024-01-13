@@ -27,7 +27,7 @@ struct ContentView: View {
                 
                 Divider()
             }
-            .frame(minWidth: 300, maxWidth: 500)
+            .frame(width: 550)
             VStack {
                 ResultsTabView(dataViewModel: appController.dataViewModel)
                     .frame(minWidth: 400, maxWidth: .infinity)

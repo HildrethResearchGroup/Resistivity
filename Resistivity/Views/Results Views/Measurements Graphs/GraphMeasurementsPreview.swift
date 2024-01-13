@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct GraphPreview: View {
+struct GraphMeasurementsPreview: View {
     
     typealias T = Double
     
@@ -44,6 +44,7 @@ struct GraphPreview: View {
                       y: .value(title, scaledData(for: nextMeasurement)))
             .foregroundStyle(by: .value("Sample", nextMeasurement.sampleInfo.name))
             .symbol(by: .value("Sample", nextMeasurement.sampleInfo.name))
+            .symbolSize(10.0)
         }
         .foregroundStyle(fontColor)
         .chartLegend(.hidden)
@@ -69,7 +70,7 @@ struct GraphPreview: View {
 
 
 // MARK: - Display Data
-extension GraphPreview {
+extension GraphMeasurementsPreview {
     
     func scaledData(for measurement: Measurement) -> Double {
         let data = measurement[keyPath: keyPath]
@@ -87,7 +88,7 @@ extension GraphPreview {
 }
 
 // MARK: - Titles
-extension GraphPreview {
+extension GraphMeasurementsPreview {
     var unitsDisplay: String {
         let unitsString = String(units.description)
         
@@ -104,6 +105,6 @@ struct GraphPreview_Previews: PreviewProvider {
         let units: ResistanceUnits = .ohms
         let dataModel = DataModel(withInitialData: true)
         let dataViewModel = DataViewModel(dataModel: dataModel)
-        GraphPreview(title: "Resistance", keyPath: \.resistance, units: units, measurements: dataViewModel.measurements)
+        GraphMeasurementsPreview(title: "Resistance", keyPath: \.resistance, units: units, measurements: dataViewModel.measurements)
     }
 }

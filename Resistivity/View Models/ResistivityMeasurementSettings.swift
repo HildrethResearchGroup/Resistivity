@@ -45,6 +45,14 @@ class ResistivityMeasurementSettings: ObservableObject {
         }
     }
     
+    
+    @Published var thicknessUnits: LengthUnits = .millimeter {
+        didSet {
+            UserDefaults.standard.set(thicknessUnits.rawValue, forKey: "resistivityUnits")
+        }
+    }
+    
+    
     /// Initializes a new `ResistivityMeasurementSettings` instance, loading persisted values from `UserDefaults`.
     init() {
         shouldCalculateResistivity = UserDefaults.standard.object(forKey: "shouldCalculateResistivity") as? Bool ?? false
@@ -52,6 +60,12 @@ class ResistivityMeasurementSettings: ObservableObject {
         thicknessCorrectionFactor = UserDefaults.standard.object(forKey: "thicknessCorrectionFactor") as? Double ?? 1.0
         finiteWidthCorrectionFactor = UserDefaults.standard.object(forKey: "finiteWidthCorrectionFactor") as? Double ?? 1.0
         resistivityUnits = UserDefaults.standard.object(forKey: "resistivityUnits") as? ResistivityUnits ?? .ohm_meters
+        
+        if let thicknessUnitsStored = UserDefaults.standard.object(forKey: "thicknessUnits") as? String {
+            thicknessUnits = LengthUnits(rawValue: thicknessUnitsStored) ?? .millimeter
+        } else {
+            thicknessUnits = .millimeter
+        }
     }
 }
 
@@ -63,8 +77,10 @@ extension ResistivityMeasurementSettings: Info {
     /// Generates a `ResistivityMeasurementInfo` object containing the current settings.
     /// - Returns: A `ResistivityMeasurementInfo` instance with the current settings.
     func info() -> Output {
+        let thicknessInMeters = thickness * thicknessUnits.scaleFactor()
+        
         let info = ResistivityMeasurementInfo(shouldCalculateResistivity: shouldCalculateResistivity,
-                                              thickness: thickness,
+                                              thickness: thicknessInMeters,
                                               thicknessCorrectionFactor: thicknessCorrectionFactor,
                                               finiteWidthCorrectionFactor: finiteWidthCorrectionFactor)
         

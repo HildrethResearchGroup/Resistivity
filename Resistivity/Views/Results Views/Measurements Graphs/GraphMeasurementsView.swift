@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct GraphView: View {
+struct GraphMeasurementsView: View {
     typealias T = Double
     
     let title:String
@@ -97,7 +97,7 @@ struct GraphView: View {
 
 
 // MARK: - Display Data
-extension GraphView {
+extension GraphMeasurementsView {
     
     func scaledData(for measurement: Measurement) -> Double {
         let data = measurement[keyPath: keyPath]
@@ -139,7 +139,7 @@ extension GraphView {
 }
 
 // MARK: - Titles
-extension GraphView {
+extension GraphMeasurementsView {
     var unitsDisplay: String {
         let unitsString = String(units.description)
         
@@ -149,7 +149,7 @@ extension GraphView {
 
 
 // MARK: - Rotating Y-Axis Label
-extension GraphView {
+extension GraphMeasurementsView {
     struct WhiteGroupBoxStyle: GroupBoxStyle {
         func makeBody(configuration: Configuration) -> some View {
             configuration.content
@@ -173,6 +173,6 @@ struct GraphView_Previews: PreviewProvider {
         let units: ResistanceUnits = .ohms
         let dataModel = DataModel(withInitialData: true)
         let dataViewModel = DataViewModel(dataModel: dataModel)
-        GraphView(title: "Resistance", keyPath: \.resistance, units: units, measurements: dataViewModel.measurements)
+        GraphMeasurementsView(title: "Resistance", keyPath: \.resistance, units: units, measurements: dataViewModel.measurements)
     }
 }

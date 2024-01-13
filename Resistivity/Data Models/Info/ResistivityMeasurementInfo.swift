@@ -17,6 +17,8 @@ struct ResistivityMeasurementInfo: Identifiable {
     /// The thickness of the material for which resistivity is being calculated.
     var thickness: Double
     
+    
+    
     /// A geometric correction factor applied to account for the thickness of the material.
     ///
     /// If the sample being tested is thicker than 40% of the probe spacing, an additional correction factor is required. The correction factor used is dependent upon the ratio of the sample thickness (t) to the probe spacing (s) and some of the possible values are listed in the table found at: 

@@ -26,17 +26,17 @@ struct MeasurementsGraphView: View {
             VStack {
                 Spacer()
                 List(selection: $selection) {
-                    GraphPreview(title: "Resistance", keyPath: \.resistance, units: resistanceUnits, measurements: measurements)
+                    GraphMeasurementsPreview(title: "Resistance", keyPath: \.resistance, units: resistanceUnits, measurements: measurements)
                         .tag(1)
                         .padding()
                         .listRowSeparator(.hidden)
                         .background(in: RoundedRectangle(cornerRadius: 6.0))
-                    GraphPreview(title: "Resistivity", keyPath: \.resistivity, units: resistivityUnits, measurements: measurements)
+                    GraphMeasurementsPreview(title: "Resistivity", keyPath: \.resistivity, units: resistivityUnits, measurements: measurements)
                         .tag(2)
                         .padding(.vertical)
                         .listRowSeparator(.hidden)
                         .background(in: RoundedRectangle(cornerRadius: 6.0))
-                    GraphPreview(title: "Line Resistance", keyPath: \.lineResistance, units: lineResistanceUnits, measurements: measurements)
+                    GraphMeasurementsPreview(title: "Line Resistance", keyPath: \.lineResistance, units: lineResistanceUnits, measurements: measurements)
                         .tag(3)
                         .padding(.vertical)
                         .listRowSeparator(.hidden)
@@ -57,10 +57,10 @@ struct MeasurementsGraphView: View {
     @ViewBuilder
     func primaryGraph() -> some View {
         switch selection {
-        case 1: GraphView(title: "Resistance", keyPath: \.resistance, units: resistanceUnits, measurements: measurements)
-        case 2: GraphView(title: "Resistivity", keyPath: \.resistivity, units: resistivityUnits, measurements: measurements)
-        case 3: GraphView(title: "Line Resistance", keyPath: \.lineResistance, units: lineResistanceUnits, measurements: measurements)
-        default: GraphView(title: "Resistance", keyPath: \.resistance, units: resistanceUnits, measurements: measurements)
+        case 1: GraphMeasurementsView(title: "Resistance", keyPath: \.resistance, units: resistanceUnits, measurements: measurements)
+        case 2: GraphMeasurementsView(title: "Resistivity", keyPath: \.resistivity, units: resistivityUnits, measurements: measurements)
+        case 3: GraphMeasurementsView(title: "Line Resistance", keyPath: \.lineResistance, units: lineResistanceUnits, measurements: measurements)
+        default: GraphMeasurementsView(title: "Resistance", keyPath: \.resistance, units: resistanceUnits, measurements: measurements)
         }
     }
 }

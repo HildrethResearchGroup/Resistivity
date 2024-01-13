@@ -12,8 +12,14 @@ struct LineResistanceInfo {
     /// A boolean value indicating whether the line resistance should be calculated.
     var shouldCalculateLineResistance: Bool
     
-    /// An optional double value representing the voltage sensing gap, which is used in the calculation of line resistance.
+    /// An optional double value representing the voltage sensing gap in the selected Length Units, which is used in the calculation of line resistance.
     var voltageSensingGap: Double?
+    
+    
+    init(shouldCalculateLineResistance: Bool, voltageSensingGap gapIn: Double?, gapUnits: LengthUnits) {
+        self.shouldCalculateLineResistance = shouldCalculateLineResistance
+        self.voltageSensingGap = gapIn
+    }
     
     /// Calculates the line resistance based on a given resistance and the voltage sensing gap.
     ///

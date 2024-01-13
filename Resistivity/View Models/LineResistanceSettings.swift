@@ -23,12 +23,24 @@ class LineResistanceSettings: ObservableObject {
         didSet {  UserDefaults.standard.set(voltageSensingGap, forKey: "voltageSensingGap")  }
     }
     
+    @Published var gapUnits: LengthUnits {
+        didSet { UserDefaults.standard.set(gapUnits.rawValue, forKey: "gapUnits")  }
+    }
+    
+    
     /// Initializes a new `LineResistanceSettings` instance, loading initial values from `UserDefaults`.
     init() {
         voltageSensingGap = UserDefaults.standard.object(forKey: "voltageSensingGap") as? Double ?? 20.0
         shouldCalculateLineResistance = UserDefaults.standard.object(forKey: "shouldCalculateLineResistance") as? Bool ?? false
+        
+        if let rawGrapUnits = UserDefaults.standard.object(forKey: "gapUnits") as? String {
+            gapUnits = LengthUnits(rawValue: rawGrapUnits) ?? .millimeter
+        } else {
+            gapUnits = .millimeter
+        }
     }
 }
+
 
 /// Extension of `LineResistanceSettings` to conform to the `Info` protocol.
 extension LineResistanceSettings: Info {
@@ -38,7 +50,10 @@ extension LineResistanceSettings: Info {
     /// Generates an `Output` instance containing the current settings related to line resistance.
     /// - Returns: An instance of `LineResistanceInfo` populated with the current settings.
     func info() -> Output {
-        let info = LineResistanceInfo(shouldCalculateLineResistance: shouldCalculateLineResistance, voltageSensingGap: voltageSensingGap)
+        
+        let gapInMeters = voltageSensingGap * gapUnits.scaleFactor()
+        
+        let info = LineResistanceInfo(shouldCalculateLineResistance: shouldCalculateLineResistance, voltageSensingGap: gapInMeters, gapUnits: gapUnits)
         
         return info
     }
