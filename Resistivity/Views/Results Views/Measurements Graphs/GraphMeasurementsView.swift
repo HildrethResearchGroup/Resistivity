@@ -9,21 +9,22 @@ import SwiftUI
 import Charts
 
 struct GraphMeasurementsView: View {
-    typealias T = Double
     
     let title:String
     
-    let keyPath: KeyPath<Measurement,  T>
+    let keyPath: KeyPath<Measurement,  Double>
     
     var units: any ConvertableUnits
     
-    @State var rawSelectedMeasurement: Int?
+    var measurements: [Measurement]
+    
+    @State private var rawSelectedMeasurement: Int?
     
     private let fontColor = Color.black
     
-    let formatter = NumberFormatter.shortNumber
+    private let formatter = NumberFormatter.shortNumber
     
-    var measurements: [Measurement]
+    
     
     var body: some View {
         VStack {
@@ -85,10 +86,12 @@ struct GraphMeasurementsView: View {
                         .background(.white)
                         .border(.white)
                 }
-                .padding()
+                
             }
             
-        }.overlay(selectionOverlay(), alignment: .topLeading)
+        }
+        .padding()
+        .overlay(selectionOverlay().padding(), alignment: .topLeading)
         
     }
     
@@ -123,19 +126,18 @@ extension GraphMeasurementsView {
     func selectionOverlay() -> some View {
         if let selection = selectedMeasurent {
             VStack(alignment: .leading) {
+                Text("\(title) [\(units.description)]")
                 Text(selection.sampleInfo.name)
                 Text(selection.locationInfo.name)
                 Text("ID: \(selection.sampleID)")
-                Text("\(title): \(formatedData(for:selection)) \(unitsDisplay)")
+                Text("\(title): \(formatedData(for:selection)) \(units.description)")
             }
-            .frame(width: 100)
-            .padding()
-            .background(.white, in: RoundedRectangle(cornerRadius: 8))
+            .font(.callout)
+            .background(.white.opacity(0.95), in: RoundedRectangle(cornerRadius: 8))
         } else {
             EmptyView()
         }
     }
-    
 }
 
 // MARK: - Titles

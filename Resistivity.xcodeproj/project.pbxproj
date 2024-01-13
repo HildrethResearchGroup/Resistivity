@@ -93,6 +93,9 @@
 		C0ED06B02B34FF300050D626 /* Protocol_Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED06AF2B34FF300050D626 /* Protocol_Info.swift */; };
 		C0ED06B42B3544090050D626 /* LocationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED06B32B3544090050D626 /* LocationSettings.swift */; };
 		C0ED06B72B3545470050D626 /* SampleSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED06B62B3545470050D626 /* SampleSettings.swift */; };
+		C0FD931B2B53381D0025C949 /* GraphSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FD931A2B53381D0025C949 /* GraphSummaryView.swift */; };
+		C0FD931E2B533FFF0025C949 /* SamplesGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FD931D2B533FFF0025C949 /* SamplesGraphView.swift */; };
+		C0FD93202B53401C0025C949 /* GraphSummaryPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FD931F2B53401C0025C949 /* GraphSummaryPreview.swift */; };
 		C0FFEF412AF7510C00CCBD97 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FFEF402AF7510C00CCBD97 /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -185,6 +188,9 @@
 		C0ED06AF2B34FF300050D626 /* Protocol_Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol_Info.swift; sourceTree = "<group>"; };
 		C0ED06B32B3544090050D626 /* LocationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettings.swift; sourceTree = "<group>"; };
 		C0ED06B62B3545470050D626 /* SampleSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSettings.swift; sourceTree = "<group>"; };
+		C0FD931A2B53381D0025C949 /* GraphSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphSummaryView.swift; sourceTree = "<group>"; };
+		C0FD931D2B533FFF0025C949 /* SamplesGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplesGraphView.swift; sourceTree = "<group>"; };
+		C0FD931F2B53401C0025C949 /* GraphSummaryPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphSummaryPreview.swift; sourceTree = "<group>"; };
 		C0FFEF402AF7510C00CCBD97 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,7 +222,6 @@
 			children = (
 				C0DB47112ACB404500FBAC23 /* ResultsTabView.swift */,
 				C013247F2B106AA100DCAC6D /* ResultsTableView.swift */,
-				C0DE77D82B479EC5006BC54B /* ResultsSummaryGraphView.swift */,
 				C051DA982B5258040075D317 /* Measurements Graphs */,
 			);
 			path = "Results Views";
@@ -342,6 +347,7 @@
 				C011FD062B37D9A8008F8066 /* Measurement Configuration */,
 				C0DB47132ACB40DE00FBAC23 /* General Views */,
 				C011FD072B38A179008F8066 /* Results Views */,
+				C0FD931C2B5338360025C949 /* Summary Graphs */,
 				C09DDB182B50F25D007CAA73 /* Statistics Views */,
 			);
 			path = Views;
@@ -475,6 +481,17 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
+		C0FD931C2B5338360025C949 /* Summary Graphs */ = {
+			isa = PBXGroup;
+			children = (
+				C0FD931D2B533FFF0025C949 /* SamplesGraphView.swift */,
+				C0DE77D82B479EC5006BC54B /* ResultsSummaryGraphView.swift */,
+				C0FD931A2B53381D0025C949 /* GraphSummaryView.swift */,
+				C0FD931F2B53401C0025C949 /* GraphSummaryPreview.swift */,
+			);
+			path = "Summary Graphs";
+			sourceTree = "<group>";
+		};
 		C0FFEF3C2AF750B200CCBD97 /* Measurements */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,6 +599,7 @@
 				C0C2C0352AD8A62000E2385E /* Measurement_Exportable.swift in Sources */,
 				C048E2DE2B4CB27800E45C15 /* Button_selectAll.swift in Sources */,
 				C0B608982AC610E0008B0A39 /* Decoders.swift in Sources */,
+				C0FD931B2B53381D0025C949 /* GraphSummaryView.swift in Sources */,
 				C048E2E92B4CB6F200E45C15 /* ResistivityApp_menuItems.swift in Sources */,
 				C0ED06AB2B34FA750050D626 /* ResistivityMeasurementInfo.swift in Sources */,
 				C0FFEF412AF7510C00CCBD97 /* DataModel.swift in Sources */,
@@ -597,6 +615,7 @@
 				C049B58E2B4F6A3A0010FA96 /* AppController_Export.swift in Sources */,
 				C0DB471B2ACB4F6A00FBAC23 /* Measurement.swift in Sources */,
 				C0C2C02E2AD8A41A00E2385E /* SampleInfo.swift in Sources */,
+				C0FD931E2B533FFF0025C949 /* SamplesGraphView.swift in Sources */,
 				C0D122732B4268EB00BBFFC8 /* ResistivityUnits.swift in Sources */,
 				C0C20EAB2B466AC4007EBA53 /* Sample_Exportable.swift in Sources */,
 				C003927D2B50A05100E8B4FB /* Button_lineResistanceUnits.swift in Sources */,
@@ -635,6 +654,7 @@
 				C048E2E42B4CB51B00E45C15 /* Button_measureResistanceWithNanovoltmeter.swift in Sources */,
 				C094C1852AC5F91B00E655CA /* ResistivityApp.swift in Sources */,
 				C048E2D82B4CB02C00E45C15 /* Button_resistivityUnits.swift in Sources */,
+				C0FD93202B53401C0025C949 /* GraphSummaryPreview.swift in Sources */,
 				C078BB072AD26CDF002AF86B /* Statistics.swift in Sources */,
 				C078BB052AD26368002AF86B /* Array_Statistics.swift in Sources */,
 				C01324802B106AA100DCAC6D /* ResultsTableView.swift in Sources */,

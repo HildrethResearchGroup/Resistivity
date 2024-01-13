@@ -100,7 +100,6 @@ struct ResultsSummaryGraphView: View {
             .offset(x: -100, y: 0)
         }
         .overlay( selectionOverlay().padding(), alignment: .topLeading )
-        
         .padding()
 
     }
