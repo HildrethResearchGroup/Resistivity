@@ -1,25 +1,25 @@
 {
   "images" : [
     {
-      "filename" : "Resistivity Utility Icon 16.png",
+      "filename" : "Resistivity Utility Icon 16_v2.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
-      "filename" : "Resistivity Utility Icon 32.png",
+      "filename" : "Resistivity Utility Icon 32_v2 1.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
     },
     {
-      "filename" : "Resistivity Utility Icon 32-1.png",
+      "filename" : "Resistivity Utility Icon 32_v2.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
     },
     {
-      "filename" : "Resistivity Utility Icon 64.png",
+      "filename" : "Resistivity Utility Icon 64_v2.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "32x32"

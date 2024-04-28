@@ -56,13 +56,18 @@ extension NanoVoltMeterController {
                 fixedString = String(fixedString.dropLast())
             }
             
+            // Remove all "+" characters otherwise the decorder fails.
+            while fixedString.hasPrefix("+") {
+                fixedString = String(fixedString.dropFirst())
+            }
+            
             // Configure a number formatter for scientific notation.
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = .scientific
             
             // Attempt to convert the string to a number using the formatter.
             guard let value = numberFormatter.number(from: fixedString) else  {
-                throw ExponentDecoderError.couldNotFormatNumberFromString
+                throw ExponentDecoderError.couldNotFormatNumberFromString(message)
             }
             
             // Convert the NSNumber to a native Swift Double.
@@ -74,7 +79,7 @@ extension NanoVoltMeterController {
         /// Errors that can be thrown by the `ExponentDecoder`.
         enum ExponentDecoderError: Error {
             /// Error indicating that the string could not be formatted to a number.
-            case couldNotFormatNumberFromString
+            case couldNotFormatNumberFromString(String)
         }
         
     }

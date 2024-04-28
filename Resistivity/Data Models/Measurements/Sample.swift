@@ -125,6 +125,7 @@ extension Sample {
     func deleteMeasurements(_ measurementsIn: [Measurement]) {
         for nextLocation in locations {
             nextLocation.removeMeasurement(measurementsIn)
+            //updateStatistics()
         }
     }
 }

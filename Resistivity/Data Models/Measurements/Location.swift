@@ -22,7 +22,6 @@ class Location {
     /// When a new measurement is added, a notification is posted.
     var measurements: [Measurement] = [] {
         didSet {
-            
             NotificationCenter.default.post(name: .newMeasurementAdded, object: self)
         }
     }
@@ -77,9 +76,8 @@ extension Location {
         
         let filteredMeasurements = measurements.filter({!measurementsIn.contains($0)})
         
-        if filteredMeasurements.count != measurements.count {
-            measurements = filteredMeasurements
-        }
+        measurements = filteredMeasurements
+        
     }
 }
 

@@ -9,6 +9,7 @@ import Foundation
 import CoreSwiftVISA
 import SwiftVISASwift
 
+
 /// An actor that conforms to `OmhMeterControllerProtocol` to control a nanovoltmeter instrument.
 /// It is responsible for managing the communication with the instrument and performing measurements.
 actor NanoVoltMeterController: OmhMeterControllerProtocol {
@@ -17,7 +18,7 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
     static var minimumDelay: UInt32 = 2_000_000
     
     /// The message-based instrument that represents the physical nanovoltmeter.
-    var instrument: MessageBasedInstrument
+    var instrument: MessageBasedInstrument?
     
     /// The mode that determines the type of data the instrument should return.
     var returnMode: ReturnMode {
@@ -63,7 +64,9 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
     func getIdentifier() async throws -> String {
         returnMode = .identifier
         
-        let identifier = try await instrument.query("*IDN?\n", as: String.self, using: StringDecoder())
+        guard let identifier = try await instrument?.query("*IDN?\n", as: String.self, using: StringDecoder()) else {
+            throw DataCollectionController.DataCollectionError.couldNotMeasureResistance
+        }
         
         return identifier
     }
@@ -73,7 +76,9 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
     func getResistance() async throws -> Double {
         returnMode = .resistivity
         
-        let resistance = try await instrument.query("MEAS:FRES?\n", as: Double.self, using: ExponentDecoder())
+        guard let resistance = try await instrument?.query("MEAS:FRES?\n", as: Double.self, using: ExponentDecoder()) else {
+            throw DataCollectionController.DataCollectionError.couldNotMeasureResistance
+        }
         
         return resistance
     }
@@ -83,18 +88,23 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
     /// Flushes old data from the instrument by querying new data until the instrument returns data compatible with the new `returnMode`.
     /// - Parameter returnMode: The `ReturnMode` for which the old data should be flushed.
     func flushOldData(for returnMode: ReturnMode) async {
-        switch returnMode {
-        case .identifier:
-            for _ in 0..<3 {
-                _ = try? await instrument.query("*IDN?\n", as: String.self)
-                usleep(NanoVoltMeterController.minimumDelay)
-            }
-        case .resistivity:
-            for _ in 0..<3 {
-                _ = try? await instrument.query("MEAS:FRES?\n", as: String.self)
-                usleep(NanoVoltMeterController.minimumDelay)
-            }
-        }
+        /*
+         switch returnMode {
+         case .identifier:
+             for _ in 0..<3 {
+                 _ = try? await instrument.query("*IDN?\n", as: String.self)
+                 usleep(NanoVoltMeterController.minimumDelay)
+             }
+         case .resistivity:
+             for _ in 0..<3 {
+                 _ = try? await instrument.query("MEAS:FRES?\n", as: String.self)
+                 usleep(NanoVoltMeterController.minimumDelay)
+             }
+         }
+
+         */
+        
+        let _ = try? await instrument?.write("*RST", appending: "\n", encoding: .ascii)
     }
     
     /// Flushes old data from the instrument specifically for the resistivity return mode.
@@ -128,3 +138,4 @@ actor NanoVoltMeterController: OmhMeterControllerProtocol {
     }
     
 }
+
