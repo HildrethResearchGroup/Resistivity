@@ -14,9 +14,8 @@ struct ResistivityMeasurementInfo: Identifiable {
     /// A boolean indicating whether resistivity should be calculated.
     var shouldCalculateResistivity: Bool
     
-    /// The thickness of the material for which resistivity is being calculated.
+    /// The thickness in meters of the material for which resistivity is being calculated.
     var thickness: Double
-    
     
     
     /// A geometric correction factor applied to account for the thickness of the material.

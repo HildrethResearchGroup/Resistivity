@@ -35,7 +35,7 @@ extension ResistivityUnits: ConvertableUnits {
         case .ohm_meters: return 1.0
         case .ohm_millimeters: return 1_000.0
         case .ohm_micrometers: return 1_000_000.0
-        case .microOhm_centimeters: return 100.0 * 1E6
+        case .microOhm_centimeters: return 100.0 * 1.0E6
         }
     }
     
@@ -48,9 +48,15 @@ extension ResistivityUnits: ConvertableUnits {
     /// Converts a resistivity value from ohm meters to the current unit.
     /// - Parameter valueIn: The resistivity value in ohm meters to be converted.
     /// - Returns: The converted resistivity value in the current unit.
-    func scaledFromBaseValue(_ valueIn: Double) -> Double {
+    func scaledToBaseValue(_ valueIn: Double) -> Double {
         return valueIn / self.scaleFactor()
     }
+    
+    
+    func scaledFromBaseValue(_ valueIn: Double) -> Double {
+        return valueIn * self.scaleFactor()
+    }
+    
     
     /// Converts a resistivity value from ohm meters to the current unit.
     /// This is a convenience method that calls `scaledFromBaseValue`.
@@ -59,6 +65,12 @@ extension ResistivityUnits: ConvertableUnits {
     func scaledFromBaseOhm_meters(_ valueIn: Double) -> Double {
         return scaledFromBaseValue(valueIn)
     }
+    
+    
+    func scaledtoBaseOhm_meters(_ valueIn: Double) -> Double {
+        return scaledToBaseValue(valueIn)
+    }
+    
     
 }
 

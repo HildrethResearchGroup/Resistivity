@@ -77,7 +77,9 @@ extension ResistivityMeasurementSettings: Info {
     /// Generates a `ResistivityMeasurementInfo` object containing the current settings.
     /// - Returns: A `ResistivityMeasurementInfo` instance with the current settings.
     func info() -> Output {
-        let thicknessInMeters = thickness * thicknessUnits.scaleFactor()
+        // TODO: Test Change
+        // let thicknessInMeters = thickness * thicknessUnits.scaleFactor()
+        let thicknessInMeters = thicknessUnits.scaledToBaseMeters(thickness)
         
         let info = ResistivityMeasurementInfo(shouldCalculateResistivity: shouldCalculateResistivity,
                                               thickness: thicknessInMeters,

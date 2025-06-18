@@ -56,10 +56,22 @@ extension ResistanceUnits: ConvertableUnits {
     ///
     /// - Parameter valueIn: The resistance value in Ohms to be scaled.
     /// - Returns: The scaled resistance value in the current unit.
+    func scaledToBaseValue(_ valueIn: Double) -> Double {
+        let scalefactor = scaleFactor(for: self)
+        
+        // TODO: Check Change
+        // return valueIn * scalefactor
+        return valueIn / scalefactor
+    }
+    
+    
     func scaledFromBaseValue(_ valueIn: Double) -> Double {
         let scalefactor = scaleFactor(for: self)
+        
         return valueIn * scalefactor
     }
+    
+    
     
     /// Scales a resistance value from Ohms to the current unit.
     ///
@@ -67,6 +79,11 @@ extension ResistanceUnits: ConvertableUnits {
     ///
     /// - Parameter valueIn: The resistance value in Ohms to be scaled.
     /// - Returns: The scaled resistance value in the current unit.
+    func scaledToBaseOhms(_ valueIn: Double) -> Double {
+        return scaledToBaseValue(valueIn)
+    }
+    
+    
     func scaledFromBaseOhms(_ valueIn: Double) -> Double {
         return scaledFromBaseValue(valueIn)
     }

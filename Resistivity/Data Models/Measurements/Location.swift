@@ -42,7 +42,7 @@ extension Location {
     ///
     /// Increments the measurement number and appends a new `Measurement` object to the `measurements` array.
     /// - Parameters:
-    ///   - resistanceIn: The resistance value of the measurement.
+    ///   - resistanceIn: The resistance value of the measurement in Ohms.
     ///   - sampleInfo: Information about the sample being measured.
     ///   - resistivityInfo: Information about the resistivity measurement.
     ///   - lineResistanceInfo: Information about the line resistance.

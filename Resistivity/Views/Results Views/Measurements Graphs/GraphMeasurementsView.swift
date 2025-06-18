@@ -24,6 +24,7 @@ struct GraphMeasurementsView: View {
     
     private let formatter = NumberFormatter.shortNumber
     
+    @State private var showDashedLines = false
     
     
     var body: some View {
@@ -38,7 +39,7 @@ struct GraphMeasurementsView: View {
                              series: .value("Sample", nextMeasurement.sampleInfo.name))
                     .foregroundStyle(by: .value("Sample", nextMeasurement.sampleInfo.name))
                     //.symbol(by: .value("Sample", nextMeasurement.sampleInfo.name))
-                    .lineStyle(StrokeStyle(dash: [9, 10]))
+                    .lineStyle(lineStyle)
                     
                     PointMark(x: .value("Measurement #", nextMeasurement.globalMeasurementNumber),
                               y: .value(title, scaledData(for: nextMeasurement)))
@@ -86,13 +87,30 @@ struct GraphMeasurementsView: View {
                         .background(.white)
                         .border(.white)
                 }
-                
             }
+            .contextMenu {
+                Toggle(isOn: $showDashedLines) {
+                    if showDashedLines {
+                        Text("Hide Lines")
+                    } else {
+                        Text("Show Lines")
+                    }
+                }
+            }
+
             
         }
         .padding()
         .overlay(selectionOverlay().padding(), alignment: .topLeading)
         
+    }
+    
+    private var lineStyle: StrokeStyle {
+        if showDashedLines == true {
+            return StrokeStyle(dash: [9, 10])
+        } else {
+            return StrokeStyle(lineWidth: 0)
+        }
     }
     
     
@@ -104,7 +122,7 @@ extension GraphMeasurementsView {
     
     func scaledData(for measurement: Measurement) -> Double {
         let data = measurement[keyPath: keyPath]
-        return units.scaledFromBaseValue(data)
+        return units.scaledToBaseValue(data)
     }
     
     func formatedData(for measurement: Measurement) -> String {

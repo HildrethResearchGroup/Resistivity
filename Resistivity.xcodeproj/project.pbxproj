@@ -49,6 +49,7 @@
 		C094C19D2AC5F9EE00E655CA /* OmhMeterControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C19C2AC5F9EE00E655CA /* OmhMeterControllerProtocol.swift */; };
 		C094C19F2AC5FA4900E655CA /* ReturnMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C19E2AC5FA4900E655CA /* ReturnMode.swift */; };
 		C094C1A12AC5FA6E00E655CA /* NanoVoltMeterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C1A02AC5FA6E00E655CA /* NanoVoltMeterController.swift */; };
+		C09CC3BB2DDE95BC0098DDAE /* HRGPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09CC3BA2DDE95BC0098DDAE /* HRGPreferences.swift */; };
 		C09DDB1B2B50F2A6007CAA73 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09DDB1A2B50F2A6007CAA73 /* StatisticsView.swift */; };
 		C09DDB1D2B50F330007CAA73 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09DDB1C2B50F330007CAA73 /* Statistic.swift */; };
 		C09DDB1F2B50F97D007CAA73 /* NumberFormatter_Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09DDB1E2B50F97D007CAA73 /* NumberFormatter_Double.swift */; };
@@ -142,6 +143,7 @@
 		C094C19C2AC5F9EE00E655CA /* OmhMeterControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmhMeterControllerProtocol.swift; sourceTree = "<group>"; };
 		C094C19E2AC5FA4900E655CA /* ReturnMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnMode.swift; sourceTree = "<group>"; };
 		C094C1A02AC5FA6E00E655CA /* NanoVoltMeterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanoVoltMeterController.swift; sourceTree = "<group>"; };
+		C09CC3BA2DDE95BC0098DDAE /* HRGPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGPreferences.swift; sourceTree = "<group>"; };
 		C09DDB1A2B50F2A6007CAA73 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		C09DDB1C2B50F330007CAA73 /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		C09DDB1E2B50F97D007CAA73 /* NumberFormatter_Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter_Double.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 			children = (
 				C0DB471C2ACB4FFA00FBAC23 /* DelayType.swift */,
 				C08CA0B42B3F5C270082E4CB /* ResistivityAppDelegate.swift */,
+				C09CC3BA2DDE95BC0098DDAE /* HRGPreferences.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				C0E8B7C02B4327CA002CEBA8 /* DataViewModel.swift in Sources */,
 				C0C2C0372AD8A9C200E2385E /* Statistics_Exportable.swift in Sources */,
 				C0DE77E22B47CF69006BC54B /* DeleteMeasurementsButton.swift in Sources */,
+				C09CC3BB2DDE95BC0098DDAE /* HRGPreferences.swift in Sources */,
 				C0E8B7C62B43D108002CEBA8 /* LineResistanceInfo_Exportable.swift in Sources */,
 				C00C543A2B52FAAD0018DE41 /* LengthUnits.swift in Sources */,
 				C0DB47082ACB313600FBAC23 /* Notifications.swift in Sources */,

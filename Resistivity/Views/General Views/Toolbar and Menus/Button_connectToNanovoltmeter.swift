@@ -15,7 +15,7 @@ struct Button_connectToNanovoltmeter: View {
     
     var body: some View {
         Button(action: connect) {
-            Image(systemName: "bolt.fill")
+            Text("􀋦")
                 .foregroundStyle(voltmeterColor())
                 .padding([.leading, .trailing], 5.0)
         }.help(tip_connectButton())

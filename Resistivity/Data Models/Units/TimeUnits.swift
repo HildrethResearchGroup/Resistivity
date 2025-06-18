@@ -45,14 +45,6 @@ extension TimeUnits: ConvertableUnits {
         }
     }
     
-    /// Scales a value from the base unit (seconds) to the unit represented by the instance.
-    ///
-    /// - Parameter valueIn: The value in seconds to be scaled.
-    /// - Returns: The scaled value as a `Double` in the unit represented by the instance.
-    func scaledFromBaseValue(_ valueIn: Double) -> Double {
-        let scalefactor = scaleFactor(for: self)
-        return valueIn * scalefactor
-    }
     
     /// Returns the scale factor for the current time unit instance.
     ///
@@ -66,11 +58,34 @@ extension TimeUnits: ConvertableUnits {
     
     /// Scales a value from the base unit (seconds) to the unit represented by the instance.
     ///
+    /// - Parameter valueIn: The value in seconds to be scaled.
+    /// - Returns: The scaled value as a `Double` in the unit represented by the instance.
+    func scaledToBaseValue(_ valueIn: Double) -> Double {
+        let scalefactor = scaleFactor(for: self)
+        
+        // TODO: Check Change
+        // return valueIn * scalefactor
+        return valueIn / scalefactor
+    }
+    
+    
+    func scaledFromBaseValue(_ valueIn: Double) -> Double {
+        return valueIn * scaleFactor(for: self)
+    }
+    
+    
+    /// Scales a value from the base unit (seconds) to the unit represented by the instance.
+    ///
     /// This method is a convenience wrapper around the `scaledFromBaseValue(_:)` method that uses the current instance as the parameter.
     /// It's used to scale a value from seconds to the unit represented by the instance.
     ///
     /// - Parameter valueIn: The value in seconds to be scaled.
     /// - Returns: The scaled value as a `Double` in the unit represented by the instance.
+    func scaledToBaseSeconds(_ valueIn: Double) -> Double {
+        return scaledToBaseValue(valueIn)
+    }
+    
+    
     func scaledFromBaseSeconds(_ valueIn: Double) -> Double {
         return scaledFromBaseValue(valueIn)
     }

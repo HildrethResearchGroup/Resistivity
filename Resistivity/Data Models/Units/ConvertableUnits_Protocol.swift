@@ -22,6 +22,12 @@ protocol ConvertableUnits: CustomStringConvertible {
     
     /// Scales a value from set units to the base units
     /// - Parameter valueIn: Double value to scale
-    /// - Returns: Scaled value
+    /// - Returns: Scaled value in base units
+    func scaledToBaseValue(_ valueIn: Double) -> Double
+    
+    
+    /// Scales a value from the Base Units to the Target Units
+    /// - Parameter valueIn: Double value to scale
+    /// - Returns: Scaled value from base units to target units
     func scaledFromBaseValue(_ valueIn: Double) -> Double
 }

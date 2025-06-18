@@ -40,8 +40,18 @@ extension LineResistanceUnits: ConvertableUnits {
     }
     
     
+    func scaledToBaseValue(_ valueIn: Double) -> Double {
+        let scalefactor = scaleFactor(for: self)
+        
+        // TODO: Check Change
+        // return valueIn * scalefactor
+        return valueIn / scalefactor
+    }
+    
+    
     func scaledFromBaseValue(_ valueIn: Double) -> Double {
         let scalefactor = scaleFactor(for: self)
+        
         return valueIn * scalefactor
     }
 }

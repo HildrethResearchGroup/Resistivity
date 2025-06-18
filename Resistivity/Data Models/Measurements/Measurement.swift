@@ -12,7 +12,7 @@ struct Measurement {
     /// A unique identifier for the measurement.
     var id = UUID()
     
-    /// The resistance value obtained from the measurement.
+    /// The resistance value in Ohms obtained from the measurement.
     let resistance: Double
     
     /// Information about the sample being measured.

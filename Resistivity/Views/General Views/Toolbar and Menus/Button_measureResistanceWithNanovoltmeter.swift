@@ -12,7 +12,7 @@ struct Button_measureResistanceWithNanovoltmeter: View {
     
     var body: some View {
         Button(action: measureResistanceWithNanovoltmeter) {
-            Image(systemName: "play.fill")
+            Text("􀊄")
                 .foregroundStyle(measureResistanceButtonColor)
                 .disabled(measureResistanceWithNanovoltmeterIsDisabled)
                 .padding([.leading, .trailing], 5.0)

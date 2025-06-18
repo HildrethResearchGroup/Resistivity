@@ -13,7 +13,6 @@ struct ResistivityApp: App {
     @StateObject var appController = AppController()
     
     
-    
     @State var presentConnectionAlert = false
     
     

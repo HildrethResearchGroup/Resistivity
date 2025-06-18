@@ -74,7 +74,7 @@ extension GraphMeasurementsPreview {
     
     func scaledData(for measurement: Measurement) -> Double {
         let data = measurement[keyPath: keyPath]
-        return units.scaledFromBaseValue(data)
+        return units.scaledToBaseValue(data)
     }
     
     func formatedData(for measurement: Measurement) -> String {

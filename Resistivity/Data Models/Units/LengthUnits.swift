@@ -33,8 +33,21 @@ extension LengthUnits: ConvertableUnits {
         scaleFactor(for: self)
     }
     
+    
+     func scaledToBaseValue(_ valueIn: Double) -> Double {
+         // TODO: Test Changed from * to /
+         // return valueIn * self.scaleFactor()
+         return valueIn / self.scaleFactor()
+     }
+    
     func scaledFromBaseValue(_ valueIn: Double) -> Double {
         return valueIn * self.scaleFactor()
+    }
+     
+    
+    
+    func scaledToBaseMeters(_ valueIn: Double) -> Double {
+        return scaledToBaseValue(valueIn)
     }
     
     func scaledFromBaseMeters(_ valueIn: Double) -> Double {
